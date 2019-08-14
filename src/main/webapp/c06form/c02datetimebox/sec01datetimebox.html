@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>日期时间框组件</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<h2>日期时间框组件</h2>
+<input class="easyui-datetimebox" required="required" style="width:150px">
+<h2>为日期时间组件初始化值：value属性</h2>
+<input class="easyui-datetimebox" value="2013-11-11 2:3:56" style="width:190px">
+<h2>是否显示秒：showSeconds</h2>
+<div style="margin:10px 0;">
+    <span>是否显示秒: </span>
+    <input type="checkbox" checked onchange="$('#dt').datetimebox({showSeconds:$(this).is(':checked')})">
+</div>
+<input id="dt" class="easyui-datetimebox" style="width:150px">
+
+<br>
+<br>
+<br>
+<hr>
+<hr>
+<hr>
+<br>
+<br>
+
+<h1>日期时间框组件GET:</h1>
+<div class="demo-info" style="font-size:20px">
+    <div class="demo-tip icon-tip"></div>
+    <div>日期时间框组件基本使用：input class="easyui-datebox"</div>
+    <div>日期时间框组件简介：
+        <ul>
+            <li>表单组件的一种</li>
+            <li>下拉日历面板附带一个时间微调器的日期框组件。</li>
+            <li>属性：</li>
+            <ul>
+                <li>data-options：{}</li>
+                <ul>
+                    <li>showSeconds：Boolean，true。是否显示秒。</li>
+                </ul>
+                <li>value：String，符合日期时间格式的字符串，中文默认yyyy-MM-dd hh:mm:ss。可编辑文本框的初始值。</li>
+                <li>required：Boolean，默认false。是否能必须。</li>
+            </ul>
+            <li>方法：</li>
+            <ul>
+
+            </ul>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
+

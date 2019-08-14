@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>日期框组件</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<h2>日期框组件</h2>
+<input class="easyui-datebox"></input>
+<div style="margin: 10px">带格式化的日期框</div>
+<input class="easyui-datebox" data-options="formatter:myFormatter,parser:myParser"></input>
+<div style="margin: 10px">带不能为空验证的日期框</div>
+<input class="easyui-datebox" required="required"></input>
+<div style="margin: 10px">带onSelect事件的日期框</div>
+<input class="easyui-datebox" data-options="onSelect:onSelect"></input>
+<div style="margin:10px 0">
+    <span>选择的日期是: </span>
+    <span id="result"></span>
+</div>
+
+<script type="text/javascript">
+    function myFormatter(date) {
+        var y = date.getFullYear();
+        var m = date.getMonth() + 1;
+        var d = date.getDate();
+        return y + '/' + (m < 10 ? ('0' + m) : m) + '/' + (d < 10 ? ('0' + d) : d);
+    }
+
+    function myParser(s) {
+        alert(s);
+        return new Date(2019, 1, 2);
+
+    }
+
+    function onSelect(date) {
+        $('#result').text(date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate());
+    }
+
+</script>
+<hr>
+<h1>日期框组件get</h1>
+<div class="demo-info" style="font-size:20px">
+    <div class="demo-tip icon-tip"></div>
+    <div>日期框组件：input class="easyui-datebox"</div>
+    <div>日期框组件简介：
+        <ul>
+            <li>表单组件的一种</li>
+            <li>把可编辑的文本框和下拉日历面板结合起来，用户可以在文本框中输入的字符串。也从下拉日历面板中选择日期。</li>
+            <li>属性：</li>
+            <ul>
+                <li>data-options：</li>
+                <ul>
+                    <li>formatter：格式化日期的函数，在下拉日历面板中选中日期后触发。该函数有一个 'date' 参数，并返回一个字符串值。</li>
+                    <li>parser：解析日期字符串的函数，在可编辑的文本框中输入后或者在下拉日历面板中选中日期后触发。该函数有一个 'date' 字符串，并返回一个日期值。</li>
+                </ul>
+                <li>不能为空属性：required="required"。</li>
+                <li>当用户选择一个日期时触发事件：onSelect="func"。该函数有一个 'date' 参数。</li>
+            </ul>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
