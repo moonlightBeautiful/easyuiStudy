@@ -13,7 +13,7 @@
 <body>
 
 <h2>日期框组件</h2>
-<input class="easyui-datebox"></input>
+<input id="db" class="easyui-datebox"></input>
 <div style="margin: 10px">带格式化的日期框</div>
 <input class="easyui-datebox" data-options="formatter:myFormatter,parser:myParser"></input>
 <div style="margin: 10px">带不能为空验证的日期框</div>
@@ -26,6 +26,8 @@
 </div>
 
 <script type="text/javascript">
+
+
     function myFormatter(date) {
         var y = date.getFullYear();
         var m = date.getMonth() + 1;
@@ -40,6 +42,7 @@
     }
 
     function onSelect(date) {
+        $('#db').datebox('setValue', '2012-06-06');
         $('#result').text(date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate());
     }
 
