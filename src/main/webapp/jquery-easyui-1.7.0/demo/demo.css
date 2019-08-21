@@ -11,10 +11,16 @@ h2 {
     margin-bottom:15px;
 }
 .demo-info{
+    background:#FFFEE6;
+    color:#8F5700;
 	padding:0 0 12px 0;
 }
 .demo-tip{
-	display:none;
+	/*display:none;*/
+    width:16px;
+    height:16px;
+    margin-right:8px;
+    float:left;
 }
 .label-top{
     display: block;
