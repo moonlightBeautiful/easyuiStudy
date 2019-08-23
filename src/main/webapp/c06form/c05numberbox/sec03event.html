@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>数字框组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<hr>
+<h2>数字框组件</h2>
+<div class="demo-info">
+    <div class="demo-tip icon-tip"></div>
+    <div>onChange.</div>
+</div>
+<div style="margin:10px 0;"></div>
+<input class="easyui-numberbox" required data-options="
+			onChange: function(value){
+				$('#vv').text(value);
+			}">
+<div style="margin:10px 0;">
+    值: <span id="vv"></span>
+</div>
+
+<div style="margin:10px 0;"></div>
+<hr>
+<h1>数字框组件get</h1>
+<div class="demo-info" style="font-size:20px">
+    <div class="demo-tip icon-tip"></div>
+    <div>input class="easyui-numberbox"</div>
+    <div>简介：
+        <ul>
+            <li>表单组件的一种</li>
+            <li>数字框（numberbox）用于让用户仅能输入数字的值，输入非数字，离开输入框清空输入的内容。</li>
+            <li>属性：</li>
+            <ul>
+                <li>data-options：可以在标签中直接使用data-options赋值，也可以通过选择器设置、改变$('#日历id').calendar({属性:值})</li>
+                <ul>
+                    <li>required：boolean。可以在标签内，不赋值，默认true。可以放到data-options中</li>
+                    <li>min：number。允许的最小值。</li>
+                    <li>max：number。允许的最大值。</li>
+                    <li>precision：number。显示在小数点后面的最大精度。</li>
+                    <li>decimalSeparator：string。分隔数字的整数部分和小数部分的分隔字符。</li>
+                    <li>groupSeparator：string。分隔整数组合的字符，三个一组。</li>
+                    <li>prefix：string。前缀字符串。。</li>
+                    <li>suffix：string。后缀字符串。。</li>
+                </ul>
+            </ul>
+            <li>事件：</li>
+            <ul>
+                <li>onChange：当字段值改变时（光标离开文本框时）触发。</li>
+            </ul>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
