@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>下拉框组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<h2>下拉框组件</h2>
+
+<div class="demo-info">
+    <div class="demo-tip icon-tip"></div>
+    <div>select预定义数据创建下拉框组件.</div>
+</div>
+<div style="margin:10px 0;"></div>
+<select class="easyui-combobox" name="sheng" style="width:200px;" data-options="
+					panelHeight:'auto',
+					selectOnNavigation:false
+			">
+    <option value="河北省">河北省</option>
+    <option value="山东省">山东省</option>
+    <option value="辽宁省">辽宁省</option>
+    <option value="黑龙江省">黑龙江省</option>
+    <option value="吉林省">吉林省</option>
+    <option value="甘肃省">甘肃省</option>
+    <option value="青海省">青海省</option>
+    <option value="河南省">河南省</option>
+    <option value="江苏省">江苏省</option>
+    <option value="湖北省">湖北省</option>
+    <option value="湖南省">湖南省</option>
+    <option value="江西省">江西省</option>
+    <option value="浙江省">浙江省</option>
+    <option value="广东省">广东省</option>
+    <option value="云南省">云南省</option>
+    <option value="福建省">福建省</option>
+    <option value="台湾省">台湾省</option>
+    <option value="海南省">海南省</option>
+    <option value="山西省">山西省</option>
+    <option value="四川省">四川省</option>
+    <option value="陕西省">陕西省</option>
+    <option value="贵州省">贵州省</option>
+    <option value="安徽省">安徽省</option>
+</select>
+
+<div style="margin:10px 0"></div>
+<div class="demo-info" style="margin-bottom:10px">
+    <div class="demo-tip icon-tip"></div>
+    <div>input远程绑定数据创建下拉框.</div>
+</div>
+<input class="easyui-combobox"
+       name="language"
+       data-options="
+					url:'../c09combobox/combobox_data.json',
+					valueField:'id',
+					textField:'text',
+					panelHeight:'auto'
+			">
+<div style="margin:10px 0"></div>
+<hr>
+<h1>下拉框组件get</h1>
+<div class="demo-info" style="font-size:20px">
+    <div class="demo-tip icon-tip"></div>
+    <div>input class="easyui-combobox"</div>
+    <div>简介：
+        <ul>
+            <li>表单组件的一种</li>
+            <li>下拉框（combobox）显示一个可编辑的文本框和下拉列表，用户可以从下拉列表中选择一个或多个值,用户也可以在文本框输入，会自动匹配下拉列表中的值。</li>
+            <li>下拉框（combobox）可以是用select标签（带预定义值）和input标签（远程加载值）创建。</li>
+            <li>属性：</li>
+            <ul>
+                <li>data-options↓</li>
+                <ul>
+                    <li>multiple：boolean，默认false。定义是否支持多选。</li>
+                    <li>panelWidth：number 或者 auto。下拉面板的宽度。</li>
+                    <li>panelHeight：number 或者 auto。下拉面板的高度。</li>
+                    <li>selectOnNavigation：boolean，默认true。定义当通过键盘上下键导航项目时是编辑框否选择项目。</li>
+                    <li>url：string。从远程加载列表数据的 URL ，返回的数据是json数组。</li>
+                    <li>valueField：string。绑定远程加载的数据到该组合框（ComboBox）的 value 上的基础数据的名称。</li>
+                    <li>textField：string。绑定远程加载的数据到该组合框（ComboBox）的 text 上的基础数据的名称。</li>
+                    <li>formatter：func(item)，预定义数据item的属性text是文本值，value是标签的value属性值，如果是远程加载数据则item
+                        .json对象属性使用。定义如何呈现每一项。</li>
+                </ul>
+            </ul>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

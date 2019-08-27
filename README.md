@@ -31,4 +31,7 @@ easyui简单介绍
     5.数字组件
     6.数字微调器组件
     7.验证框组件
+    8.下拉框组件combobox
+    9.下拉表格组件combogrid
+    10.下拉树格组件combotree
     

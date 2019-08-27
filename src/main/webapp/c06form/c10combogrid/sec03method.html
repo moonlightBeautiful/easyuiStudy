@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>下拉表格组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<h2>下拉表格组件</h2>
+
+<div style="margin:10px 0;"></div>
+<div class="demo-info">
+    <div class="demo-tip icon-tip"></div>
+    <div>点击下面按钮执行相关操作.</div>
+</div>
+<div style="margin:10px 0">
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="getValue()">获取值</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="setValue()">设置值</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="disable()">禁用</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="enable()">启用</a>
+</div>
+<input id="cg" class="easyui-combogrid" style="width:250px" value="EST-12" data-options="
+	        panelWidth: 500,
+			idField: 'itemid',
+			textField: 'productname',
+			multiple:true,
+			url: '../c10combogrid/combogrid_data.json',
+			columns: [[
+				{field:'itemid',title:'产品编号',width:80},
+				{field:'productname',title:'产品名称',width:120},
+				{field:'listprice',title:'市场价',width:80,align:'right'},
+				{field:'unitcost',title:'成本价',width:80,align:'right'},
+				{field:'attr1',title:'描述',width:200},
+				{field:'status',title:'状态',width:60,align:'center'}
+			]],
+			fitColumns: true,
+			selectOnNavigation:false
+		">
+<script type="text/javascript">
+    function getValue(){
+        var val = $('#cg').combogrid('getValues');
+        alert(val);
+       /* var g = $('#cg').combogrid('grid');
+        var r = g.datagrid('getSelected');
+        alert(r.productname);
+        alert(g.length);*/
+
+    }
+    function setValue(){
+        $('#cg').combogrid('setValue', 'EST-1');
+    }
+    function disable(){
+        $('#cg').combogrid('disable');
+    }
+    function enable(){
+        $('#cg').combogrid('enable');
+    }
+</script>
+<div style="margin:10px 0"></div>
+<hr>
+<h1>下拉表格组件get</h1>
+<div class="demo-info" style="font-size:20px">
+    <div class="demo-tip icon-tip"></div>
+    <div>input class="easyui-combogrid"</div>
+    <div>简介：
+        <ul>
+            <li>表单组件的一种</li>
+            <li>下拉表格组件（combogrid）把可编辑的文本框和下拉数据网格面板结合起来，用户可以从下拉数据网格面板中快速查找和选择。下拉表格组件（combogrid）提供了选择某个项目的键盘导航支持。</li>
+            <li>下拉表格组件（combobox）可以是用select标签（远程加载数据）或者 input标签（远程加载数据）创建。</li>
+            <li>属性：</li>
+            <ul>
+                <li>data-options↓</li>
+                <ul>
+                    <li>panelWidth：number。下拉表格面板的宽度。</li>
+                    <li>panelHeight：number。下拉表格面板的高度。</li>
+                    <li>idField：string。id 的字段名。。</li>
+                    <li>textField：string。显示在文本框中的 text 字段名。</li>
+                    <li>url：string。从远程加载列表数据的 URL ，返回的数据是json对象，有rows（json数组）和total属性（number）。</li>
+                    <li>columns：jsonArray [[json对象1，json对象2，json对象3..]]，field：url返回的json对象的属性id，
+                        title：下拉表格的标题，width：下拉表格字段宽度。下拉表格的字段配置。</li>
+                    <li>fitColumns：boolean，默认false。是否自适应宽度。</li>
+                    <li>multiple：boolean，默认false。定义是否支持多选。</li>
+                    <li>selectOnNavigation：boolean，默认true。定义当通过键盘上下键导航项目时是编辑框否选择项目。</li>
+
+                </ul>
+                <li>value：string，远程加载数据的id字段的值。文本框的默认值。</li>
+            </ul>
+            <li>方法：</li>
+            <ul>
+                <li>getValue：none。获取编辑框的值的id字段。</li>
+                <li>setValue：string，对应url返回数据的id。设置编辑框的值。</li>
+                <li>getValues：none。获取编辑框的值的id字段s。</li>
+                <li>setValues：stringArray，对应url返回数据的ids。设置编辑框的值s，对应设置多选的情况。</li>
+                <li>disable：none。文本框不可用。</li>
+                <li>enable：none。文本框可用。</li>
+            </ul>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
