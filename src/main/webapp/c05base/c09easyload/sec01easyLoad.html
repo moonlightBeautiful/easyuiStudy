@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>基本加载器（EasyLoader）组件的学习</title>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/easyloader.js"></script>
+</head>
+<body>
+
+<h2>基本加载器（EasyLoader）组件</h2>
+
+<div class="demo-info" style="font-size:20px">
+    <div class="demo-tip icon-tip"></div>
+    <div>点击下面按钮动态加载组件</div>
+</div>
+
+<div style="margin:10px 0;">
+    <a href="#" class="easyui-linkbutton" onclick="load1()">加载日历</a>
+    <a href="#" class="easyui-linkbutton" onclick="load2()">加载对话框</a>
+    <a href="#" class="easyui-linkbutton" onclick="load3()">加载数据表格</a>
+</div>
+<div id="cc"></div>
+<div id="dd"></div>
+<table id="tt"></table>
+
+
+<script>
+    $(function () {
+
+    });
+
+
+    easyloader.base = "../../jquery-easyui-1.7.0/";
+    easyloader.locale = "zh_CN";
+    using('./demo/demo.css');
+    easyloader.load('./themes/icon.css');
+
+    function load1() {
+        easyloader.load('calendar', function () { // 加载指定的模块
+            $('#cc').calendar({
+                width: 180,
+                height: 180
+            });
+        });
+        /* using('calendar', function () {
+             $('#cc').calendar({
+                 width: 180,
+                 height: 180
+             });
+         });*/
+    }
+
+    function load2() {
+        using(['dialog', 'messager'], function () {
+            $('#dd').dialog({
+                title: '对话框',
+                msg: '对话框被创建',
+                width: 300,
+                height: 200
+            });
+            $.messager.show({
+                title: '系统提示',
+                msg: '对话框被创建'
+            });
+        });
+    }
+
+    function load3() {
+        using('datagrid', function () {
+            $('#tt').datagrid({
+                title: '数据表格',
+                width: 300,
+                height: 200,
+                fitColumns: true,
+                columns: [[
+                    {field: 'productid', title: '产品编号', width: 100},
+                    {field: 'productname', title: '产品名称', width: 200}
+                ]],
+                data: [
+                    {"productid": "FI-SW-01", "productname": "Koi"},
+                    {"productid": "K9-DL-01", "productname": "Dalmation"},
+                    {"productid": "RP-SN-01", "productname": "Rattlesnake"},
+                    {"productid": "RP-LI-02", "productname": "Iguana"},
+                    {"productid": "FL-DSH-01", "productname": "Manx"},
+                    {"productid": "FL-DLH-02", "productname": "Persian"},
+                    {"productid": "AV-CB-01", "productname": "Amazon Parrot"}
+                ]
+            });
+        });
+    }
+</script>
+
+<hr>
+<div class="demo-info" style="font-size:20px;margin-top:10px">
+    <div class="demo-tip icon-tip"></div>
+    <div>加载器（EasyLoader）组件get：</div>
+</div>
+<div style="font-size:18px">
+    <ol>
+        <li>简介：按需加载组件和脚本，只需要在页面中引用 jQuery 脚本 和 easyloader 脚本。</li>
+        <li>用法：easyloader.load('modules',function(){}) 或者
+            using('modules',function(){})。easyloader.load还有一个别名叫using，定义在window对象上。
+            <br>1、定义一个div并给它指定一个id
+            <br>2、function中使用jQuery选择器选中该div，调用模块相应的方法就可以创建EasyUI的组件
+        </li>
+        <li>属性：</li>
+        <ol>
+            <li>easyloader.base = 'url/'。设置 easyui 基础目录，必须用'/'结束，。默认值为相对路径下的easyload.js文件。</li>
+            <li>easyloader.locale = String; 预定义区域jp日本、zh_CN简体中文、zh_TW繁体中文、en英语。默认值null。</li>
+            <li>easyloader.theme = String; 主题的名称预定义在themes目录下。默认值default。</li>
+            <li>easyloader.css = boolean; 在加载模块的时候是否加载 CSS 文件。默认值true。</li>
+        </ol>
+        <li>方法：</li>
+        <ol>
+            <li>load(modules,callback)：</li>
+            <ol>
+                <li>modules：模块，模块参数有效的类型包括：一个模块名称、模块名称数组、 .css"后缀结尾的CSS文件、 .js"后缀结尾的JS文件。</li>
+                <li>callback：加载指定模块成功的回调函数。</li>
+            </ol>
+        </ol>
+    </ol>
+</div>
+
+</body>
+</html>

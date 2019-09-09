@@ -18,13 +18,13 @@ h2 {
 .demo-tip{
 	/*display:none;*/
     width:16px;
-    height:16px;
+    height:18px;
     margin-right:8px;
     float:left;
 }
 .label-top{
     display: block;
-    height: 22px;
+    height: 18px;
     line-height: 22px;
     vertical-align: middle;
 }

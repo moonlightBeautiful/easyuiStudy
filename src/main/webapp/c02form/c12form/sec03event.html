@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>表单组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<h2>form（表单）组件的事件</h2>
+
+<div class="demo-info" style="font-size:20px;margin-top:10px">
+    <div class="demo-tip icon-tip"></div>
+    <div>提交和加载form（表单）组件时触发事件.</div>
+</div>
+<div class="easyui-panel" title="各种方法" style="width:400px;margin-bottom:20px">
+    <div style="padding:10px 0 10px 60px">
+        <form id="ff" action="/formTemp" method="post">
+            <table>
+                <tr>
+                    <td>姓名:</td>
+                    <td>
+                        <input class="easyui-validatebox" type="text" name="name" data-options="required:true"></input>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input class="easyui-validatebox" type="text" name="email"
+                               data-options="required:true,validType:'email'"></input></td>
+                </tr>
+                <tr>
+                    <td>电话</td>
+                    <td><input name="phone" type="text"></input></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div style="text-align:center;padding:5px">
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">提交</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">重置</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="formValidation()">验证表单</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="enableFormValidation()">启用验证</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="disableFormValidation()">关闭验证</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="loadLocal()">加载本地</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="loadRemote()">加载远程</a>
+    </div>
+</div>
+<script>
+    function loadLocal() {
+        $('#ff').form('load', {
+            name: '张三',
+            email: 'zhangsan@qq.com',
+            subject: '张三的主题',
+            message: '张三的内容',
+            language: 'en',
+            phone: 12345678
+        });
+    }
+
+    function loadRemote() {
+        $('#ff').form('load', './form_data.json');
+    }
+
+    function submitForm() {
+        $("#ff").form('submit', {
+            url: "/form",
+            onSubmit: function (param) {
+                var isValid = $("#ff").form('validate');
+                if (isValid) {
+                    return isValid;
+                } else {
+                    return isValid;
+                }
+                /* $.messager.confirm('提交确认', '要提交吗?', function (b) {
+                     if (b) {
+
+                     }
+                 });*/
+            },
+            success: function (result) {
+                $.messager.alert('系统提示', result, 'info');
+            }
+        });
+    }
+
+    function clearForm() {
+        $('#ff').form('clear');
+        /* $('#ff').form('reset');*/
+    }
+
+    function formValidation() {
+        var isValid = $("#ff").form('validate');
+        alert("表单验证结果：" + isValid);
+    }
+
+    function enableFormValidation() {
+        $("#ff").form('enableValidation');
+    }
+
+    function disableFormValidation() {
+        $("#ff").form('disableValidation');
+    }
+</script>
+
+<hr>
+<div class="demo-info" style="font-size:20px;margin-top:20px">
+    <div class="demo-tip icon-tip"></div>
+    <div>form（表单）组件get：</div>
+</div>
+<div style="font-size:18px">
+    <ul>
+        <li>简介：表单（form）提供多种方法来执行带有表单字段的动作，比如 ajax 提交、加载、清除，等等。当提交表单时，调用 'validate' 方法来检查表单是否有效。</li>
+        <li>用法：form标签里面使用表单组件和js函数调用form表单的方法</li>
+        <li>属性：
+            <ul>
+                <li>action：表单提交请求的地址，form标签中。</li>
+                <li>url：表单提交请求的地址，可以在submit提交的时候配置，不配置的话默认是action。</li>
+            </ul>
+        </li>
+        <li>方法：
+            <ul>
+                <li>submit([options])：提交表单。</li>
+                <li>clear/reset：清除表单数据。</li>
+                <li>load(json/String)：加载记录（json）来填充表单，参数可以是一个字符串或者json对象，字符串作为一个远程 URL，json对象作为一个本地记录。</li>
+                <li>validate：进行表单字段验证，当全部字段都有效时返回 true 。该方法和 validatebox 插件一起使用。。</li>
+                <li>enableValidation：启用验证，启用表单中的表单组件的验证功能。</li>
+                <li>disableValidation：禁用验证，关闭表单中的表单组件的验证功能。</li>
+            </ul>
+        </li>
+        <li>事件：
+            <ul>
+                <li>onSubmit：func(param)。表单提交之前触发，返回 false 来阻止提交动作。</li>
+                <li>success(func)：表单提交成功之后触发。</li>
+                <li>onBeforeLoad：param，发出请求加载数据之前触发。返回 false 就取消这个动作。</li>
+                <li>onLoadSuccess：data，当表单数据加载时触发。</li>
+                <li>onLoadError：none，加载表单数据时发生某些错误的时候触发。</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
