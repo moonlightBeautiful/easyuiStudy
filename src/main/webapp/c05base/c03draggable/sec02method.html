@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>基本可拖动（draggable）组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+</head>
+<body>
+
+<h2>基本可拖动（draggable）组件方法学习</h2>
+<div class="demo-info" style="font-size:20px">
+    <div class="demo-tip icon-tip"></div>
+    <div>onDrag：可拖拽对象只能在它的父容器中拖动.</div>
+</div>
+
+<div style="margin:10px 0;"></div>
+<div style="position:relative;overflow:hidden;border:1px solid #ccc;width:500px;height:300px">
+    <div class="easyui-draggable" data-options="onDrag:onDrag1"
+         style="width:100px;height:100px;background:#fafafa;border:1px solid #ccc;">
+    </div>
+</div>
+
+<div class="demo-info" style="font-size:20px">
+    <div class="demo-tip icon-tip"></div>
+    <div>onDrag：可拖拽对象40*40的格子拖动.</div>
+</div>
+<div style="margin:10px 0;"></div>
+<div style="position:relative;overflow:hidden;border:1px solid #ccc;width:500px;height:300px">
+    <div class="easyui-draggable" data-options="onDrag:onDrag2"
+         style="width:100px;height:100px;background:#fafafa;border:1px solid #ccc;">
+    </div>
+</div>
+
+<div class="demo-info" style="font-size:20px">
+    <div class="demo-tip icon-tip"></div>
+    <div>购物车.</div>
+</div>
+<div style="margin:10px 0;">
+
+</div>
+<div class="easyui-panel" fit="true" border="true" style="height:800px">
+    奥术大师大
+</div>
+<style type="text/css">
+
+</style>
+<script>
+    //onDrag事件
+    function onDrag1(e) {
+        var d = e.data;
+        if (d.left < 0) {
+            d.left = 0
+        }
+        if (d.top < 0) {
+            d.top = 0
+        }
+        if (d.left + $(d.target).outerWidth() > $(d.parent).width()) {
+            d.left = $(d.parent).width() - $(d.target).outerWidth();
+        }
+        if (d.top + $(d.target).outerHeight() > $(d.parent).height()) {
+            d.top = $(d.parent).height() - $(d.target).outerHeight();
+        }
+    }
+
+    //onDrag事件
+    function onDrag2(e) {
+        var d = e.data;
+        d.left = repair(d.left);
+        d.top = repair(d.top);
+
+        function repair(v) {
+            var r = parseInt(v / 40) * 40;
+            if (Math.abs(v % 40) > 20) {
+                r += v > 0 ? 40 : -40;
+            }
+            return r;
+        }
+    }
+
+</script>
+</body>
+</html>
