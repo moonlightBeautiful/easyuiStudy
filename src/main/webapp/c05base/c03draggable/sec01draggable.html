@@ -23,6 +23,7 @@
 </div>
 <div class="easyui-draggable" data-options="handle:'#title',disabled:false"
      style="width:200px;height:150px;background:yellow;border:5px solid red;margin-top:30px">
+    第二个div
     <div id="title" style="padding:20px;background:#ccc;color:blueviolet">点击这块区域拖动</div>
 </div>
 
@@ -34,13 +35,13 @@
 </div>
 <div style="font-size:18px">
     <ol>
-        <li>简介：就是可拖动的元素，拖动后元素会脱离文档流。</li>
+        <li>简介：就是可拖动的元素，拖动后元素会脱离文档流，父节点的内容被抽走了，父节点大小如果没指定，会改变，先拖动的元素的z-index比后拖动的z-index大。</li>
         <li>用法：div的class为easyui-draggable。</li>
         <li>属性：在data-options="key:value,key:value"中配置 或者 在js中$('#dd').draggable({key:value,key:value})配置</li>
         <ul>
             <li>data-options：↓</li>
             <ul>
-                <li>handle：#id，div的子元素的id。默认值为null，为整个div。</li>
+                <li>handle：#id，必须是div的子元素的id。默认值为null，为整个div。</li>
                 <li>disabled：boolean，是否可以拖动。默认值false，可以拖动。</li>
             </ul>
         </ul>

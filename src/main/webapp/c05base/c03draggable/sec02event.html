@@ -11,12 +11,12 @@
 </head>
 <body>
 
-<h2>基本可拖动（draggable）组件事件的学习</h2>
+<h2 align="center">基本可拖动（draggable）组件事件的学习</h2>
+
 <div class="demo-info" style="font-size:20px">
     <div class="demo-tip icon-tip"></div>
     <div>onDrag事件：拖动期间触发。例子：可拖拽对象只能在它的父容器中拖动。</div>
 </div>
-
 <div style="margin:10px 0;"></div>
 <div style="position:relative;overflow:hidden;border:1px solid #ccc;width:500px;height:300px">
     <div class="easyui-draggable" data-options="onDrag:onDrag1"
@@ -35,23 +35,10 @@
     </div>
 </div>
 
-<div class="demo-info" style="font-size:20px">
-    <div class="demo-tip icon-tip"></div>
-    <div>购物车.</div>
-</div>
-<div style="margin:10px 0;">
-
-</div>
-<div class="easyui-panel" fit="true" border="true" style="height:800px">
-    奥术大师大
-</div>
-<style type="text/css">
-
-</style>
 <script>
     //onDrag事件1
     function onDrag1(e) {
-        //元素的data属性具体是啥，咱也不知道，官网也查不到，但是包含位置信息，位置以原本的位置为中心0计算
+        //元素的data属性具体是啥，咱也不知道，官网查不到，就是包含元素的一些信息吧 位置 父标签 拖动目标
         var d = e.data;
         //左边极限位置
         if (d.left < 0) {
@@ -68,6 +55,7 @@
         if (d.top + $(d.target).outerHeight() > $(d.parent).height()) {
             d.top = $(d.parent).height() - $(d.target).outerHeight();
         }
+        return false;
     }
 
     //onDrag事件2
@@ -101,27 +89,42 @@
         <ul>
             <li>data-options：↓</li>
             <ul>
-                <li>handle：#id，div的子元素的id。默认值为null，为整个div。</li>
+                <li>handle：#id，必须是div的子元素的id。默认值为null，为整个div。</li>
                 <li>disabled：boolean，是否可以拖动。返回false则不触发。</li>
             </ul>
         </ul>
         <li>事件：</li>
         <ul>
-            <li>onDrag：拖动期间触发。入参是拖动的元素对象，返回是boolean，返回false没有不会触发拖动期间。</li>
+            <li>onDrag(e,source)：拖动期间触发。e是拖动事件、source是拖拽的DOM元素，返回是boolean，返回false则不会触发拖动期间（也就是拖动不连贯，会直接到拖到的位置）。</li>
+            <ul>
+                <li>入参e.data属性：含有元素的一些数据信息。</li>
+                <ul>
+                    <li>入参e.data.方向属性：left right up，以拖动前的位置为中心的相对偏移位置。</li>
+                    <li>入参e.data.target：移动后的元素对象。</li>
+                    <li>入参e.data.parent：移动元素对象的父节点。</li>
+                </ul>
+            </ul>
         </ul>
         <li>额外学习：</li>
         <ul>
             <li>overflow：html的css属性， 属性规定如何处理不符合元素框内的内容，参数值有以下4种↓</li>
             <ul>
-                <li>visible：默认值，不处理，不符合元素框的内容就超出元素框。</li>
-                <li>hidden：不符合元素框的内容会被隐藏掉，放在了页面的下一层，无法操作被隐藏掉的内容。</li>
-                <li>scroll： 不符合元素框的内容会被隐藏掉，元素框提供滚动条以便查看其余的内容以便查看隐藏的内容。</li>
+                <li>visible：默认值，不符合元素框的内容就超出元素框显示，可以点击选中。</li>
+                <li>hidden：不符合元素框的内容就超出元素框被元素框覆盖，无法操作被隐藏掉的内容。</li>
+                <li>scroll：不符合元素框的内容会被隐藏掉，元素框提供上下滚动条以便查看其余的内容以便查看隐藏的内容。</li>
                 <li>auto：由浏览器决定如何显示，效果和scroll一样</li>
             </ul>
-            <li>outerWidth：元素的外部宽度，参数值有以下2种</li>
+            <li>jquery的获取元素宽度和高度方法：</li>
             <ul>
-                <li>无值：元素的宽度+border的宽度。</li>
-                <li>true：元素的宽度+border的宽度+margin宽度。</li>
+                <li>width() - 设置或返回元素的宽度。</li>
+                <li>height() - 设置或返回元素的高度。</li>
+                <li>innerWidth() - 返回元素的宽度（包含 padding）。</li>
+                <li>innerHeight() - 返回元素的高度（包含 padding）。</li>
+                <li>outerHeight() - 返回元素的高度（包含 padding 和 border）</li>
+                <li>outerWidth() - 返回元素的宽度（包含 padding 和 border）</li>
+                <li>outerHeight(true) - 返回元素的高度（包含 padding 和 border 和 margin）</li>
+                <li>outerWidth(true) - 返回元素的宽度（包含 padding 和 border 和 margin）</li>
+                <li><img src="img_outerwidth.gif"></li>
             </ul>
         </ul>
 

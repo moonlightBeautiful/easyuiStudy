@@ -1,24 +1,17 @@
 
-    <hr>
-    <div class="demo-info" style="font-size:20px;margin-top:10px">
-        <div class="demo-tip icon-tip"></div>
-        <div>可拖动（draggable）组件get：</div>
-    </div>
-    <div style="font-size:18px">
-        <ol>
-            <li>简介：就是可拖动，拖动后脱离文档流。</li>
-            <li>用法：div的class为easyui-draggable。</li>
-            <li>属性：</li>
-            <ul>
-                <li>data-options：↓</li>
-                <ul>
-                    <li>handle：#id，div中的子元素的#id，默认值null，则为整个div。</li>
-                    <li>disabled：boolean，是否可以拖动，默认值true。</li>
-                </ul>
-            </ul>
-            <li>事件：↓</li>
-            <ul>
-                <li>onDrag：拖动期间触发。返回 false 将不进行实际的拖动。</li>
-            </ul>
-        </ol>
-    </div>
+
+
+
+
+
+
+
+
+
+
+/* onDrop: function (e, source) {
+
+
+             }*/
+          /*
+           */

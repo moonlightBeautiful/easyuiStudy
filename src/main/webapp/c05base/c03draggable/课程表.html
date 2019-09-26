@@ -8,10 +8,11 @@
     <link rel="stylesheet" type="text/css" href="http://www.java1234.com/jquery-easyui-1.3.3/demo/demo.css">
     <script type="text/javascript" src="http://www.java1234.com/jquery-easyui-1.3.3/jquery.min.js"></script>
     <script type="text/javascript" src="http://www.java1234.com/jquery-easyui-1.3.3/jquery.easyui.min.js"></script>
-    <script type="text/javascript" src="http://www.java1234.com/jquery-easyui-1.3.3/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript"
+            src="http://www.java1234.com/jquery-easyui-1.3.3/locale/easyui-lang-zh_CN.js"></script>
 </head>
 <body>
-<h2>创建一个学校课程表</h2>
+<h2 align="center">创建一个学校课程表</h2>
 <div class="demo-info" style="margin-bottom:10px">
     <div class="demo-tip icon-tip">&nbsp;</div>
     <div>点击拖一个课程到课程表里.</div>
@@ -21,28 +22,44 @@
     <div class="left">
         <table>
             <tr>
-                <td><div class="item">英语</div></td>
+                <td>
+                    <div class="item">英语</div>
+                </td>
             </tr>
             <tr>
-                <td><div class="item">科学</div></td>
+                <td>
+                    <div class="item">科学</div>
+                </td>
             </tr>
             <tr>
-                <td><div class="item">音乐</div></td>
+                <td>
+                    <div class="item">音乐</div>
+                </td>
             </tr>
             <tr>
-                <td><div class="item">历史</div></td>
+                <td>
+                    <div class="item">历史</div>
+                </td>
             </tr>
             <tr>
-                <td><div class="item">计算机</div></td>
+                <td>
+                    <div class="item">计算机</div>
+                </td>
             </tr>
             <tr>
-                <td><div class="item">数学</div></td>
+                <td>
+                    <div class="item">数学</div>
+                </td>
             </tr>
             <tr>
-                <td><div class="item">艺术</div></td>
+                <td>
+                    <div class="item">艺术</div>
+                </td>
             </tr>
             <tr>
-                <td><div class="item">伦理学</div></td>
+                <td>
+                    <div class="item">伦理学</div>
+                </td>
             </tr>
         </table>
     </div>
@@ -120,7 +137,7 @@
                 <td class="time">16:00</td>
                 <td class="drop"></td>
                 <td class="drop"></td>
-                <td class="drop"></td>
+                <td class="drop">11</td>
                 <td class="drop"></td>
                 <td class="drop"></td>
             </tr>
@@ -128,79 +145,119 @@
     </div>
 </div>
 <style type="text/css">
-    .left{
-        width:120px;
-        float:left;
-    }
-    .left table{
-        background:#E0ECFF;
-    }
-    .left td{
-        background:#eee;
-    }
-    .right{
-        float:right;
-        width:570px;
-    }
-    .right table{
-        background:#E0ECFF;
-        width:100%;
-    }
-    .right td{
-        background:#fafafa;
-        color:#444;
-        text-align:center;
-        padding:2px;
-    }
-    .right td{
-        background:#E0ECFF;
-    }
-    .right td.drop{
-        background:#fafafa;
-        width:100px;
-    }
-    .right td.over{
-        background:#FBEC88;
-    }
-    .item{
-        text-align:center;
-        border:1px solid #499B33;
-        background:#fafafa;
-        color:#444;
-        width:100px;
-    }
-    .assigned{
-        border:1px solid #BC2A4D;
+
+    .item {
+        text-align: center;
+        border: 1px solid #499B33;
+        background: #fafafa;
+        color: lightcoral;
+        width: 100px;
     }
 
+    .left {
+        width: 120px;
+        float: left;
+    }
+
+    .right {
+        float: right;
+        width: 570px;
+    }
+
+    .left table {
+        background: yellow;
+        border: 1px solid;
+    }
+
+    .right table {
+        background: deepskyblue;
+        width: 100%;
+        border: 1px solid;
+    }
+
+    .left td {
+        background: gray;
+    }
+
+    .right td {
+        background: gray;
+        color: greenyellow;
+        text-align: center;
+        padding: 2px;
+    }
+
+    .right td.drop {
+        background: #aac5e7;
+        width: 100px;
+    }
+
+    .right td.over {
+        background: #FBEC88;
+    }
+
+    .assigned {
+        border: 1px solid #BC2A4D;
+    }
 </style>
 <script>
-    $(function(){
+    $(function () {
         $('.left .item').draggable({
-            revert:true,
-            proxy:'clone'
+            revert: true,
+            proxy: 'clone'
         });
+
         $('.right td.drop').droppable({
-            onDragEnter:function(){
+            /*onDragOver: function () {
+               $(this).css("background","green");
+            },*/
+            onDragEnter: function () {
                 $(this).addClass('over');
             },
-            onDragLeave:function(){
+            onDragLeave: function () {
                 $(this).removeClass('over');
             },
-            onDrop:function(e,source){
+            onDrop: function (e, source) {
                 $(this).removeClass('over');
-                if ($(source).hasClass('assigned')){
+                if ($(source).hasClass('assigned')) {
                     $(this).append(source);
                 } else {
                     var c = $(source).clone().addClass('assigned');
                     $(this).empty().append(c);
                     c.draggable({
-                        revert:true
+                        revert: true
                     });
                 }
             }
         });
+
+
     });
 </script>
+
+<hr style="clear:both">
+<div class="demo-info" style="font-size:20px;margin-top:10px">
+    <div class="demo-tip icon-tip"></div>
+    <div>可拖动（draggable）组件实战get：</div>
+</div>
+<div style="font-size: 18px;">
+    <ol>
+        <li>简介：就是可拖动的元素，拖动后元素会脱离文档流。</li>
+        <li>用法：div的class为easyui-draggable。</li>
+        <li>属性：</li>
+        <ul>
+            <li>revert：boolean，默认为false，如果设置为 true，拖动结束后元素将返回它的开始位置，拖动期间会脱离文档流。</li>
+            <li>proxy：'clone'或者none或者func，拖动时要使用的代理元素，设置为 'clone' 时，克隆元素将被用作代理。即拖动元素将由克隆产生供拖动使用，原本的元素不变。</li>
+        </ul>
+        <li>元素的droppable方法：通过标记创建可放置（droppable）区域。</li>
+        <ul>
+            <li>class="easyui-droppable"或者$('#dd').droppable({})</li>
+            <li>onDrop(e,source)：当可拖动元素被放下时触发。source 参数指被拖动的 DOM 元素。</li>
+            <li>onDragEnter(e,source)：当可拖动元素被拖进来时触发（拖进来，松开单击不算离开）。source 参数指被拖动的 DOM 元素。</li>
+            <li>onDragLeave(e,source)：当可拖动元素被拖离开时触发。source 参数指被拖动的 DOM 元素。</li>
+            <li>onDragOver(e,source)：当可拖动元素被拖过时触发，会覆盖onDragEnter和onDragLeave方法。source 参数指被拖动的 DOM 元素。</li>
+        </ul>
+
+    </ol>
+</div>
 </body>
 </html>
