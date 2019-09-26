@@ -2,13 +2,14 @@
 <html style="height:100%">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Building a drag-drop shopping cart - jQuery EasyUI Demo</title>
-    <link rel="stylesheet" type="text/css" href="http://www.java1234.com/jquery-easyui-1.3.3/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="http://www.java1234.com/jquery-easyui-1.3.3/themes/icon.css">
-    <link rel="stylesheet" type="text/css" href="http://www.java1234.com/jquery-easyui-1.3.3/demo/demo.css">
-    <script type="text/javascript" src="http://www.java1234.com/jquery-easyui-1.3.3/jquery.min.js"></script>
-    <script type="text/javascript" src="http://www.java1234.com/jquery-easyui-1.3.3/jquery.easyui.min.js"></script>
-    <script type="text/javascript" src="http://www.java1234.com/jquery-easyui-1.3.3/locale/easyui-lang-zh_CN.js"></script>
+    <title>购物车实战</title>
+
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+
 </head>
 <body style="height:100%;">
 <h2>购物车</h2>
@@ -89,74 +90,81 @@
 </div>
 
 <style type="text/css">
-    .products{
-        overflow:auto;
-        height:100%;
-        background:#fafafa;
+    .products {
+        overflow: auto;
+        height: 100%;
+        background: #fafafa;
     }
-    .products ul{
-        list-style:none;
-        margin:0;
-        padding:0px;
+
+    .products ul {
+        list-style: none;
+        margin: 0;
+        padding: 0px;
     }
-    .products li{
-        display:inline;
-        float:left;
-        margin:10px;
+
+    .products li {
+        display: inline;
+        float: left;
+        margin: 10px;
     }
-    .item{
-        display:block;
-        text-decoration:none;
+
+    .item {
+        display: block;
+        text-decoration: none;
     }
-    .item img{
-        border:1px solid #333;
+
+    .item img {
+        border: 1px solid #333;
     }
-    .item p{
-        margin:0;
-        font-weight:bold;
-        text-align:center;
-        color:#c3c3c3;
+
+    .item p {
+        margin: 0;
+        font-weight: bold;
+        text-align: center;
+        color: #c3c3c3;
     }
-    .cart{
-        float:right;
-        position:relative;
-        width:260px;
-        height:100%;
-        background:#ccc;
-        padding:0px 10px;
+
+    .cart {
+        float: right;
+        position: relative;
+        width: 260px;
+        height: 100%;
+        background: #ccc;
+        padding: 0px 10px;
     }
-    .ctitle{
-        text-align:center;
-        color:#555;
-        font-size:18px;
-        padding:10px;
+
+    .ctitle {
+        text-align: center;
+        color: #555;
+        font-size: 18px;
+        padding: 10px;
     }
 </style>
 <script>
-    $(function(){
+    $(function () {
         $('#cartcontent').datagrid({
-            singleSelect:true,
-            showFooter:true
+            singleSelect: true,
+            showFooter: true
         });
         $('.item').draggable({
-            revert:true,
-            proxy:'clone',
-            onStartDrag:function(){
+            revert: true,
+            proxy: 'clone',
+            onStartDrag: function () {
                 $(this).draggable('options').cursor = 'not-allowed';
-                $(this).draggable('proxy').css('z-index',10);
+                $(this).draggable('proxy').css('z-index', 10);
             },
-            onStopDrag:function(){
-                $(this).draggable('options').cursor='move';
+            onStopDrag: function () {
+                $(this).draggable('options').cursor = 'move';
             }
         });
         $('.cart').droppable({
-            onDragEnter:function(e,source){
-                $(source).draggable('options').cursor='auto';
+            onDragEnter: function (e, source) {
+                $(source).draggable('options').cursor = 'auto';
             },
-            onDragLeave:function(e,source){
-                $(source).draggable('options').cursor='not-allowed';
+            onDragLeave: function (e, source) {
+                $(source).draggable('options').cursor = 'not-allowed';
             },
-            onDrop:function(e,source){
+            onDrop: function (e, source) {
                 var name = $(source).find('p:eq(0)').html();
                 var price = $(source).find('p:eq(1)').html();
                 addProduct(name, parseFloat(price.split('RMB')[1]));
@@ -164,32 +172,34 @@
         });
     });
 
-    function addProduct(name,price){
+    function addProduct(name, price) {
         var dg = $('#cartcontent');
         var data = dg.datagrid('getData');
-        function add(){
-            for(var i=0; i<data.total; i++){
+
+        function add() {
+            for (var i = 0; i < data.total; i++) {
                 var row = data.rows[i];
-                if (row.name == name){
+                if (row.name == name) {
                     row.quantity += 1;
                     return;
                 }
             }
             data.total += 1;
             data.rows.push({
-                name:name,
-                quantity:1,
-                price:price
+                name: name,
+                quantity: 1,
+                price: price
             });
         }
+
         add();
         dg.datagrid('loadData', data);
         var cost = 0;
         var rows = dg.datagrid('getRows');
-        for(var i=0; i<rows.length; i++){
-            cost += rows[i].price*rows[i].quantity;
+        for (var i = 0; i < rows.length; i++) {
+            cost += rows[i].price * rows[i].quantity;
         }
-        dg.datagrid('reloadFooter', [{name:'总计',price:cost}]);
+        dg.datagrid('reloadFooter', [{name: '总计', price: cost}]);
     }
 </script>
 </body>
