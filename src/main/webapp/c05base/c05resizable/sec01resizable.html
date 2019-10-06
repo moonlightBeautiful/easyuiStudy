@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>可调整尺寸（resizeable）组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+</head>
+<body>
+
+<h2>可调整尺寸（resizeable）组件</h2>
+
+<div class="demo-info" style="font-size:20px">
+    <div class="demo-tip icon-tip"></div>
+    <div>点击组件边缘调整组件大小.</div>
+</div>
+
+<div style="margin:10px 0;"></div>
+<div class="easyui-resizable" data-options="minWidth:50,minHeight:50"
+     style="width:200px;height:150px;border:1px solid #ccc;">
+    <div style="padding:20px">缩放我</div>
+</div>
+<div id="dd" class="easyui-draggable easyui-resizable" data-options="handle:'#mytitle'"
+     style="width:200px;height:150px;border:1px solid #ccc">
+    <div id="mytitle" style="background:#ddd;padding:5px;">可与拖拽组件一起使用。</div>
+    <div style="padding:20px">拖拽并缩放我</div>
+</div>
+
+
+<hr>
+<div class="demo-info" style="font-size:20px;margin-top:10px">
+    <div class="demo-tip icon-tip"></div>
+    <div>可调整尺寸（resizeable）组件get：</div>
+</div>
+<div style="font-size:18px">
+    <ol>
+        <li>简介：元素尺寸可以调整。</li>
+        <li>用法：div的class为easyui-resizable。</li>
+        <li>属性：在data-options="key:value,key:value"中配置 或者 在js中$('#dd').resizeable({key:value,key:value})配置</li>
+        <ul>
+            <li>minWidth/minHeight：number，默认值10，调整尺寸时最小宽度/高度。</li>
+            <li>maxWidth/maxHeight：number，默认值10，调整尺寸时最大宽度/高度。</li>
+            <li>disabled：boolean，默认值false，是否禁止调整尺寸。</li>
+        </ul>
+    </ol>
+</div>
+
+</body>
+</html>
