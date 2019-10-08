@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>基本窗体（window）组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<h2>基本窗体（window）组件</h2>
+
+<div class="demo-info" style="font-size:20px;margin-bottom: 10px">
+    <div class="demo-tip icon-tip"></div>
+    <div>窗体能够在屏幕中自由拖动.</div>
+</div>
+<div style="margin:10px 0;">
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#w').window('open')">打开</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#w').window('close')">关闭</a>
+</div>
+<div id="w" class="easyui-window" title="基本窗体组件" data-options="iconCls:'icon-save'"
+     style="width:500px;height:200px;padding:10px;">
+    窗体内容。
+</div>
+<script>
+    $(function () {
+        $('#w').window('close');
+    });
+</script>
+
+<hr>
+<div class="demo-info" style="font-size:20px;margin-top:10px">
+    <div class="demo-tip icon-tip"></div>
+    <div>基本窗体（window）组件get：</div>
+</div>
+<div style="font-size:18px">
+    <ol>
+        <li>简介：窗口（window）是一个浮动的、可拖拽的面板，可以当做应用程序窗口使用。默认情况下，窗口可移动、可调整尺寸、可关闭。它的内容既可以通过静态 html 定义，也可以通过 ajax 动态加载。</li>
+        <li>用法：从标记创建窗口，div的class为easyui-window。使用 javascript 创建窗口，$('#div的id').window({})</li>
+        <li>属性：在data-options="key:value,key:value"中配置 或者 在js中$('#div的id').window({key:value,key:value})配置</li>
+        <ul>
+            <li>data-options：↓</li>
+            <ul>
+                <li>total：number，默认值1，记录总数，应该在创建分页（pagination）时设置。</li>
+            </ul>
+        </ul>
+    </ol>
+</div>
+
+</body>
+</html>
