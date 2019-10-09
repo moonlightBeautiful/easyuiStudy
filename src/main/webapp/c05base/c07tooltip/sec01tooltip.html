@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>基本提示信息（tooltip）组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<h2>基本提示信息（tooltip）组件</h2>
+
+<div class="demo-info" style="font-size:20px;margin-bottom: 10px">
+    <div class="demo-tip icon-tip"></div>
+    <div>悬停在超链接元素上显示提示信息.</div>
+</div>
+<div style="font-size:20px">
+    <span>选择提示信息位置:</span>
+    <select onchange="changePosition(this.value)">
+        <option value="top">上</option>
+        <option value="bottom">下</option>
+        <option value="left">左</option>
+        <option value="right">右</option>
+    </select>
+    <br>
+    <div>
+        <a id="tt" href="#" title="这是提示信息." class="easyui-tooltip" data-options="content:'覆盖了title内容'">到我这来</a> 显示提示信息.
+    </div>
+
+</div>
+<h2>定制提示信息内容</h2>
+<div class="demo-info" style="font-size:20px;margin-bottom: 10px">
+    <div class="demo-tip icon-tip"></div>
+    <div>为每个按钮定制提示信息内容.</div>
+</div>
+<div id="pg" data-options="total:114" style="border:1px solid #ddd;"></div>
+
+<script>
+    function changePosition(pos) {
+        $('#tt').tooltip({
+            position: pos
+        });
+    }
+
+    $(function () {
+        $('#pg').pagination().find('a.l-btn').tooltip({
+            content: function () {
+                var scs = $(this).find('span.l-btn-icon').attr('class').split(' ');
+                var icon = scs[1].split('-')[1];
+                return icon + ' page';
+            }
+        });
+    });
+
+</script>
+
+<hr>
+<div class="demo-info" style="font-size:20px;margin-top:10px">
+    <div class="demo-tip icon-tip"></div>
+    <div>提示信息（tooltip）组件get：</div>
+</div>
+<div style="font-size:18px">
+    <ol>
+        <li>简介：当用户移动鼠标指针在某个元素/组件上时，出现提示信息窗口用来显示额外信息。</li>
+        <li>用法：div的class为easyui-tooltip。</li>
+        <li>属性：在data-options="key:value,key:value"中配置 或者 在js中$('#dd').tooltip({key:value,key:value})配置</li>
+        <ul>
+            <li>data-options：↓</li>
+            <ul>
+                <li>content：string，提示框内容，如果元素带有title属性，content属性没有配置的时候，提示框内容为title内容。</li>
+                <li>content的值也可以是func，返回 string 就可以。</li>
+                <li>position：string，默认值bottom，提示框位置。可能的值：'left'、'right'、'top'、'bottom'。</li>
+                <li>position的值也可以是func，返回 string 就可以。</li>
+            </ul>
+        </ul>
+    </ol>
+</div>
+
+</body>
+</html>
