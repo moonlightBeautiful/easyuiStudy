@@ -2,7 +2,8 @@
     04Window窗口组件
         01。消息框组件（Messager） 
             包括警示（alert）、确认（confirm）、提示（prompt）、进展（progress）等等。
-        02。
+        02。对话框组件（dialog）
+            和窗口组件有啥区别 具体不懂
         03。窗口组件（Window） 
             窗口（window）是一个浮动的、可拖拽的面板，可以当做应用程序窗口使用。
     05基础
