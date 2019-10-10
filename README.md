@@ -1,5 +1,8 @@
 # easyuiStudy
-    04Window窗口组件
+    01布局组件
+        01。面板组件
+        02.标签页组件
+    04窗口组件
         01。消息框组件（Messager） 
             包括警示（alert）、确认（confirm）、提示（prompt）、进展（progress）等等。
         02。对话框组件（dialog）
