@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>基本数据网格（Datagrid）组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<h2>基本数据网格（Datagrid）组件</h2>
+<div class="demo-info" style="font-size:20px;margin-bottom: 10px">
+    <div class="demo-tip icon-tip"></div>
+    <div>使用标签创建数据表格，一般都是使用标签创建，js用的少.</div>
+</div>
+<div style="margin:10px 0;">
+    <span>边框（面板中的td元素）:</span>
+    <select onchange="changeBorder(this.value)">
+        <option value="lines-both">都有</option>
+        <option value="lines-no">无边框</option>
+        <option value="lines-right">右边框</option>
+        <option value="lines-bottom">下边框</option>
+    </select>
+    <span>斑马线（striped属性）:</span>
+    <input type="checkbox" onclick="$('#dg').datagrid({striped:$(this).is(':checked')})">
+</div>
+<div style="margin:10px 0;">
+    <span>单选还是多选: </span>
+    <select onchange="$('#dg').datagrid({singleSelect:(this.value==0)})">
+        <option value="0">单选</option>
+        <option value="1">多选</option>
+    </select>
+</div>
+<div style="margin:10px 0;">
+    复选框联动选择（当用户选中某一行时，是否联动选中复选框，默认联动）:
+    <input type="checkbox" checked onchange="$('#dg').datagrid({checkOnSelect:$(this).is(':checked')})">
+    <br>选择联动复选框（当用户选中复选框时，是否联动选中某一行，默认联动）:
+        <input type="checkbox" checked onchange="$('#dg').datagrid({selectOnCheck:$(this).is(':checked')})"><br/>
+</div>
+
+<div style="margin:10px 0;">
+    <a href="#" class="easyui-linkbutton" onclick="getSelected()">获取单选数据</a>
+    <a href="#" class="easyui-linkbutton" onclick="getSelections()">获取多选数据</a>
+</div>
+<table id="dg" class="easyui-datagrid" title="基本数据表格" style="width:700px;height:250px"
+       data-options="rownumbers:true,singleSelect:true,collapsible:true,url:'./datagrid_data1.json'">
+    <thead>
+    <tr>
+        <th data-options="field:'ck',checkbox:true">复选框列，文本会被复选框覆盖。</th>
+        <th data-options="field:'itemid',width:80">编号</th>
+        <th data-options="field:'productid',width:100">产品编号</th>
+        <th data-options="field:'listprice',width:80,align:'right'">市场价</th>
+        <th data-options="field:'unitcost',width:80,align:'right'">成本价</th>
+        <th data-options="field:'attr1',width:250">描述</th>
+        <th data-options="field:'status',width:60,align:'center'">状态</th>
+    </tr>
+    </thead>
+</table>
+
+<style type="text/css">
+    .lines-both .datagrid-body td {
+    }
+
+    .lines-no .datagrid-body td {
+        border-right: 1px dotted transparent;
+        border-bottom: 1px dotted transparent;
+    }
+
+    .lines-right .datagrid-body td {
+        border-bottom: 1px dotted transparent;
+    }
+
+    .lines-bottom .datagrid-body td {
+        border-right: 1px dotted transparent;
+    }
+</style>
+
+<script type="text/javascript">
+    function changeBorder(cls) {
+        $('#dg').datagrid('getPanel').removeClass('lines-both lines-no lines-right lines-bottom').addClass(cls);
+    }
+
+    function getSelected() {
+        var row = $('#dg').datagrid('getSelected');
+        if (row) {
+            $.messager.alert('系统提示', row.itemid + ":" + row.productid + ":" + row.attr1);
+        }
+    }
+
+    function getSelections() {
+        var ss = [];
+        var rows = $('#dg').datagrid('getSelections');
+        for (var i = 0; i < rows.length; i++) {
+            var row = rows[i];
+            ss.push('<span>' + row.itemid + ":" + row.productid + ":" + row.attr1 + '</span>');
+        }
+        $.messager.alert('系统提示', ss.join('<br/>'));
+    }
+</script>
+
+<hr>
+<div class="demo-info" style="font-size:20px;margin-top:10px">
+    <div class="demo-tip icon-tip"></div>
+    <div>数据网格（Datagrid）组件get：</div>
+</div>
+<div style="font-size:18px">
+    <ol>
+        <li>简介：以表格格式显示数据，并为选择、排序、分组和编辑数据提供了丰富的支持。</li>
+        <li>用法：通过标记创建数据网格，标记table的class为easyui-datagrid。通过js创建数据网格，$('#table的id').datagrid({})。</li>
+        <li>依赖：panel、resizable、linkbutton、pagination</li>
+        <li>属性：在标记中data-options="key:value,key:value"中配置或者js中配置
+            <ol>数据网格（DataGrid）属性：
+                <li>singleSelect：boolean，默认值false，是否只允许选中一行。</li>
+                <li>collapsible：boolean，默认值false，是否显示折叠按钮。</li>
+                <li>url：string，从远程站点请求数据的 URL。</li>
+                <li>rownumbers：boolean，默认值为false，是否显示行号列。</li>
+                <li>striped：boolean，默认值为 设置为false，是否行条纹化（即奇偶行使用不同背景色）。</li>
+                <li>checkOnSelect：boolean，默认值为true，当用户选中某一行时，是否选中复选框。</li>
+                <li>selectOnCheck：boolean，默认值为true，当用户选中复选框时，是否联动选中某一行。</li>
+
+            </ol>
+            <ol>列（Column）属性：
+                <li>field：string，列的字段名，与从url获取到的数据的id值。</li>
+                <li>width：number，列的宽度。如果未定义，则宽度会自动扩展以适应它的内容。没有定义宽度将会降低性能。</li>
+                <li>align：string，对齐该列的数据的方式，可以用 'left'、'right'、'center'。</li>
+                <li>checkbox：boolean，默认值为false,是否显示复选框。复选框列，文本会被复选框覆盖，复选框有固定宽度。单选时顶部复选框不可用。</li>
+            </ol>
+        <li>事件：
+            <ol>
+                <li>onclick：item，当点击菜单项（menu item）时触发。</li>
+            </ol>
+        </li>
+        <li>方法：
+            <ol>
+                <li>getPanel：none，返回面板（panel）对象。</li>
+                <li>getSelected：none，返回第一个选中的行或者 null。。</li>
+                <li>getSelections：none，返回所有选中的行，当没有选中的记录时，将返回空数组。。</li>
+            </ol>
+        </li>
+        <li>
+            额外学习：
+            <ol>
+                <li>$(this).is(':checked')：返回boolean，判断单选框是不是被选中。</li>
+                <li>contextmenu：右键元素事件，即使绑定新的函数，也会执行默认的动作。return false，则取消右击事件。任何HTML元素都可以接受此事件。</li>
+            </ol>
+        </li>
+    </ol>
+</div>
+
+</body>
+</html>

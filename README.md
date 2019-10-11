@@ -24,7 +24,8 @@
         09基本加载器（EasyLoader）组件
             不用把整个easyui引入，只需要引入jquery和easyloader.js就可以，
             调用easyloader.load('所需模块', function () { // 加载指定的模块 });即可。
-   
+    06数据网格和树
+        01数据网格
 
 
 在学习的同时，也要复习
