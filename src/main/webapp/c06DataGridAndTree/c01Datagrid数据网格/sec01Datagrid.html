@@ -39,7 +39,7 @@
     复选框联动选择（当用户选中某一行时，是否联动选中复选框，默认联动）:
     <input type="checkbox" checked onchange="$('#dg').datagrid({checkOnSelect:$(this).is(':checked')})">
     <br>选择联动复选框（当用户选中复选框时，是否联动选中某一行，默认联动）:
-        <input type="checkbox" checked onchange="$('#dg').datagrid({selectOnCheck:$(this).is(':checked')})"><br/>
+    <input type="checkbox" checked onchange="$('#dg').datagrid({selectOnCheck:$(this).is(':checked')})"><br/>
 </div>
 
 <div style="margin:10px 0;">
@@ -47,7 +47,7 @@
     <a href="#" class="easyui-linkbutton" onclick="getSelections()">获取多选数据</a>
 </div>
 <table id="dg" class="easyui-datagrid" title="基本数据表格" style="width:700px;height:250px"
-       data-options="rownumbers:true,singleSelect:true,collapsible:true,url:'./datagrid_data1.json'">
+       data-options="rownumbers:true,singleSelect:true,collapsible:true,url:'./datagrid_data1.json',toolbar:toolbar,pagination:true">
     <thead>
     <tr>
         <th data-options="field:'ck',checkbox:true">复选框列，文本会被复选框覆盖。</th>
@@ -80,6 +80,30 @@
 </style>
 
 <script type="text/javascript">
+    $(function () {
+        // 返回分页（pager）对象。
+        var pager = $('#dg').datagrid('getPager');
+        // 返回分页（pager）对象。
+        pager.pagination({
+            buttons: [{
+                iconCls: 'icon-search',
+                handler: function () {
+                    alert('搜索');
+                }
+            }, {
+                iconCls: 'icon-add',
+                handler: function () {
+                    alert('添加');
+                }
+            }, {
+                iconCls: 'icon-edit',
+                handler: function () {
+                    alert('编辑');
+                }
+            }]
+        });
+    })
+
     function changeBorder(cls) {
         $('#dg').datagrid('getPanel').removeClass('lines-both lines-no lines-right lines-bottom').addClass(cls);
     }
@@ -100,6 +124,27 @@
         }
         $.messager.alert('系统提示', ss.join('<br/>'));
     }
+
+    var toolbar = [{
+        text: '添加',
+        iconCls: 'icon-add',
+        handler: function () {
+            alert('添加')
+        }
+    }, {
+        text: '剪切',
+        iconCls: 'icon-cut',
+        handler: function () {
+            alert('剪切')
+        }
+    }, '-', {
+        text: '保存',
+        iconCls: 'icon-save',
+        handler: function () {
+            alert('保存')
+        }
+    }];
+
 </script>
 
 <hr>
@@ -121,6 +166,11 @@
                 <li>striped：boolean，默认值为 设置为false，是否行条纹化（即奇偶行使用不同背景色）。</li>
                 <li>checkOnSelect：boolean，默认值为true，当用户选中某一行时，是否选中复选框。</li>
                 <li>selectOnCheck：boolean，默认值为true，当用户选中复选框时，是否联动选中某一行。</li>
+                <li>toolbar：array（js的数组变量也可以）,selector，1、数组，每项与链接按钮（linkbutton）一样。2、选择器，只是工具栏。 数据网格面板的头部工具栏。</li>
+                <li>pagination：boolean，默认值为false，数据网格底部是否显示分页工具栏。<br>
+                    显示一个简单的分页工具栏，可以进行复杂配置，默认pageSize为10，分组为10,20,30,40,50，默认选择第一页。
+                </li>
+                <li>pageSize：number，默认值为10，当pagination为true时才可使用。</li>
 
             </ol>
             <ol>列（Column）属性：
@@ -138,7 +188,8 @@
             <ol>
                 <li>getPanel：none，返回面板（panel）对象。</li>
                 <li>getSelected：none，返回第一个选中的行或者 null。。</li>
-                <li>getSelections：none，返回所有选中的行，当没有选中的记录时，将返回空数组。。</li>
+                <li>getSelections：none，返回所有选中的行，当没有选中的记录时，将返回空数组。</li>
+                <li>getPager：none，返回分页（pager）对象。</li>
             </ol>
         </li>
         <li>
