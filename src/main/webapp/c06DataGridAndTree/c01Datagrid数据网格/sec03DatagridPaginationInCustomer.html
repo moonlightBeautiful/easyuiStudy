@@ -56,32 +56,43 @@
     }
 
     function pagerFilter(data) {
-        if (typeof data.length == 'number' && typeof data.splice == 'function') {	// is array
+        //第一次加载数据的时候时候，data是数组，要转成json对象
+        //必须返回标准数据对象，含有 'total' 和 'rows' 属性
+        if ($.isArray(data)) {
+            alert(1);
             data = {
                 total: data.length,
                 rows: data
             }
         }
-        var dg = $(this);
+        //第一次加载数据的时候，给data对象originalRows属性赋值为data的全部数据，以后根据页码和分页尺寸从这里获取数据
+        //alert(data.originalRows);
+        if (data.originalRows == undefined) {
+            alert(2);
+            data.originalRows = (data.rows);
+        }
+        //用户根据分页工具栏改变数据表格的序列栏序号和数据
+        var dg = $(this); //$("#dg");
         var opts = dg.datagrid('options');
+        // alert(JSON.stringify(opts));
         var pager = dg.datagrid('getPager');
         pager.pagination({
             onSelectPage: function (pageNum, pageSize) {
                 opts.pageNumber = pageNum;
                 opts.pageSize = pageSize;
-                pager.pagination('refresh', {
+                //pager对象的refresh事件不配置也没啥影响。目前没啥影响
+                /*pager.pagination('refresh', {
                     pageNumber: pageNum,
                     pageSize: pageSize
-                });
+                });*/
+                alert('分页工具栏改变');
                 dg.datagrid('loadData', data);
             }
         });
-        if (!data.originalRows) {
-            data.originalRows = (data.rows);
-        }
         var start = (opts.pageNumber - 1) * parseInt(opts.pageSize);
         var end = start + parseInt(opts.pageSize);
-        data.rows = (data.originalRows.slice(start, end));
+        alert(start);
+        data.rows = data.originalRows.slice(start, end);
         return data;
     }
 
@@ -99,6 +110,41 @@
     <ol>提示：
         <li>loadFilter：function，过滤器，过滤数据网格的数据。该函数有一个参数 'data'，表示原始数据。必须返回标准数据对象，含有 'total' 和 'rows' 属性。</li>
         <li>loadData：data，加载本地数据，旧的行会被移除。可以ajax获取后塞给变量，再加载。</li>
+        <li>options：none，返回选项（options）对象。</li>
+        <li>getPager：none，返回分页（pager）对象。</li>
+        <li>pagination：boolean，默认值为false，数据网格底部是否显示分页工具栏。
+            </br>显示一个简单默认的分页工具栏，可以进行复杂配置，默认pageSize为10，分组为10,20,30,40,50，默认选择第一页。
+        </li>
+        <li>pageNumber：number，当设置了 pagination 属性为true时，初始化分页工具栏页码，会影响序号字段栏的值。默认值1。</li>
+        <li>pageSize：number，当设置了 pagination 属性为true时，初始化分页工具栏页面尺寸，会影响序号字段栏的值。默认值10</li>
+        <li>（分页对象事件）onSelectPage ：pageNumber, pageSize，用户选择新的页面（也就是点击按钮，pageNumber改变）或改变页面尺寸时触发。回调函数包含两个参数：
+            pageNumber：新的页码，pageSize：新的页面尺寸
+        </li>
+        <li>（分页对象事件）refresh ：options, 刷新并显示分页信息（但是用户选择新的页面后，会自动按照目前规则刷新）。</li>
+
+
+        <li>typeof 变量：String，返回变量的数据类型</br>
+            typeof "John" // 返回 string</br>
+            typeof 3.14 // 返回 number</br>
+            typeof false // 返回 boolean</br>
+            typeof [1,2,3,4] // 返回 object</br>
+            typeof {name:'John', age:34} // 返回 object
+        </li>
+        <li>Math.random()：可返回介于 0（包含） ~ 1（不包含） 之间的一个随机数，15位到17位。</li>
+        <li>Math.floor(Number)：向下（左）取整计算。</li>
+        <li>Math.round(Number)：向最接近取整计算。</li>
+        <li>$.fn是指jquery的命名空间，加上fn上的方法及属性，会对jquery实例每一个有效。
+            </br>如扩展$.fn.abc(), 即$.fn.abc()是对 jquery 扩展了一个 abc 方法,那么后面你的每一个jquery实例都可以引用这个方法了.
+            </br>那么你可以这样子：$("#div").abc();
+            </br>$ = jQuery （可以这么理解）
+        </li>
+        <li>$.fn.datebox.defaults.formatter(new Date())：还不懂，只知道是用默认格式化日期。</li>
+        <li>$.isPlainObject(data)：Boolean，否为纯粹的对象（所谓"纯粹的对象"，就是该对象是通过"{}"或"new Object"创建的。）。</li>
+        <li>$.isArray(data)：Boolean，否为数组。</li>
+        <li>JSON.stringify(jsonObj))：把json对象转成字符串。</li>
+        <li>$.parseJSON(JSON字符串)：将符合标准格式的JSON字符串转为与之对应的JavaScript对象</li>
+        <li>array对象.slice(start[,end])：从已有的数组中返回选定的元素的数组。</li>
+
     </ol>
 </div>
 
