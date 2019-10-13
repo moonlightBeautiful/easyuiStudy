@@ -46,16 +46,22 @@
     <a href="#" class="easyui-linkbutton" onclick="getSelected()">获取单选数据</a>
     <a href="#" class="easyui-linkbutton" onclick="getSelections()">获取多选数据</a>
 </div>
-<table id="dg" class="easyui-datagrid" title="基本数据表格" style="width:700px;height:250px"
-       data-options="rownumbers:true,singleSelect:true,collapsible:true,url:'./datagrid_data1.json',toolbar:toolbar,pagination:true">
+<div style="margin:10px 0;">
+    <p>进行了列合并，其实就是两个tr标签放th，使用rowspan和colspan属性</p>
+</div>
+<table id="dg" class="easyui-datagrid" title="基本数据表格" style="width:500px;height:350px"
+       data-options="rownumbers:true,singleSelect:true,collapsible:true,url:'./datagrid_data1.json',toolbar:toolbar,pagination:true,
+                onLoadSuccess:function(){$(this).datagrid('freezeRow',0).datagrid('freezeRow',1);}">
     <thead>
     <tr>
-        <th data-options="field:'ck',checkbox:true">复选框列，文本会被复选框覆盖。</th>
-        <th data-options="field:'itemid',width:80">编号</th>
-        <th data-options="field:'productid',width:100">产品编号</th>
-        <th data-options="field:'listprice',width:80,align:'right'">市场价</th>
+        <th data-options="field:'itemid',width:80" rowspan="2">编号</th>
+        <th data-options="field:'productid',width:100" rowspan="2">产品编号</th>
+        <th colspan="4">产品详细信息</th>
+    </tr>
+    <tr data-options="frozen:true">
+        <th data-options="field:'listprice',width:80,align:'right',formatter:formatPrice">市场价</th>
         <th data-options="field:'unitcost',width:80,align:'right'">成本价</th>
-        <th data-options="field:'attr1',width:250">描述</th>
+        <th data-options="field:'attr1',width:240">描述</th>
         <th data-options="field:'status',width:60,align:'center'">状态</th>
     </tr>
     </thead>
@@ -145,6 +151,13 @@
         }
     }];
 
+    function formatPrice(val, rowData, rowIndex) {
+        if (val < 30) {
+            return '<span style="color:red;">(' + val + ')</span>';
+        } else {
+            return val;
+        }
+    }
 </script>
 
 <hr>
@@ -178,10 +191,22 @@
                 <li>width：number，列的宽度。如果未定义，则宽度会自动扩展以适应它的内容。没有定义宽度将会降低性能。</li>
                 <li>align：string，对齐该列的数据的方式，可以用 'left'、'right'、'center'。</li>
                 <li>checkbox：boolean，默认值为false,是否显示复选框。复选框列，文本会被复选框覆盖，复选框有固定宽度。单选时顶部复选框不可用。</li>
+                <li>halign：string，指示如何对齐该列的头部，可能的值：'left'、'right'、'center'。如果没有分配值，则头部对齐方式将与通过 'align' 属性定义的数据对齐方式一致。
+                </li>
+                <li>align：string，指示如何对齐该列的数据，可以用 'left'、'right'、'center'。默认貌似左边。</li>
+                <li>frozen：boolean，这些列将被冻结在左边，左右滑动，这些列在最左边不动。</li>
+                <li>formatter：function，单元格的格式化函数，需要三个参数：value：字段的值、rowData：行的记录数据、rowIndex：行的索引。</li>
+                <li>editor：string/object，指示编辑器类型。默认无编辑器。
+                        </br>当是字符串（string）时则指编辑类型。
+                        </br>当是对象（object）时则包含两个属性：type：字符串，编辑类型，可能的类型：text、textarea、checkbox、numberbox、validatebox、datebox、combobox、combotree。options：对象，编辑类型对应的编辑器选项。</li>
+
+
             </ol>
         <li>事件：
             <ol>
                 <li>onclick：item，当点击菜单项（menu item）时触发。</li>
+                <li>onLoadSuccess：data，当数据加载成功时触发。。</li>
+
             </ol>
         </li>
         <li>方法：
@@ -190,6 +215,7 @@
                 <li>getSelected：none，返回第一个选中的行或者 null。。</li>
                 <li>getSelections：none，返回所有选中的行，当没有选中的记录时，将返回空数组。</li>
                 <li>getPager：none，返回分页（pager）对象。</li>
+                <li>freezeRow:rowIndex，冻结指定的行，以便数据网格（datagrid）向下滚动时这些冻结行总是被显示在顶部。</li>
             </ol>
         </li>
         <li>
