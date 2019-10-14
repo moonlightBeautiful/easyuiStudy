@@ -12,11 +12,11 @@
 </head>
 <body>
 
-<h2>数据表格客户端分页</h2>
+<h2>数据表格在客户端分页</h2>
 <div class="demo-info" style="font-size:20px;margin-bottom: 10px">
     <div class="demo-tip icon-tip"></div>
     <div>这个示例教我们如何在客户端实现数据表格分页.</div>
-    <div>其实就是把数据一次性读取出来，然后赋值给一个变量的属性，用到的时候根据页码和页面尺寸取出来赋值给rows属性</div>
+    <div>其实就是把数据一次性读取出来到客户端</div>
 </div>
 
 <table id="dg" title="客户端分页" style="width:700px;height:300px" data-options="
@@ -38,6 +38,9 @@
     </thead>
 </table>
 <script>
+    /*
+        随机产生800条数据
+     */
     function getData() {
         var rows = [];
         for (var i = 1; i <= 800; i++) {
@@ -56,29 +59,32 @@
         return rows;
     }
 
-    function pagerFilter(data) {
-        //第一次加载数据的时候时候，data是数组，要转成json对象
-        //必须返回标准数据对象，含有 'total' 和 'rows' 属性
+    /*
+        加载数据的过滤器
+     */
+    function loadFilter(data) {
+        //第一次加载数据的时候时候，data是数组，要转成json对象，必须含有 'total' 和 'rows' 属性
         if ($.isArray(data)) {
-            alert(1);
             data = {
                 total: data.length,
                 rows: data
             }
         }
+
         //第一次加载数据的时候，给data对象originalRows属性赋值为data的全部数据，以后根据页码和分页尺寸从这里获取数据
         //alert(data.originalRows);
         if (data.originalRows == undefined) {
-            alert(2);
             data.originalRows = (data.rows);
         }
-        //用户根据分页工具栏改变数据表格的序列栏序号和数据
+
+        //根据工具栏分页信息配置分页onSelectPage事件和datagrid的option信息，然后跟你讲option信息选择页面数据给rows属性
         var dg = $(this); //$("#dg");
         var opts = dg.datagrid('options');
         // alert(JSON.stringify(opts));
         var pager = dg.datagrid('getPager');
         pager.pagination({
             onSelectPage: function (pageNum, pageSize) {
+                //alert('onSelectPage事件触发');
                 opts.pageNumber = pageNum;
                 opts.pageSize = pageSize;
                 //pager对象的refresh事件不配置也没啥影响。目前没啥影响
@@ -86,19 +92,18 @@
                     pageNumber: pageNum,
                     pageSize: pageSize
                 });*/
-                alert('分页工具栏改变');
                 dg.datagrid('loadData', data);
             }
         });
         var start = (opts.pageNumber - 1) * parseInt(opts.pageSize);
         var end = start + parseInt(opts.pageSize);
-        alert(start);
         data.rows = data.originalRows.slice(start, end);
+
         return data;
     }
 
     $(function () {
-        $('#dg').datagrid({loadFilter: pagerFilter}).datagrid('loadData', getData());
+        $('#dg').datagrid({loadFilter: loadFilter}).datagrid('loadData', getData());
     });
 </script>
 
@@ -110,14 +115,15 @@
 <div style="font-size:18px">
     <ol>提示：
         <li>loadFilter：function，过滤器，过滤数据网格的数据。该函数有一个参数 'data'，表示原始数据。必须返回标准数据对象，含有 'total' 和 'rows' 属性。</li>
-        <li>loadData：data，加载本地数据，旧的行会被移除。可以ajax获取后塞给变量，再加载。</li>
+        <li>loadData：data，加载本地数据，旧的行会被移除。可以ajax获取后塞给js变量，再加载。</li>
         <li>options：none，返回选项（options）对象。</li>
         <li>getPager：none，返回分页（pager）对象。</li>
+        <li>autoRowHeight：boolean，默认值true，是否设置基于该行内容的行高度。设置为 false，则可以提高加载性能。</li>
         <li>pagination：boolean，默认值为false，数据网格底部是否显示分页工具栏。
             </br>显示一个简单默认的分页工具栏，可以进行复杂配置，默认pageSize为10，分组为10,20,30,40,50，默认选择第一页。
         </li>
-        <li>pageNumber：number，当设置了 pagination 属性为true时，初始化分页工具栏页码，会影响序号字段栏的值。默认值1。</li>
-        <li>pageSize：number，当设置了 pagination 属性为true时，初始化分页工具栏页面尺寸，会影响序号字段栏的值。默认值10</li>
+        <li>pageNumber：number，当设置了 pagination 属性为true时，初始化分页工具栏页码，会影响字段列序号的值。默认值1。</li>
+        <li>pageSize：number，当设置了 pagination 属性为true时，初始化分页工具栏页面尺寸，会影响字段列序号的值。默认值10</li>
         <li>（分页对象事件）onSelectPage ：pageNumber, pageSize，用户选择新的页面（也就是点击按钮，pageNumber改变）或改变页面尺寸时触发。回调函数包含两个参数：
             pageNumber：新的页码，pageSize：新的页面尺寸
         </li>

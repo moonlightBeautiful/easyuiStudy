@@ -6,7 +6,7 @@
       "productId": "产品编号1",
       "productName": "产品名称1",
       "cost": 10.00,
-      "marketPrice": 36.50,
+      "marketPrice": 30.50,
       "status": "P",
       "description": "Large"
     },
@@ -15,7 +15,7 @@
       "productId": "产品编号2",
       "productName": "产品名称2",
       "cost": 10.00,
-      "marketPrice": 36.50,
+      "marketPrice": 26.50,
       "status": "P",
       "description": "Large"
     },
@@ -24,7 +24,7 @@
       "productId": "产品编号3",
       "productName": "产品名称3",
       "cost": 10.00,
-      "marketPrice": 36.50,
+      "marketPrice": 11.50,
       "status": "P",
       "description": "Large"
     },
@@ -33,7 +33,7 @@
       "productId": "产品编号4",
       "productName": "产品名称4",
       "cost": 10.00,
-      "marketPrice": 36.50,
+      "marketPrice": 26.50,
       "status": "P",
       "description": "Large"
     },
@@ -69,7 +69,7 @@
       "productId": "产品编号8",
       "productName": "产品名称8",
       "cost": 10.00,
-      "marketPrice": 36.50,
+      "marketPrice": 26.50,
       "status": "P",
       "description": "Large"
     },
@@ -87,7 +87,7 @@
       "productId": "产品编号10",
       "productName": "产品名称10",
       "cost": 10.00,
-      "marketPrice": 36.50,
+      "marketPrice": 16.50,
       "status": "P",
       "description": "Large"
     },
@@ -105,7 +105,7 @@
       "productId": "产品编号12",
       "productName": "产品名称12",
       "cost": 10.00,
-      "marketPrice": 36.50,
+      "marketPrice": 18.50,
       "status": "P",
       "description": "Large"
     },
