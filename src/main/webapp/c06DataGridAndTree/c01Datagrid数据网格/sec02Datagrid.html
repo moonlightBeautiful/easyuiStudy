@@ -12,12 +12,28 @@
 </head>
 <body>
 
-<h2>基本数据网格（Datagrid）组件</h2>
+<h2>基本数据网格（Datagrid）组件:</h2>
 <div class="demo-info" style="font-size:20px;margin-bottom: 10px">
     <div class="demo-tip icon-tip"></div>
-    <div>一般都是使用table标签创建数据网格（Datagrid）.</div>
+    <div>一般都是使用table标签创建数据网格（Datagrid）.开始学习稍微复杂的数据网格。</div>
+
 </div>
-<table class="easyui-datagrid" title="基本数据表格" style="width:700px;height:250px"
+
+<div style="margin:10px 0;">
+    <div style="font-size:20px;margin-bottom: 10px">1.添加边框和斑马线：</div>
+    <span>边框（）:</span>
+    <select onchange="changeBorder(this.value)">
+        <option value="lines-both">都有</option>
+        <option value="lines-no">无边框</option>
+        <option value="lines-right">右边框</option>
+        <option value="lines-bottom">下边框</option>
+    </select>
+    <span>斑马线（数据网格的striped属性）:</span>
+    <input type="checkbox" onclick="$('#dg').datagrid({striped:$(this).is(':checked')})">
+</div>
+
+
+<table id="dg" class="easyui-datagrid" title="基本数据表格" style="width:700px;height:250px"
        data-options="singleSelect:true,collapsible:true,url:'./datagrid_data1.json'">
     <thead>
     <tr>
@@ -31,6 +47,23 @@
     </tr>
     </thead>
 </table>
+<style type="text/css">
+    .lines-both .datagrid-body td {
+    }
+
+    .lines-no .datagrid-body td {
+        border-right: 1px dotted transparent;
+        border-bottom: 1px dotted transparent;
+    }
+
+    .lines-right .datagrid-body td {
+        border-bottom: 1px dotted transparent;
+    }
+
+    .lines-bottom .datagrid-body td {
+        border-right: 1px dotted transparent;
+    }
+</style>
 
 
 <hr>

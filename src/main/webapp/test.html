@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+    <link rel="stylesheet" type="text/css" href="./jquery-easyui-1.7.0/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="./jquery-easyui-1.7.0/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="./jquery-easyui-1.7.0/demo/demo.css">
+    <script type="text/javascript" src="./jquery-easyui-1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="./jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="./jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<input type="checkbox" name="materialType" value="part">
+<input type="checkbox" name="materialType" value="resource">
+<input type="button" name="material" onclick="startMap()" value="获取">
+<script>
+
+
+    function startMap() {
+        var materialTypes = "";
+        $("input:checked").each(function () {
+            if (materialTypes == "") {
+                materialTypes = $(this).val();
+            } else {
+                materialTypes = materialTypes + "," + $(this).val();
+            }
+        });
+        alert(materialTypes);
+    }
+</script>
+</body>
+</html>
