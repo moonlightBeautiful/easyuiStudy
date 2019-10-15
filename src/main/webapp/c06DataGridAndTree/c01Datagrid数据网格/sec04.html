@@ -18,7 +18,6 @@
     <div>点击行就可以开始编辑.</div>
 </div>
 <div style="margin:10px 0;"></div>
-
 <table id="dg" class="easyui-datagrid" title="数据表格中的行编辑" style="width:700px;height:auto"
        data-options="
 				iconCls: 'icon-edit',
@@ -29,27 +28,26 @@
 			">
     <thead>
     <tr>
-        <th data-options="field:'itemid',width:80">产品编号</th>
-        <th data-options="field:'productid',width:100,
+        <th data-options="field:'itemId',width:80">产品编号</th>
+        <th data-options="field:'productId',width:100,
 						formatter:function(value,row){
-						    alert(1);
-							return row.productname;
+							return row.productName;
 						},
 						editor:{
 							type:'combobox',
 							options:{
-								valueField:'productid',
-								textField:'productname',
+								valueField:'productId',
+								textField:'productName',
 								url:'./products.json',
 								required:true
 							}
 						}">产品
         </th>
-        <th data-options="field:'listprice',width:80,align:'right',editor:{type:'numberbox',options:{precision:1}}">
+        <th data-options="field:'marketPrice',width:80,align:'right',editor:{type:'numberbox',options:{precision:1}}">
             市场价
         </th>
-        <th data-options="field:'unitcost',width:80,align:'right',editor:'numberbox'">成本价</th>
-        <th data-options="field:'attr1',width:250,editor:'text'">描述</th>
+        <th data-options="field:'cost',width:80,align:'right',editor:'numberbox'">成本价</th>
+        <th data-options="field:'description',width:250,editor:'text'">描述</th>
         <th data-options="field:'status',width:60,align:'center',editor:{type:'checkbox',options:{on:'P',off:''}}">状态
         </th>
     </tr>
@@ -72,14 +70,28 @@
 <script type="text/javascript">
     var editIndex = undefined;
 
+    function onClickRow(index) {
+        if (editIndex != index) {
+            if (endEditing()) {
+                $('#dg').datagrid('selectRow', index).datagrid('beginEdit', index);
+                editIndex = index;
+            } else {
+                $('#dg').datagrid('selectRow', editIndex);
+            }
+        }
+    }
+
+    /*
+        结束编辑
+    */
     function endEditing() {
         if (editIndex == undefined) {
             return true
         }
         if ($('#dg').datagrid('validateRow', editIndex)) {
-            var ed = $('#dg').datagrid('getEditor', {index: editIndex, field: 'productid'});
-            var productname = $(ed.target).combobox('getText');
-            $('#dg').datagrid('getRows')[editIndex]['productname'] = productname;
+            var ed = $('#dg').datagrid('getEditor', {index: editIndex, field: 'productId'});
+            var productName = $(ed.target).combobox('getText');
+            $('#dg').datagrid('getRows')[editIndex]['productName'] = productName;
             $('#dg').datagrid('endEdit', editIndex);
             editIndex = undefined;
             return true;
@@ -88,52 +100,36 @@
         }
     }
 
-    function onClickRow(index) {
-        if (editIndex != index) {
-            if (endEditing()) {
-                $('#dg').datagrid('selectRow', index)
-                    .datagrid('beginEdit', index);
-                editIndex = index;
-            } else {
-                $('#dg').datagrid('selectRow', editIndex);
-            }
-        }
-    }
+    /*
 
-    function append() {
-        if (endEditing()) {
-            $('#dg').datagrid('appendRow', {status: 'P'});
-            editIndex = $('#dg').datagrid('getRows').length - 1;
+
+    function append(){
+        if (endEditing()){
+            $('#dg').datagrid('appendRow',{status:'P'});
+            editIndex = $('#dg').datagrid('getRows').length-1;
             $('#dg').datagrid('selectRow', editIndex)
                 .datagrid('beginEdit', editIndex);
         }
     }
-
-    function remove() {
-        if (editIndex == undefined) {
-            return
-        }
+    function remove(){
+        if (editIndex == undefined){return}
         $('#dg').datagrid('cancelEdit', editIndex)
             .datagrid('deleteRow', editIndex);
         editIndex = undefined;
     }
-
-    function accept() {
-        if (endEditing()) {
+    function accept(){
+        if (endEditing()){
             $('#dg').datagrid('acceptChanges');
         }
     }
-
-    function reject() {
+    function reject(){
         $('#dg').datagrid('rejectChanges');
         editIndex = undefined;
     }
-
-    function getChanges() {
+    function getChanges(){
         var rows = $('#dg').datagrid('getChanges');
-        alert(rows.length + ' rows are changed!');
-    }
+        alert(rows.length+' rows are changed!');
+    }*/
 </script>
-
 </body>
 </html>

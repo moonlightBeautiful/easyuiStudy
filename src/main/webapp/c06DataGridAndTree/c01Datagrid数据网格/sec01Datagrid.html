@@ -91,17 +91,26 @@
     <span>单独使用thead标签和data-options="frozen:true"属性把列固定在左边，不允许左右滑动。</span>
     <br/><span>freezeRow方法固定行，不允许上下滑动。</span>
 </div>
-
+<div style="margin:10px 0;">
+    <div style="font-size:20px;margin-bottom: 10px">9.行编辑:给列指定editor和启动行编辑beginEdit</div>
+    <span>单独使用thead标签和data-options="frozen:true"属性把列固定在左边，不允许左右滑动。</span>
+    <br/><span>freezeRow方法固定行，不允许上下滑动。</span>
+</div>
 <table id="dg" class="easyui-datagrid" title="基本数据表格" style="width:700px;height:350px"
        data-options="singleSelect:true,collapsible:true,url:'./datagrid_data1.json'
         ,fitColumns:false,rownumbers:true,toolbar:'#tb',pagination:true
-        ,onLoadSuccess:function(){ $(this).datagrid('freezeRow',0).datagrid('freezeRow',1); }">
+        ,onLoadSuccess:function(){ $(this).datagrid('freezeRow',0).datagrid('freezeRow',1); }
+        ,onClickRow: onClickRow">
     <thead data-options="frozen:true">
     <tr>
         <th data-options="field:'ck',checkbox:true"></th>
         <th data-options="field:'itemId',width:80,align:'center',halign:'center'">编号(itemId)</th>
         <th data-options="field:'productId',width:100">产品编号(productId)</th>
-        <th data-options="field:'productName',width:100">产品名称(productName)</th>
+        <th data-options="field:'productName',width:100,editor:{type:'combobox'
+                                                    ,options:{valueField:'productId',textField:'productName'
+                                                                ,url:'./products.json',required:true}}">
+            产品名称(productName)
+        </th>
     </tr>
     </thead>
     <thead>
@@ -109,10 +118,12 @@
         <th data-options="" colspan="4">产品详细信息(组合信息列)</th>
     </tr>
     <tr>
-        <th data-options="field:'cost',width:80">成本价(cost)</th>
-        <th data-options="field:'marketPrice',width:80,formatter:formatMarketPrice">市场价(marketPrice)</th>
-        <th data-options="field:'status',width:120">状态(status)</th>
-        <th data-options="field:'description',width:100,align:'center'">描述(description)</th>
+        <th data-options="field:'cost',width:80,editor:'numberbox'">成本价(cost)</th>
+        <th data-options="field:'marketPrice',width:80,formatter:formatMarketPrice,editor:{type:'numberbox',options:{precision:1}}">
+            市场价(marketPrice)
+        </th>
+        <th data-options="field:'status',width:120,editor:{type:'checkbox',options:{on:'P',off:''}}">状态(status)</th>
+        <th data-options="field:'description',width:100,align:'center',editor:'text'">描述(description)</th>
     </tr>
     </thead>
 </table>
@@ -214,6 +225,41 @@
         }
     }
 
+    //编辑行
+    var editIndex = undefined;
+
+    //结束编辑，
+    function endEditing() {
+        if (editIndex == undefined) {
+            return true
+        }
+        if ($('#dg').datagrid('validateRow', editIndex)) {
+            var ed = $('#dg').datagrid('getEditor', {index: editIndex, field: 'productName'});
+            var productName = $(ed.target).combobox('getText');
+            $('#dg').datagrid('getRows')[editIndex].productName = productName;
+//明明是给了text值，为什么保存后，变成text对应的value
+            /*$('#dg').datagrid('endEdit', editIndex);*/
+            editIndex = undefined;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //点击一行，如果是新的行，如果能结束编辑则开始编辑新的一行
+    function onClickRow(rowIndex, rowData) {
+        if (editIndex != rowIndex) {
+            if (endEditing()) {
+                $('#dg').datagrid('beginEdit', rowIndex);
+                /*$('#dg').datagrid('selectRow', index).datagrid('beginEdit', index);*/
+                editIndex = rowIndex;
+            } else {
+                $('#dg').datagrid('selectRow', editIndex);
+            }
+        }
+    }
+
+
 </script>
 
 
@@ -251,8 +297,14 @@
                 <li>(列属性)align:string，默认值是left，如何对齐该列的数据，可能的值：'left'、'right'、'center'。</li>
                 <li>(列属性)halign:string，默认值是align的值，如何对齐该列头的数据，可能的值：'left'、'right'、'center'。</li>
                 <li>(列属性)formatter:function，单元格的格式化函数，需要三个参数：value：字段的值。rowData：行的记录数据。rowIndex：行的索引。</li>
+                <li>(列属性)editor:string/object。指示编辑类型。
+                    </br>当是字符串（string）时则指编辑类型。
+                    </br>当是对象（object）时则包含两个属性：
+                    </br>&nbsp;&nbsp;&nbsp;&nbsp;type：字符串，编辑类型，可能的类型：text、textarea、checkbox、numberbox、validatebox、datebox、combobox、combotree。
+                    </br>&nbsp;&nbsp;&nbsp;&nbsp;options：对象，编辑类型对应的编辑器选项。
+                </li>
 
-                <li>(列thead属性)frozen:boolean，默认值是false，使用frozen和thead标签把指定列固定在左侧，不允许滑动。</li>
+                <li>(列thead属性)frozen:boolean，默认值是false，使用frozen和thead标签把指定列固定在左侧，不允许滑动，不参与合并列。</li>
 
             </ol>
         </li>
@@ -262,12 +314,20 @@
                 <li>getSelected：none，第一个选中的行或者 null。</li>
                 <li>getSelections：none，返回所有选中的行，当没有选中的记录时，将返回空数组''。</li>
                 <li>getPager：none，返回分页（Pagination）对象。</li>
-                <li>freezeRow：rowindex，冻结指定的行，以便数据网格（datagrid）向下滚动时这些冻结行总是被显示在顶部。。</li>
+                <li>freezeRow：rowindex，冻结指定的行，以便数据网格（datagrid）向下滚动时这些冻结行总是被显示在顶部。</li>
+                <li>beginEdit：rowindex。开启指定行的编辑器。</li>
+                <li>endEdit：rowindex。结束指定行的编辑器。</li>
+                <li>selectRow：rowindex，选中指定行，索引从 0 开始。</li>
+                <li>validateRow：rowindex。验证指定的行，有效时返回 true。</li>
+                <li>getEditor：options。获取指定单元格的编辑器，options 参数包含两个属性，rowIndex：行的索引。field：字段名。</li>
+                <li>getRows：none。返回当前页的行。</li>
+                <li>getRows：none。返回当前页的行。</li>
             </ol>
         </li>
         <li>事件：
             <ol>
                 <li>onLoadSuccess：data，当数据加载成功时触发。</li>
+                <li>onClickRow:rowIndex（被点击行的索引，从 0 开始）, rowData（被点击行对应的记录）。当用户点击一行时触发</li>
             </ol>
         </li>
 

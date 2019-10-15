@@ -1,30 +1,30 @@
 [
   {
-    "productid": "FI-SW-01",
-    "productname": "Koi"
+    "productId": "FI-SW-01",
+    "productName": "Koi"
   },
   {
-    "productid": "K9-DL-01",
-    "productname": "Dalmation"
+    "productId": "K9-DL-01",
+    "productName": "Dalmation"
   },
   {
-    "productid": "RP-SN-01",
-    "productname": "Rattlesnake"
+    "productId": "RP-SN-01",
+    "productName": "Rattlesnake"
   },
   {
-    "productid": "RP-LI-02",
-    "productname": "Iguana"
+    "productId": "RP-LI-02",
+    "productName": "Iguana"
   },
   {
-    "productid": "FL-DSH-01",
-    "productname": "Manx"
+    "productId": "FL-DSH-01",
+    "productName": "Manx"
   },
   {
-    "productid": "FL-DLH-02",
-    "productname": "Persian"
+    "productId": "FL-DLH-02",
+    "productName": "Persian"
   },
   {
-    "productid": "AV-CB-01",
-    "productname": "Amazon Parrot"
+    "productId": "AV-CB-01",
+    "productName": "Amazon Parrot"
   }
 ]
