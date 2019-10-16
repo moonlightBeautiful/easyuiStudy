@@ -19,7 +19,7 @@
     <div>其实就是把数据一次性读取出来到客户端</div>
 </div>
 
-<table id="dg" title="客户端分页" style="width:700px;height:300px" data-options="
+<table id="dg" title="客户端分页" style="width:500px;height:300px" data-options="
 				rownumbers:true,
 				singleSelect:true,
 				autoRowHeight:false,
@@ -33,11 +33,22 @@
         <th field="amount" width="80" align="right">数量</th>
         <th field="price" width="80" align="right">价格</th>
         <th field="cost" width="100" align="right">费用</th>
-        <th field="note" width="110">备注</th>
+        <th field="note" width="110" data-options="editor:'text'">备注</th>
     </tr>
     </thead>
 </table>
 <script>
+
+    $(function () {
+        $('#dg').datagrid({loadFilter: loadFilter}).datagrid('loadData', getData());
+        //被冻结的列和行可以合并，带有编辑器的行可以合并
+        $('#dg').datagrid('mergeCells', {
+            index: 3,
+            field: 'inv',
+            rowspan: 2
+        });
+    });
+
     /*
         随机产生800条数据
      */
@@ -102,9 +113,7 @@
         return data;
     }
 
-    $(function () {
-        $('#dg').datagrid({loadFilter: loadFilter}).datagrid('loadData', getData());
-    });
+
 </script>
 
 <hr>

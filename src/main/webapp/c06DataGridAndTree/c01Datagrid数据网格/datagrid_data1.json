@@ -1,11 +1,11 @@
 {
-  "total": 18,
+  "total": 23,
   "rows": [
     {
       "itemId": "编号1",
       "productId": "产品编号1",
       "productName": "产品名称1",
-      "cost": 10.00,
+      "cost": 16.00,
       "marketPrice": 30.50,
       "status": "P",
       "description": "Large"
@@ -14,7 +14,7 @@
       "itemId": "编号2",
       "productId": "产品编号2",
       "productName": "产品名称2",
-      "cost": 10.00,
+      "cost": 18.00,
       "marketPrice": 26.50,
       "status": "P",
       "description": "Large"
@@ -23,16 +23,16 @@
       "itemId": "编号3",
       "productId": "产品编号3",
       "productName": "产品名称3",
-      "cost": 10.00,
+      "cost": 19.00,
       "marketPrice": 11.50,
       "status": "P",
       "description": "Large"
     },
     {
       "itemId": "编号4",
-      "productId": "产品编号4",
+      "productId": "产品编号3",
       "productName": "产品名称4",
-      "cost": 10.00,
+      "cost": 23.00,
       "marketPrice": 26.50,
       "status": "P",
       "description": "Large"
@@ -41,7 +41,7 @@
       "itemId": "编号5",
       "productId": "产品编号5",
       "productName": "产品名称5",
-      "cost": 10.00,
+      "cost": 14.00,
       "marketPrice": 36.50,
       "status": "P",
       "description": "Large"
@@ -68,7 +68,7 @@
       "itemId": "编号8",
       "productId": "产品编号8",
       "productName": "产品名称8",
-      "cost": 10.00,
+      "cost": 90.00,
       "marketPrice": 26.50,
       "status": "P",
       "description": "Large"
@@ -77,7 +77,7 @@
       "itemId": "编号9",
       "productId": "产品编号9",
       "productName": "产品名称9",
-      "cost": 10.00,
+      "cost": 20.00,
       "marketPrice": 36.50,
       "status": "P",
       "description": "Large"
@@ -86,7 +86,7 @@
       "itemId": "编号10",
       "productId": "产品编号10",
       "productName": "产品名称10",
-      "cost": 10.00,
+      "cost": 30.00,
       "marketPrice": 16.50,
       "status": "P",
       "description": "Large"
@@ -117,7 +117,8 @@
       "marketPrice": 36.50,
       "status": "P",
       "description": "Large"
-    },{
+    },
+    {
       "itemId": "编号14",
       "productId": "产品编号14",
       "productName": "产品名称14",
@@ -125,7 +126,8 @@
       "marketPrice": 36.50,
       "status": "P",
       "description": "Large"
-    },{
+    },
+    {
       "itemId": "编号15",
       "productId": "产品编号15",
       "productName": "产品名称15",
@@ -133,7 +135,8 @@
       "marketPrice": 36.50,
       "status": "P",
       "description": "Large"
-    },{
+    },
+    {
       "itemId": "编号16",
       "productId": "产品编号16",
       "productName": "产品名称16",
@@ -141,7 +144,8 @@
       "marketPrice": 36.50,
       "status": "P",
       "description": "Large"
-    },{
+    },
+    {
       "itemId": "编号17",
       "productId": "产品编号17",
       "productName": "产品名称17",
@@ -149,7 +153,8 @@
       "marketPrice": 36.50,
       "status": "P",
       "description": "Large"
-    },{
+    },
+    {
       "itemId": "编号18",
       "productId": "产品编号18",
       "productName": "产品名称18",
@@ -157,7 +162,8 @@
       "marketPrice": 36.50,
       "status": "P",
       "description": "Large"
-    },{
+    },
+    {
       "itemId": "编号19",
       "productId": "产品编号19",
       "productName": "产品名称19",
@@ -165,7 +171,8 @@
       "marketPrice": 36.50,
       "status": "P",
       "description": "Large"
-    },{
+    },
+    {
       "itemId": "编号20",
       "productId": "产品编号20",
       "productName": "产品名称20",
@@ -173,7 +180,8 @@
       "marketPrice": 36.50,
       "status": "P",
       "description": "Large"
-    },{
+    },
+    {
       "itemId": "编号21",
       "productId": "产品编号21",
       "productName": "产品名称21",
@@ -181,7 +189,8 @@
       "marketPrice": 36.50,
       "status": "P",
       "description": "Large"
-    },{
+    },
+    {
       "itemId": "编号22",
       "productId": "产品编号22",
       "productName": "产品名称22",
@@ -189,7 +198,8 @@
       "marketPrice": 36.50,
       "status": "P",
       "description": "Large"
-    },{
+    },
+    {
       "itemId": "编号23",
       "productId": "产品编号23",
       "productName": "产品名称23",
@@ -197,6 +207,18 @@
       "marketPrice": 36.50,
       "status": "P",
       "description": "Large"
+    }
+  ],
+  "footer": [
+    {
+      "cost": 19.80,
+      "marketPrice": 60.40,
+      "productId": "Average:"
+    },
+    {
+      "cost": 198.00,
+      "marketPrice": 604.00,
+      "productId": "Total:"
     }
   ]
 }

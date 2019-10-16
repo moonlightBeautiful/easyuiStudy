@@ -57,11 +57,16 @@
     <span>toolbar属性，可以指向js变量，可以是string，可以是selector(被toolbar属性指向，默认隐藏)</span>
     <div id="tb" style="padding:5px;height:auto">
         <div style="margin-bottom:5px">
-            <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true"></a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true"></a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true"></a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-cut" plain="true"></a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true"></a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true"
+               onclick="append()">添加</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true"
+               onclick="remove()">删除</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true"
+               onclick="accept()">接受改变</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true"
+               onclick="reject()">撤销改变</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true"
+               onclick="getChanges()">获取改变</a>
         </div>
         <div>
             日期从: <input class="easyui-datebox" style="width:80px">
@@ -88,23 +93,48 @@
 </div>
 <div style="margin:10px 0;">
     <div style="font-size:20px;margin-bottom: 10px">8.列冻结和行冻结:</div>
-    <span>单独使用thead标签和data-options="frozen:true"属性把列固定在左边，不允许左右滑动。</span>
-    <br/><span>freezeRow方法固定行，不允许上下滑动。</span>
+    <span>使用thead标签但tr th 和data-options="frozen:true"属性把列固定在左边，不允许左右滑动。</span>
+    <br/><span>freezeRow方法固定行，不允许上下滑动。也可以使用frozenColumns属性，但是是在js创建datagrid时使用</span>
 </div>
 <div style="margin:10px 0;">
     <div style="font-size:20px;margin-bottom: 10px">9.行编辑:给列指定editor和启动行编辑beginEdit</div>
     <span>单独使用thead标签和data-options="frozen:true"属性把列固定在左边，不允许左右滑动。</span>
     <br/><span>freezeRow方法固定行，不允许上下滑动。</span>
 </div>
-<table id="dg" class="easyui-datagrid" title="基本数据表格" style="width:700px;height:350px"
+<div style="margin:10px 0;">
+    <div style="font-size:20px;margin-bottom: 10px">10.行样式和列样式</div>
+    <span>table标签上全局样式和行样式，行样式器rowStyler和。th标签上列样式器styler。</span>
+</div>
+<div style="margin:10px 0;">
+    <div style="font-size:20px;margin-bottom: 10px">11.页脚行</div>
+    <span>table标签上使用showFooter属性，然后返回的数据中有footer名的json数组，json对象包含列属性，值自己指定。</span>
+</div>
+<div style="margin:10px 0;">
+    <div style="font-size:20px;margin-bottom: 10px">12.数据网格（datagrid）头部被右键单击时触发事件onHeaderContextMenu。</div>
+    <span>e代表右击事件, field代表右击的字段。</span>
+</div>
+<div style="margin:10px 0;">
+    <div style="font-size:20px;margin-bottom: 10px">13.合并单元格mergeCells方法</div>
+    <span>如果表头有进行过行或者列的合并，则mergeCells无效。</span>
+</div>
+
+<table id="dg" class="easyui-datagrid" title="基本数据表格" style="width:700px;height:550px"
        data-options="singleSelect:true,collapsible:true,url:'./datagrid_data1.json'
         ,fitColumns:false,rownumbers:true,toolbar:'#tb',pagination:true
         ,onLoadSuccess:function(){ $(this).datagrid('freezeRow',0).datagrid('freezeRow',1); }
-        ,onClickRow: onClickRow">
+        ,onClickRow: onClickRow
+        ,rowStyler: function(index,row){
+                        if (row.marketPrice < 30){
+                            return 'background-color:#6293BB;color:#fff;font-weight:bold;';
+                         }
+
+                     }
+        ,showFooter:true
+        ,onHeaderContextMenu:createColumnMenu">
     <thead data-options="frozen:true">
     <tr>
         <th data-options="field:'ck',checkbox:true"></th>
-        <th data-options="field:'itemId',width:80,align:'center',halign:'center'">编号(itemId)</th>
+        <th data-options="field:'itemId',width:80,align:'center',halign:'center',title:'编号(itemId)'">编号</th>
         <th data-options="field:'productId',width:100">产品编号(productId)</th>
         <th data-options="field:'productName',width:100,editor:{type:'combobox'
                                                     ,options:{valueField:'productId',textField:'productName'
@@ -118,12 +148,12 @@
         <th data-options="" colspan="4">产品详细信息(组合信息列)</th>
     </tr>
     <tr>
-        <th data-options="field:'cost',width:80,editor:'numberbox'">成本价(cost)</th>
+        <th data-options="field:'cost',width:80,editor:'numberbox',styler:columnStyler,title:'成本价'">成本价(cost)</th>
         <th data-options="field:'marketPrice',width:80,formatter:formatMarketPrice,editor:{type:'numberbox',options:{precision:1}}">
             市场价(marketPrice)
         </th>
         <th data-options="field:'status',width:120,editor:{type:'checkbox',options:{on:'P',off:''}}">状态(status)</th>
-        <th data-options="field:'description',width:100,align:'center',editor:'text'">描述(description)</th>
+        <th data-options="field:'description',width:100,align:'center',editor:'text',title:'描述(description)'"></th>
     </tr>
     </thead>
 </table>
@@ -165,6 +195,13 @@
                 }
             }]
         });
+        //如果表头有进行过行或者列的合并，则无效
+        $('#dg').datagrid('mergeCells',{
+            index: 4,
+            field: 'productId',
+            rowspan: 2
+        });
+        alert();
     })
 
     function changeBorder(cls) {
@@ -236,9 +273,13 @@
         if ($('#dg').datagrid('validateRow', editIndex)) {
             var ed = $('#dg').datagrid('getEditor', {index: editIndex, field: 'productName'});
             var productName = $(ed.target).combobox('getText');
-            $('#dg').datagrid('getRows')[editIndex].productName = productName;
-//明明是给了text值，为什么保存后，变成text对应的value
-            /*$('#dg').datagrid('endEdit', editIndex);*/
+
+            //明明是给了text值，为什么保存后，变成text对应的value
+            /*$('#dg').datagrid('getRows')[editIndex].productName = productName;*/
+            $(ed.target).combobox('setValue', productName);
+            $('#dg').datagrid('endEdit', editIndex);
+            //保存后 row属性才会变
+            /*alert($('#dg').datagrid('getRows')[editIndex].productName);*/
             editIndex = undefined;
             return true;
         } else {
@@ -246,7 +287,7 @@
         }
     }
 
-    //点击一行，如果是新的行，如果能结束编辑则开始编辑新的一行
+    //点击行，开始编辑
     function onClickRow(rowIndex, rowData) {
         if (editIndex != rowIndex) {
             if (endEditing()) {
@@ -259,6 +300,89 @@
         }
     }
 
+    //追加一行，开始编辑状态
+    function append() {
+        if (endEditing()) {
+            $('#dg').datagrid('appendRow', {status: 'P'});
+            editIndex = $('#dg').datagrid('getRows').length - 1;
+            $('#dg').datagrid('selectRow', editIndex)
+                .datagrid('beginEdit', editIndex);
+        }
+    }
+
+    //取消编辑状态，删除行
+    function remove() {
+        if (editIndex == undefined) {
+            return
+        }
+        $('#dg').datagrid('cancelEdit', editIndex).datagrid('deleteRow', editIndex);
+        editIndex = undefined;
+    }
+
+    //接受改变
+    function accept() {
+        if (endEditing()) {
+            $('#dg').datagrid('acceptChanges');
+        }
+    }
+
+    //拒绝改变
+    function reject() {
+        $('#dg').datagrid('rejectChanges');
+        editIndex = undefined;
+    }
+
+    //得到页面初始化依赖保存过的改变
+    function getChanges() {
+        var rows = $('#dg').datagrid('getChanges');
+        alert(rows.length + ' 行改变了!');
+    }
+
+    function columnStyler(value, row, index) {
+        if (value < 15) {
+            return 'background-color:#ffee00;color:red;';
+        }
+    }
+
+    var cmenu;
+
+    function createColumnMenu(e, field) {
+        e.preventDefault(); //原本默认action被禁止
+        if (!cmenu) {
+            cmenu = $('<div/>').appendTo('body');
+            cmenu.menu({
+                onClick: function (item) {
+                    if (item.iconCls == 'icon-ok') {
+                        $('#dg').datagrid('hideColumn', item.name);
+                        cmenu.menu('setIcon', {
+                            target: item.target,
+                            iconCls: 'icon-empty'
+                        });
+                    } else {
+                        $('#dg').datagrid('showColumn', item.name);
+                        cmenu.menu('setIcon', {
+                            target: item.target,
+                            iconCls: 'icon-ok'
+                        });
+                    }
+                }
+            });
+            var fields = $('#dg').datagrid('getColumnFields');
+            for (var i = 0; i < fields.length; i++) {
+                var field = fields[i];
+                var col = $('#dg').datagrid('getColumnOption', field);
+                cmenu.menu('appendItem', {
+                    text: col.title,
+                    name: field,
+                    iconCls: 'icon-ok'
+                });
+            }
+        }
+        cmenu.menu('show', {
+            left: e.pageX,
+            top: e.pageY
+        });
+    }
 
 </script>
 
@@ -292,8 +416,13 @@
                 <li>selectOnCheck：boolean，默认值是true，点击复选框是否联动选中该行。</li>
                 <li>checkOnSelect：boolean，默认值是true，点击行是否联动选中改行复选框。</li>
                 <li>toolbar：array,selector，数据网格（datagrid）面板头部的工具栏。1、数组，每个工具选项与链接按钮（linkbutton）一样。2、选择器，只是工具栏。</li>
-                <li>pagination：boolean，默认值是false，数据网格（datagrid）底部是否显示分页工具栏。</li>
+                <li>pagination：boolean，默认值是false，数据网格（datagrid）底部是否显示分页工具栏。页数会自动计算，但没页显示的数据数目不会变，依然是加载的全部数据。</li>
+                <li>rowStyler：function（rowIndex，rowData）。返回例如 'background:red' 的样式，用于整行。</li>
+                <li>checkOnSelect：boolean，默认值是true，点击行是否联动选中改行复选框。</li>
+                <li>showFooter：boolean，默认值是false，是否显示页脚行，加载的数据的footer的json数组数据。</li>
 
+                <li>(列属性)field:string，列的字段名，和加载的数据的rows属性的jason对象的属性名匹配起来。</li>
+                <li>(列属性)title:string，列的标题文本。如果没有设置，则使用th的文本值，如果都设置了，则th的文本值会替换title的值。</li>
                 <li>(列属性)align:string，默认值是left，如何对齐该列的数据，可能的值：'left'、'right'、'center'。</li>
                 <li>(列属性)halign:string，默认值是align的值，如何对齐该列头的数据，可能的值：'left'、'right'、'center'。</li>
                 <li>(列属性)formatter:function，单元格的格式化函数，需要三个参数：value：字段的值。rowData：行的记录数据。rowIndex：行的索引。</li>
@@ -303,6 +432,8 @@
                     </br>&nbsp;&nbsp;&nbsp;&nbsp;type：字符串，编辑类型，可能的类型：text、textarea、checkbox、numberbox、validatebox、datebox、combobox、combotree。
                     </br>&nbsp;&nbsp;&nbsp;&nbsp;options：对象，编辑类型对应的编辑器选项。
                 </li>
+                <li>(列属性)styler:function（value，rowData，rowIndex）。返回例如 'background:red' 的样式，用于整列。</li>
+
 
                 <li>(列thead属性)frozen:boolean，默认值是false，使用frozen和thead标签把指定列固定在左侧，不允许滑动，不参与合并列。</li>
 
@@ -314,14 +445,29 @@
                 <li>getSelected：none，第一个选中的行或者 null。</li>
                 <li>getSelections：none，返回所有选中的行，当没有选中的记录时，将返回空数组''。</li>
                 <li>getPager：none，返回分页（Pagination）对象。</li>
-                <li>freezeRow：rowindex，冻结指定的行，以便数据网格（datagrid）向下滚动时这些冻结行总是被显示在顶部。</li>
-                <li>beginEdit：rowindex。开启指定行的编辑器。</li>
-                <li>endEdit：rowindex。结束指定行的编辑器。</li>
+                <li>freezeRow：rowIndex，冻结指定的行，以便数据网格（datagrid）向下滚动时这些冻结行总是被显示在顶部。</li>
+                <li>beginEdit：rowIndex。开启指定行的编辑器。</li>
+                <li>endEdit：rowIndex。结束指定行的编辑器。</li>
+                <li>cancelEdit：rowIndex。结束指定行的编辑器。</li>
                 <li>selectRow：rowindex，选中指定行，索引从 0 开始。</li>
+                <li>getRows：none。返回当前页的行。</li>
+                <li>appendRow：row。追加一个新行，新的行将被添加在最后的位置。</li>
+                <li>insertRow：rowIndex，row。在指定索引插入一个新行。</li>
+                <li>deleteRow：rowIndex，row。删除一行。</li>
                 <li>validateRow：rowindex。验证指定的行，有效时返回 true。</li>
                 <li>getEditor：options。获取指定单元格的编辑器，options 参数包含两个属性，rowIndex：行的索引。field：字段名。</li>
-                <li>getRows：none。返回当前页的行。</li>
-                <li>getRows：none。返回当前页的行。</li>
+                <li>acceptChanges：none。提交自从被加载以来到最后一次调用 acceptChanges（改变后endEdit，会自动调用acceptChanges） 的所有更改的数据。</li>
+                <li>rejectChanges：none。回滚最后一次调用 acceptChanges 以来所有更改的数据。</li>
+                <li>getChanges：type。返回所有改变的行。
+                    </br>&nbsp;&nbsp;&nbsp;&nbsp;type 参数表示更改的行的类型，可能的值是：inserted、deleted、updated，等等。当 type
+                    参数没有分配时,代表所有类型。
+                </li>
+                <li>hideColumn：fieldName。隐藏指定的列。</li>
+                <li>showColumn：fieldName。显示指定的列。</li>
+                <li>getColumnFields：none/true。返回列的字段名数组，true，则返回冻结列的字段名数组。none，则返回未冻结列的字段名数组。</li>
+                <li>getColumnOption：fieldName，返回指定列的选项jsonObject。</li>
+                <li>mergeCells：options{index：索引,field：字段名,rowspan：合并跨越的行数,colspan：合并跨越的列数}。把一些单元格合并为一个单元格。</li>
+
             </ol>
         </li>
         <li>事件：

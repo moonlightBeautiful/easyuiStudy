@@ -124,7 +124,7 @@
                 <li>iconCls：string，菜单项标题图标。</li>
                 <li>disabled：boolean，默认值为false，否禁用菜单项（menu item）。</li>
                 <li>href：string，点击菜单项（menu item）时设置页面位置。</li>
-                <li>onclick：function，当点击菜单项（menu item）时被调用的函数。</li>
+                <li>onclick：function(menuItem)，当点击菜单项（menuItem）时被调用的函数。</li>
             </ol>
         </li>
         <li>事件：
@@ -152,6 +152,12 @@
         </li>
     </ol>
 </div>
+
+没有学习，以后补上
+appendItem
+setIcon param 给指定的菜单项（menu item）设置图标。'param' 参数包含两个属性：
+    arget：DOM 对象，即菜单项（menu item）。
+    iconCls：新图标的 CSS class。
 
 </body>
 </html>
