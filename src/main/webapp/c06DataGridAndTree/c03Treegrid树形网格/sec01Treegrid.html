@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title> 树形网格（Treegrid）组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<h2>基本 树形网格（Treegrid））组件</h2>
+<div class="demo-info" style="font-size:20px;margin-bottom: 10px">
+    <div class="demo-tip icon-tip"></div>
+    <div>树形表格允许你展开和收缩多行组合.</div>
+</div>
+<table title="文件浏览" class="easyui-treegrid" style="width:700px;height:250px"
+       data-options="
+				url: './treegrid_data1.json',
+				rownumbers: true,
+				idField: 'id',
+				treeField: 'name'
+			">
+    <thead>
+    <tr>
+        <th data-options="field:'name'" width="220">名称</th>
+        <th data-options="field:'size'" width="100" align="right">大小</th>
+        <th data-options="field:'date'" width="150">修改日期</th>
+    </tr>
+    </thead>
+</table>
+
+<hr>
+<div class="demo-info" style="font-size:20px;margin-top:10px">
+    <div class="demo-tip icon-tip"></div>
+    <div>树形网格（Treegrid）组件get：</div>
+</div>
+<div style="font-size:18px">
+    <ol>
+        <li>简介：以多列形式显示分层网格数据</li>
+        <li>用法：
+            <ol>
+                <li>标记table中使用class创建一个属性网格'easyui-treegrid'。</li>
+                <li>在空标记table使用 js 创建一个属性网格$('#pg').treegrid({})。</li>
+            </ol>
+        </li>
+        <li>依赖：datagrid。</li>
+        <li>属性：
+            <ol>
+                <li>（必须）url：string，可以有children字段，children字段是子节点，其值是array。</li>
+                <li>（必须）idField：string，标识树节点的键名字段。</li>
+                <li>（必须）treeField：string，标识树节点的字段，要与左边第一个th的field的值相等。</li>
+                <li>（列属性）field：string，列的字段名，和加载的数据的jason对象的属性匹配起来。</li>
+            </ol>
+        </li>
+        <li>方法：
+            <ol>
+                <li>disable/enable：none，禁用/启用菜单按钮。</li>
+            </ol>
+        </li>
+    </ol>
+</div>
+
+</body>
+</html>
