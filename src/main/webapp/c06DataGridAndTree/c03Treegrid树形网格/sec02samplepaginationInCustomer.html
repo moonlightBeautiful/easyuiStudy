@@ -62,7 +62,6 @@
             }
         }
         var dg = $(this);
-        var state = dg.data('treegrid');
         var opts = dg.treegrid('options');
         var pager = dg.treegrid('getPager');
         pager.pagination({
@@ -97,7 +96,8 @@
     <div>get：</div>
 </div>
 <div style="font-size:18px">
-    <li>pagination：boolean，默认false。是否分页。</li>
+    <li>pagination：boolean，默认false。是否分页工具栏。</li>
+    <li>pageSize（默认10） pageList（默认 [10,20,30,40,50] ） pageNumber（默认10）和分页组件学习的时候一样用</li>
 </div>
 </body>
 </html>
