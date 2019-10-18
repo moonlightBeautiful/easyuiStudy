@@ -106,7 +106,7 @@
     <span>table标签上全局样式和行样式，行样式器rowStyler和。th标签上列样式器styler。</span>
 </div>
 <div style="margin:10px 0;">
-    <div style="font-size:20px;margin-bottom: 10px">11.页脚行</div>
+    <div style="font-size:20px;margin-bottom: 10px">11.表尾行</div>
     <span>table标签上使用showFooter属性，然后返回的数据中有footer名的json数组，json对象包含列属性，值自己指定。</span>
 </div>
 <div style="margin:10px 0;">
@@ -419,11 +419,11 @@
                 <li>pagination：boolean，默认值是false，数据网格（datagrid）底部是否显示分页工具栏。页数会自动计算，但没页显示的数据数目不会变，依然是加载的全部数据。</li>
                 <li>rowStyler：function（rowIndex，rowData）。返回例如 'background:red' 的样式，用于整行。</li>
                 <li>checkOnSelect：boolean，默认值是true，点击行是否联动选中改行复选框。</li>
-                <li>showFooter：boolean，默认值是false，是否显示页脚行，加载的数据的footer的json数组数据。</li>
+                <li>showFooter：boolean，默认值是false，是否显示表尾行，加载的数据的footer的json数组数据。</li>
 
                 <li>(列属性)field:string，列的字段名，和加载的数据的rows属性的jason对象的属性名匹配起来。</li>
                 <li>(列属性)title:string，列的标题文本。如果没有设置，则使用th的文本值，如果都设置了，则th的文本值会替换title的值。</li>
-                <li>(列属性)align:string，默认值是left，如何对齐该列的数据，可能的值：'left'、'right'、'center'。</li>
+                <li>(列属性)align:string，默认值是left，如何对齐列数据，可能的值：'left'、'right'、'center'。</li>
                 <li>(列属性)halign:string，默认值是align的值，如何对齐该列头的数据，可能的值：'left'、'right'、'center'。</li>
                 <li>(列属性)formatter:function，单元格的格式化函数，需要三个参数：value：字段的值。rowData：行的记录数据。rowIndex：行的索引。</li>
                 <li>(列属性)editor:string/object。指示编辑类型。
@@ -447,7 +447,7 @@
                 <li>getPager：none，返回分页（Pagination）对象。</li>
                 <li>freezeRow：rowIndex，冻结指定的行，以便数据网格（datagrid）向下滚动时这些冻结行总是被显示在顶部。</li>
                 <li>beginEdit：rowIndex。开启指定行的编辑器。</li>
-                <li>endEdit：rowIndex。结束指定行的编辑器。</li>
+                <li>endEdit：rowIndex。结束指定行的编辑器（会自动调用acceptChanges接受改变）。</li>
                 <li>cancelEdit：rowIndex。结束指定行的编辑器。</li>
                 <li>selectRow：rowindex，选中指定行，索引从 0 开始。</li>
                 <li>getRows：none。返回当前页的行。</li>
