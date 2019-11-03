@@ -201,7 +201,6 @@
             field: 'productId',
             rowspan: 2
         });
-        alert();
     })
 
     function changeBorder(cls) {
@@ -253,7 +252,7 @@
             alert('保存')
         }
     }];
-
+	
     function formatMarketPrice(value, rowData, rowIndex) {
         if (value > 30) {
             return '<span style="color:red;">(' + value + ')</span>';
@@ -447,7 +446,7 @@
                 <li>getPager：none，返回分页（Pagination）对象。</li>
                 <li>freezeRow：rowIndex，冻结指定的行，以便数据网格（datagrid）向下滚动时这些冻结行总是被显示在顶部。</li>
                 <li>beginEdit：rowIndex。开启指定行的编辑器。</li>
-                <li>endEdit：rowIndex。结束指定行的编辑器（会自动调用acceptChanges接受改变）。</li>
+                <li>endEdit：rowIndex。结束指定行的编辑。</li>
                 <li>cancelEdit：rowIndex。结束指定行的编辑器。</li>
                 <li>selectRow：rowindex，选中指定行，索引从 0 开始。</li>
                 <li>getRows：none。返回当前页的行。</li>
@@ -456,7 +455,7 @@
                 <li>deleteRow：rowIndex，row。删除一行。</li>
                 <li>validateRow：rowindex。验证指定的行，有效时返回 true。</li>
                 <li>getEditor：options。获取指定单元格的编辑器，options 参数包含两个属性，rowIndex：行的索引。field：字段名。</li>
-                <li>acceptChanges：none。提交自从被加载以来到最后一次调用 acceptChanges（改变后endEdit，会自动调用acceptChanges） 的所有更改的数据。</li>
+                <li>acceptChanges：none。提交自从被加载以来或最后一次调用 acceptChanges 的所有更改的数据。</li>
                 <li>rejectChanges：none。回滚最后一次调用 acceptChanges 以来所有更改的数据。</li>
                 <li>getChanges：type。返回所有改变的行。
                     </br>&nbsp;&nbsp;&nbsp;&nbsp;type 参数表示更改的行的类型，可能的值是：inserted、deleted、updated，等等。当 type

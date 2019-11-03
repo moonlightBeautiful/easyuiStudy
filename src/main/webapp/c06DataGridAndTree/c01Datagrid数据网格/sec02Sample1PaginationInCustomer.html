@@ -19,12 +19,13 @@
     <div>其实就是把数据一次性读取出来到客户端</div>
 </div>
 
-<table id="dg" title="客户端分页" style="width:500px;height:300px" data-options="
+<table id="dg" title="客户端分页" style="width:600px;height:300px" data-options="
 				rownumbers:true,
 				singleSelect:true,
 				autoRowHeight:false,
 				pagination:true,
-				pageSize:10">
+				pageSize:10,
+				toolbar:'#tb'">
     <thead>
     <tr>
         <th field="inv" width="80">月份</th>
@@ -48,7 +49,25 @@
             rowspan: 2
         });
     });
-
+	var toolbar = [{
+        text: '添加',
+        iconCls: 'icon-add',
+        handler: function () {
+            alert('添加')
+        }
+    }, {
+        text: '剪切',
+        iconCls: 'icon-cut',
+        handler: function () {
+            alert('剪切')
+        }
+    }, '-', {
+        text: '保存',
+        iconCls: 'icon-save',
+        handler: function () {
+            alert('保存')
+        }
+    }];
     /*
         随机产生800条数据
      */
