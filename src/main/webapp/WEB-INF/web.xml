@@ -14,7 +14,7 @@
         <welcome-file>default.jsp</welcome-file>
     </welcome-file-list>
 
-    <servlet>
+    <!--<servlet>
         <servlet-name>formServlet</servlet-name>
         <servlet-class>com.java1234.web.FormServlet</servlet-class>
     </servlet>
@@ -30,6 +30,15 @@
     <servlet-mapping>
         <servlet-name>userListServlet</servlet-name>
         <url-pattern>/userList</url-pattern>
+    </servlet-mapping>-->
+
+    <servlet>
+        <servlet-name>dataGridServlet</servlet-name>
+        <servlet-class>com.java1234.web.DataGridServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dataGridServlet</servlet-name>
+        <url-pattern>/dataGridServlet</url-pattern>
     </servlet-mapping>
 
 </web-app>

@@ -2,73 +2,37 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>easyui的学习</title>
-    <link rel="stylesheet" type="text/css" href="./jquery-easyui-1.7.0/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="./jquery-easyui-1.7.0/themes/icon.css">
-    <link rel="stylesheet" type="text/css" href="./jquery-easyui-1.7.0/demo/demo.css">
-    <script type="text/javascript" src="./jquery-easyui-1.7.0/jquery.min.js"></script>
-    <script type="text/javascript" src="./jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
-    <script type="text/javascript" src="./jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+    <title>分页学习</title>
+    <link rel="stylesheet" type="text/css" href="jquery-easyui-1.4.2/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="jquery-easyui-1.4.2/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="jquery-easyui-1.4.2/demo/demo.css">
+    <script type="text/javascript" src="jquery-easyui-1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="jquery-easyui-1.4.2/plugins/datagrid-filter.js"></script>
 </head>
 <body>
-<hr>
-<h2>easyui的学习</h2>
-<div class="demo-info" style="font-size: 18px;">
-    <div class="demo-tip icon-tip"></div>
-    <div>easyui简介：基于jquery的富客户端框架。</div>
-</div>
-<div style="font-size: 18px;">
-    <p>
-        easyui的使用：引入easyui的4个文件
-    </p>
-    <ol>
-        <li>样式：themes/default/easyui.css</li>
-        <li>图标：themes/icon.css</li>
-        <li>jquery：jquery.min.js</li>
-        <li>easyui的js库：jquery.easyui.min.js</li>
-    </ol>
-</div>
 
-
-<div class="demo-info" style="font-size:20px;margin:30px 0 0 0">
-    <div class="demo-tip icon-tip"></div>
-    <div>easyui6类组件的学习：</div>
-</div>
-<ol style="font-size: 18px;">
-    <li>布局组件</li>
-    <ol>
-        <li>面板组件</li>
-    </ol>
-    <li>表单组件
-        <ol>
-            <li>日期框组件</li>
-            <li>日期时间框组件</li>
-            <li>面板组件</li>
-            <li>面板组件</li>
-            <li>面板组件</li>
-            <li>面板组件</li>
-            <li>面板组件</li>
-            <li>面板组件</li>
-            <li>面板组件</li>
-            <li>面板组件</li>
-            <li>面板组件</li>
-            <li>form组件
-                <ol>
-                    <li><a href="c02form/c12form/sec01form.html" target="_blank">基本form组件</a></li>
-                </ol>
-            </li>
-        </ol>
-    </li>
-    <li>菜单和按钮组件</li>
-    <li>窗口组件</li>
-    <li>基础组件（base）
-        <ol>
-            <li><a href="c05base\c09easyload\sec01easyLoad.html" target="_blank">加载器（Easyloader ）</a></li>
-        </ol>
-    </li>
-
-    <li>数据网格和树组件</li>
-</ol>
-
+<table id="dg" title="客户端分页" class="easyui-datagrid" style="width:600px;height:300px" data-options="
+				rownumbers:true,
+				singleSelect:true,
+				autoRowHeight:false,
+                queryParams:{oid:'User:123'},
+                pagination:true,
+                url:'dataGridServlet',
+                idField:'id'">
+    <thead>
+    <tr>
+        <th field="name" width="80">姓名</th>
+        <th field="date" width="100">日期</th>
+        <th field="amount" width="80" align="right">数量</th>
+    </tr>
+    </thead>
+</table>
+<script>
+    $(function () {
+        $('#dg').datagrid("enableFilter");
+    });
+</script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+/*
 package com.java1234.web;
 
 import java.io.IOException;
@@ -61,3 +62,4 @@ public class UserDeleteServlet extends HttpServlet {
 
 
 }
+*/

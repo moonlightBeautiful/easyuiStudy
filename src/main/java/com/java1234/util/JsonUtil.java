@@ -1,3 +1,4 @@
+/*
 package com.java1234.util;
 
 import java.sql.ResultSet;
@@ -8,13 +9,15 @@ import net.sf.json.JSONObject;
 
 public class JsonUtil {
 
-    /**
+    */
+/**
      * 把ResultSet集合转换成JsonArray数组
      *
      * @param rs
      * @return
      * @throws Exception
-     */
+     *//*
+
     public static JSONArray formatResultSetToJsonArray(ResultSet rs) throws Exception {
         ResultSetMetaData md = rs.getMetaData();
         int num = md.getColumnCount();
@@ -29,3 +32,4 @@ public class JsonUtil {
         return jsonArray;
     }
 }
+*/

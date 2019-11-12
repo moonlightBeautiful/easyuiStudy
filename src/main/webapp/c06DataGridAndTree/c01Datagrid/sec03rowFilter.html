@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>分页学习</title>
+    <link rel="stylesheet" type="text/css" href="jquery-easyui-1.4.2/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="jquery-easyui-1.4.2/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="jquery-easyui-1.4.2/demo/demo.css">
+    <script type="text/javascript" src="jquery-easyui-1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="jquery-easyui-1.4.2/plugins/datagrid-filter.js"></script>
+</head>
+<body>
+<p>easyUI1.4.2+jquer1.11.1 行过滤插件可以用</p>
+<table id="dg" title="客户端分页" class="easyui-datagrid" style="width:600px;height:300px" data-options="
+				rownumbers:true,
+				singleSelect:true,
+				autoRowHeight:false,
+                queryParams:{oid:'User:123'},
+                pagination:true,
+                url:'dataGridServlet',
+                idField:'id'">
+    <thead>
+    <tr>
+        <th field="name" width="80">姓名</th>
+        <th field="date" width="100">日期</th>
+        <th field="amount" width="80" align="right">数量</th>
+    </tr>
+    </thead>
+</table>
+<script>
+    $(function () {
+        $('#dg').datagrid("enableFilter");
+    });
+</script>
+</body>
+</html>

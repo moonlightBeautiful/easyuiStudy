@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>基本数据网格（Datagrid）组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.easyui.min1.3.5.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.7.0/plugins/datagrid-filter.js"></script>
+</head>
+<body>
+
+<h2>数据表格在客户端分页</h2>
+<div class="demo-info" style="font-size:20px;margin-bottom: 10px">
+    <div class="demo-tip icon-tip"></div>
+    <div>这个示例教我们如何在客户端实现数据表格分页.</div>
+    <div>其实就是把数据一次性读取出来到客户端</div>
+</div>
+
+<table id="dg" title="客户端分页"  class="easyui-datagrid" style="width:600px;height:300px" data-options="
+				rownumbers:true,
+				singleSelect:true,
+				autoRowHeight:false,
+				pagination:true,
+				pageSize:10">
+    <thead>
+    <tr>
+        <th field="inv" width="80">月份</th>
+        <th field="date" width="100">日期</th>
+        <th field="name" width="80">姓名</th>
+        <th field="amount" width="80" align="right">数量</th>
+        <th field="price" width="80" align="right">价格</th>
+        <th field="cost" width="100" align="right">费用</th>
+        <th field="note" width="110" data-options="editor:'text'">备注</th>
+    </tr>
+    </thead>
+</table>
+<script>
+    $(function () {
+        $('#dg').datagrid('loadData', getData());
+        //被冻结的列和行可以合并，带有编辑器的行可以合并
+       /* $('#dg').datagrid('mergeCells', {
+            index: 3,
+            field: 'inv',
+            rowspan: 2
+        });*/
+        var dg = $('#dg').datagrid({
+            filterBtnIconCls:'icon-filter'
+        });
+        dg.datagrid('enableFilter');    // enable filter
+    });
+	var toolbar = [{
+        text: '添加',
+        iconCls: 'icon-add',
+        handler: function () {
+            alert('添加')
+        }
+    }, {
+        text: '剪切',
+        iconCls: 'icon-cut',
+        handler: function () {
+            alert('剪切')
+        }
+    }, '-', {
+        text: '保存',
+        iconCls: 'icon-save',
+        handler: function () {
+            alert('保存')
+        }
+    }];
+    /*
+        随机产生800条数据
+     */
+    function getData() {
+        var rows = [];
+        for (var i = 1; i <= 800; i++) {
+            var amount = Math.floor(Math.random() * 1000);
+            var price = Math.floor(Math.random() * 1000);
+            rows.push({
+                inv: i + '月',
+                date: $.fn.datebox.defaults.formatter(new Date()),
+                name: '姓名 ' + i,
+                amount: amount,
+                price: price,
+                cost: amount * price,
+                note: '备注 ' + i
+            });
+        }
+        return rows;
+    }
+
+
+    function loadFilter(data) {
+        //第一次加载数据的时候时候，data是数组，要转成json对象，必须含有 'total' 和 'rows' 属性
+        if ($.isArray(data)) {
+            data = {
+                total: data.length,
+                rows: data
+            }
+        }
+
+        //第一次加载数据的时候，给data对象originalRows属性赋值为data的全部数据，以后根据页码和分页尺寸从这里获取数据
+        //alert(data.originalRows);
+        if (data.originalRows == undefined) {
+            data.originalRows = (data.rows);
+        }
+
+        //根据工具栏分页信息配置分页onSelectPage事件和datagrid的option信息，然后跟你讲option信息选择页面数据给rows属性
+        var dg = $(this); //$("#dg");
+        var opts = dg.datagrid('options');
+        // alert(JSON.stringify(opts));
+        var pager = dg.datagrid('getPager');
+        pager.pagination({
+            onSelectPage: function (pageNum, pageSize) {
+                //alert('onSelectPage事件触发');
+                opts.pageNumber = pageNum;
+                opts.pageSize = pageSize;
+                //pager对象的refresh事件不配置也没啥影响。目前没啥影响
+                pager.pagination('refresh', {
+                    pageNumber: pageNum,
+                    pageSize: pageSize
+                });
+                dg.datagrid('loadData', data);
+            }
+        });
+        var start = (opts.pageNumber - 1) * parseInt(opts.pageSize);
+        var end = start + parseInt(opts.pageSize);
+        data.rows = data.originalRows.slice(start, end);
+
+        return data;
+    }
+
+
+</script>
+
+<hr>
+<div class="demo-info" style="font-size:20px;margin-top:10px">
+    <div class="demo-tip icon-tip"></div>
+    <div>数据网格（Datagrid）组件get：</div>
+</div>
+<div style="font-size:18px">
+    <ol>提示：
+        <li>loadFilter：function，过滤器，过滤数据网格的数据。该函数有一个参数 'data'，表示原始数据。必须返回标准数据对象，含有 'total' 和 'rows' 属性。</li>
+        <li>loadData：data，加载本地数据，旧的行会被移除。可以ajax获取后塞给js变量，再加载。</li>
+        <li>options：none，返回选项（options）对象。</li>
+        <li>getPager：none，返回分页（pager）对象。</li>
+        <li>autoRowHeight：boolean，默认值true，是否设置基于该行内容的行高度。设置为 false，则可以提高加载性能。</li>
+        <li>pagination：boolean，默认值为false，数据网格底部是否显示分页工具栏。
+            </br>显示一个简单默认的分页工具栏，可以进行复杂配置，默认pageSize为10，分组为10,20,30,40,50，默认选择第一页。
+        </li>
+        <li>pageNumber：number，当设置了 pagination 属性为true时，初始化分页工具栏页码，会影响字段列序号的值。默认值1。</li>
+        <li>pageSize：number，当设置了 pagination 属性为true时，初始化分页工具栏页面尺寸，会影响字段列序号的值。默认值10</li>
+        <li>（分页对象事件）onSelectPage ：pageNumber, pageSize，用户选择新的页面（也就是点击按钮，pageNumber改变）或改变页面尺寸时触发。回调函数包含两个参数：
+            pageNumber：新的页码，pageSize：新的页面尺寸
+        </li>
+        <li>（分页对象事件）refresh ：options, 刷新并显示分页信息（但是用户选择新的页面后，会自动按照目前规则刷新）。</li>
+
+
+        <li>typeof 变量：String，返回变量的数据类型</br>
+            typeof "John" // 返回 string</br>
+            typeof 3.14 // 返回 number</br>
+            typeof false // 返回 boolean</br>
+            typeof [1,2,3,4] // 返回 object</br>
+            typeof {name:'John', age:34} // 返回 object
+        </li>
+        <li>Math.random()：可返回介于 0（包含） ~ 1（不包含） 之间的一个随机数，15位到17位。</li>
+        <li>Math.floor(Number)：向下（左）取整计算。</li>
+        <li>Math.round(Number)：向最接近取整计算。</li>
+        <li>$.fn是指jquery的命名空间，加上fn上的方法及属性，会对jquery实例每一个有效。
+            </br>如扩展$.fn.abc(), 即$.fn.abc()是对 jquery 扩展了一个 abc 方法,那么后面你的每一个jquery实例都可以引用这个方法了.
+            </br>那么你可以这样子：$("#div").abc();
+            </br>$ = jQuery （可以这么理解）
+        </li>
+        <li>$.fn.datebox.defaults.formatter(new Date())：还不懂，只知道是用默认格式化日期。</li>
+        <li>$.isPlainObject(data)：Boolean，否为纯粹的对象（所谓"纯粹的对象"，就是该对象是通过"{}"或"new Object"创建的。）。</li>
+        <li>$.isArray(data)：Boolean，否为数组。</li>
+        <li>JSON.stringify(jsonObj))：把json对象转成字符串。</li>
+        <li>$.parseJSON(JSON字符串)：将符合标准格式的JSON字符串转为与之对应的JavaScript对象</li>
+        <li>array对象.slice(start[,end])：从已有的数组中返回选定的元素的数组。</li>
+
+    </ol>
+</div>
+
+</body>
+</html>

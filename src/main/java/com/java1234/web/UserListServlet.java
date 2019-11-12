@@ -1,3 +1,4 @@
+/*
 package com.java1234.web;
 
 import java.io.IOException;
@@ -34,11 +35,13 @@ public class UserListServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        /*Enumeration enu = request.getParameterNames();
+        */
+/*Enumeration enu = request.getParameterNames();
         while (enu.hasMoreElements()) {
             String paraName = (String) enu.nextElement();
             System.out.println(paraName + ": " + request.getParameter(paraName));
-        }*/
+        }*//*
+
 
         String page = request.getParameter("page");
         String pageSize = request.getParameter("rows");
@@ -71,3 +74,4 @@ public class UserListServlet extends HttpServlet {
 
 
 }
+*/
