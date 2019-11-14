@@ -1,4 +1,6 @@
 # easyuiStudy
+版本：
+    百度到，目前来看 jquery1.11.11+easyui-1.4.2对扩展插件支持的比较好，easyui自带jquery。
 # 组件学习
     01布局组件
         01。面板组件

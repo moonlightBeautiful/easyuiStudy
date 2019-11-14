@@ -3,13 +3,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>基本数据网格（Datagrid）组件的学习</title>
-    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/icon.css">
-    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/demo/demo.css">
-    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.min.js"></script>
-    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.easyui.min1.3.5.js"></script>
-    <script type="text/javascript" src="../../jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
-    <script type="text/javascript" src="../../jquery-easyui-1.7.0/plugins/datagrid-filter.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/plugins/datagrid-filter.js"></script>
 </head>
 <body>
 
@@ -40,19 +40,16 @@
 </table>
 <script>
     $(function () {
-        $('#dg').datagrid('loadData', getData());
+        $('#dg').datagrid({loadFilter: loadFilter}).datagrid('loadData', getData());
         //被冻结的列和行可以合并，带有编辑器的行可以合并
-       /* $('#dg').datagrid('mergeCells', {
-            index: 3,
-            field: 'inv',
-            rowspan: 2
-        });*/
-        var dg = $('#dg').datagrid({
-            filterBtnIconCls:'icon-filter'
-        });
-        dg.datagrid('enableFilter');    // enable filter
+        /* $('#dg').datagrid('mergeCells', {
+             index: 3,
+             field: 'inv',
+             rowspan: 2
+         });*/
+        $('#dg').datagrid('enableFilter');    // enable filter
     });
-	var toolbar = [{
+    var toolbar = [{
         text: '添加',
         iconCls: 'icon-add',
         handler: function () {
@@ -92,7 +89,9 @@
         return rows;
     }
 
-
+    /*
+        加载数据的过滤器
+     */
     function loadFilter(data) {
         //第一次加载数据的时候时候，data是数组，要转成json对象，必须含有 'total' 和 'rows' 属性
         if ($.isArray(data)) {
@@ -119,10 +118,10 @@
                 opts.pageNumber = pageNum;
                 opts.pageSize = pageSize;
                 //pager对象的refresh事件不配置也没啥影响。目前没啥影响
-                pager.pagination('refresh', {
+                /*pager.pagination('refresh', {
                     pageNumber: pageNum,
                     pageSize: pageSize
-                });
+                });*/
                 dg.datagrid('loadData', data);
             }
         });

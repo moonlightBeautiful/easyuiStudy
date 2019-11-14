@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>折叠面板（Accordion）组件的学习</title>
-    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/icon.css">
-    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/demo/demo.css">
-    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.min.js"></script>
-    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.easyui.min1.3.5.js"></script>
-    <script type="text/javascript" src="../../jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+    <title>布局学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
 </head>
 <body>
 
@@ -36,7 +36,7 @@
     <div data-options="region:'west',split:true" title="西" style="width:100px;"></div>
     <div data-options="region:'center',title:'主区域标题',iconCls:'icon-ok'" title="中">
         <table class="easyui-datagrid"
-               data-options="url:'./datagrid_data1.json',border:false,singleSelect:true,fit:true,fitColumns:true">
+               data-options="url:'./datagrid_data1.json',border:false,singleSelect:true,fitColumns:true,pagination:true">
             <thead>
             <tr>
                 <th data-options="field:'itemid'" width="80">编号</th>
