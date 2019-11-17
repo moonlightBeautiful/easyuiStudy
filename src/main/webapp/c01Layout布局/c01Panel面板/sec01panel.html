@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>面板组件：基本面板组件</title>
-    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/icon.css">
-    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/demo/demo.css">
-    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.min.js"></script>
-    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.easyui.min1.3.5.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
 </head>
 <body>
 <div class="demo-info">
@@ -19,7 +19,9 @@
 <div style="margin:10px 0px;">
     <a href="#" class="easyui-linkbutton" onclick="javascript:$('#p').panel('open')">打开</a>
     <a href="#" class="easyui-linkbutton" onclick="javascript:$('#p').panel('close')">关闭</a>
+    <a href="#" class="easyui-linkbutton" onclick="javascript:$('#p').panel('destroy')">销毁</a>
 </div>
+
 <div id="p" class="easyui-panel" title="基本面板组件" style="width:500px;height:200px;padding:10px;">
     <p style="font-size:14px">jQuery EasyUI框架能够让你轻松构建Web页面.</p>
     <ul>
@@ -37,16 +39,26 @@
 <div class="demo-info" style="font-size:20px">
     <div class="demo-tip icon-tip"></div>
     <div>面板组件是其他组件或元素的容器。</div>
-    <div>面板组件的使用：
-        <ul>
-            <li>easyui根据class="easyui-panel"，把div设置为面板。</li>
-            <li>easyui根据title="基本面板组件"，为面板设置标题。</li>
-            <li>easyui面板基本事件：</li>
-            <ul>
-                <li>打开面板:$('#面板id').panel('open')</li>
-                <li>关闭面板：$('#面板id').panel('close')</li>
-                <li>打开面板easyui根据class="easyui-panel"，把div设置为面板。</li>
-            </ul>
+    <div>面板（easyui-panel）组件的使用：使用div标签
+        <ul>属性
+            <li>title:string，默认值null。在面板头部显示的标题文本。</li>
+            <li>iconCls:string，默认值null。在面板头部显示的标题文本左边显示的16x16的图标。</li>
+            <li>width/height:number，默认值auto。在面板头部显示的标题文本左边显示的16x16的图标。</li>
+            <li>left/top:number，默认值null。面板的绝对位置。</li>
+            <li>fit</li>
+            <li>border</li>
+            <li>collapsible：boolean，默认值false。是否显示可折叠按钮。</li>
+            <li>closable：boolean，默认值false。是否显示关闭按钮。</li>
+            <li>minimizable/maximizable：boolean，默认值false。是否显示最小化按钮/最大化按钮。</li>
+            <li>closed：boolean，默认值false。是否在初始化的时候关闭面板。</li>
+            <li></li>
+        </ul>
+        <ul>事件
+            <li></li>
+        </ul>
+        <ul>方法
+            <li>open/close：none。打开/关闭面板。原理：display：block/none，在页面还是存在的，占用内存。</li>
+            <li>destroy：none。销毁面板。在页面中面板节点被销毁，查找不到了。不占用内存。</li>
         </ul>
     </div>
 </div>

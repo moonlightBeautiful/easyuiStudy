@@ -94,3 +94,15 @@
 .icon-large-chart{
 	background:url('icons/large_chart.png') no-repeat center center;
 }
+
+.icon-loading{
+	background:url('icons/loading.gif') no-repeat center center;
+}
+
+.icon-favorite{
+	background:url('icons/favorite.gif') no-repeat center center;
+}
+
+.icon-sascLog{
+	background:url('icons/sascLog.png') no-repeat center center;
+}

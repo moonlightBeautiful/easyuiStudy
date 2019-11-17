@@ -107,43 +107,33 @@
 </div>
 
 <hr>
-<div class="demo-info" style="font-size:20px;margin-top:10px">
+<h1>基本对话框组件get：</h1>
+<div class="demo-info" style="font-size:20px">
     <div class="demo-tip icon-tip"></div>
-    <div>基本对话框（dialog）组件get：</div>
-</div>
-<div style="font-size:18px">
-    <ol>
-        <li>简介：对话框（dialog）是一个特殊类型的窗口，它在顶部有一个工具栏，在底部有一个按钮栏。</li>
-        <li>用法：从标记创建窗口，div的class为easyui-dialog。使用 javascript 创建窗口，$('#div的id').dialog({})</li>
-        <li>属性：在标记中data-options="key:value,key:value"中配置 或者 在js中$('#div的id').dialog({key:value,key:value})配置</li>
-        <ul>
-            <li>data-options：↓该属性扩展自窗口（window）</li>
-            <ul>
+    <div>依赖：window。</div>
+    <div>对话框（easyui-dialog）组件的使用：使用div标签
+        <ul>属性
+            <li>（panel）iconCls：string，标题图标。</li>
+            <li>（panel）tools：arrayJson,selector，自定义工具组。1、数组，每个元素包含 iconCls 和 handler 两个属性。2、选择器，指示工具组</li>
+            <li>（window）title：string，标题文本。</li>
+            <li>（window）modal：boolean，默认值false。是不是模态（modal）窗口，模态窗口则不允许操作源窗口。</li>
+            <li>（window）collapsible/minimizable/maximizable/closable：boolean，默认值true，是否显示折叠/最小化/最大化/关闭按钮。</li>
+            <li>（window）closed：boolean，，默认值false，是否关闭窗口，默认窗口是打开状态。</li>
+            <li>（window）draggable：boolean，默认值true，是否可拖拽。</li>
+            <li>（window）resizable：boolean，默认值true，是否可调整尺寸。</li>
+            <li>（window）shadow：boolean，默认值false，当窗口能够显示阴影的时候是否显示阴影。</li>
+            <li>（window）inline：boolean，默认值false，定义如何放置窗口，当设置为 true 时则放在它的父容器里，当设置为 false 时则浮在所有元素的顶部。</li>
+            <li> toolbar/buttons：arrayJson/selector，对话框的顶部/底部工具栏。按钮有三个属性text、iconCls、handler(点击按钮时触发)。</li>
+        </ul>
+        <ul>事件
 
-                <li>（panel）iconCls：string，标题图标。</li>
-                <li>（panel）tools：arrayJson,selector，自定义工具组。1、数组，每个元素包含 iconCls 和 handler 两个属性。2、选择器，指示工具组</li>
-                <li>（window）title：string，标题文本。</li>
-                <li>（window）collapsible：boolean ，默认值true，是否显示折叠按钮。</li>
-                <li>（window）minimizable/maximizable：boolean，默认值true，是否显示最小化/最大化按钮。</li>
-                <li>（window）closable：boolean，默认值true，是否显示关闭按钮。</li>
-                <li>（window）closed：boolean，，默认值false，是否关闭窗口，默认窗口是打开状态。</li>
-                <li>（window）draggable：boolean，默认值true，是否可拖拽。</li>
-                <li>（window）resizable：boolean，默认值true，是否可调整尺寸。</li>
-                <li>（window）shadow：boolean，默认值false，当窗口能够显示阴影的时候是否显示阴影。</li>
-                <li>（window）modal：boolean，默认值false，是不是模态（modal）窗口，模态窗口则不允许操作源窗口。</li>
-                <li>（window）inline：boolean，默认值false，定义如何放置窗口，当设置为 true 时则放在它的父容器里，当设置为 false 时则浮在所有元素的顶部。</li>
-                <li> toolbar：arrayJson/selector，对话框的顶部工具栏。按钮有三个属性text、iconCls、handler。</li>
-                <li> buttons：arrayJson/selector，对话框的底部工具栏。按钮有三个属性text、iconCls、handler。</li>
-            </ul>
         </ul>
-        <li>事件：扩展自窗口（window）。</li>
-        <li>方法：扩展自窗口（window）。</li>
-        <ul>
-            <li>（panel）open：none，打开面板。</li>
-            <li>（panel）close：none，闭面板。</li>
+        <ul>方法
+            <li>（panel）open/close：none，打开/关闭对话框。</li>
         </ul>
-    </ol>
+    </div>
 </div>
+
 
 </body>
 </html>

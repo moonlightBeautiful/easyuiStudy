@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>标签页（Tabs）组件的学习</title>
-    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/metro-blue/easyui.css">
     <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/icon.css">
     <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/demo/demo.css">
     <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.min.js"></script>
@@ -191,8 +191,9 @@
 <div style="font-size:18px">
     <ol>
         <li>简介：每次只显示一个选项卡d的面板。</li>
-        <li>用法：从标记创建窗口，div的class为easyui-tabs。使用 javascript 创建窗口，$('#div的id').tabs({})</li>
+        <li>用法：从标记创建窗口，div的class为easyui-tabs。使用 javascript 创建窗口，$('#div的id').tabs({})。每个标签页面板（tab panel）通过子 div 标记被创建。</li>
         <li>依赖：panel和linkbutton</li>
+        <li>大小：div上指定大小，height width</li>
         <li>属性：在标记中data-options="key:value,key:value"中配置 或者 在js中$('#div的id').tabs({key:value,key:value})配置</li>
         <ul>
             <li>data-options：</li>
@@ -201,6 +202,14 @@
             <li> plain：boolean，默认值false，是否使用背景容器图片来呈现 tab 条。</li>
             <li> tools:array,selector，放置在标签栏右侧的工具栏。</li>
             <li> tabPosition:string，标签页（tab）位置。可能的值：'top'、'bottom'、'left'、'right'。</li>
+            <li> <pre>tools:array/selector，放置在头部的左侧或右侧的工具栏。
+        数组定义工具:
+            [{ iconCls:'icon-add', handler:function(){ alert('add') }},{ iconCls:'icon-save', handler:function(){ alert('save') } }] <br/>
+        DOM 容器定义工具:
+        div id="tab-tools"
+            a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-add"/a
+            a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-save"/a</pre>
+            </li>
             <li>（子div标签页面板）title：string，子div标签页面板的标题文本。</li>
             <li>（子div标签页面板）iconCls:string，子div标签页面板的标题图标。</li>
             <li>（子div标签页面板）closable:boolean，默认值false，是否显示一个关闭按钮。</li>
@@ -209,11 +218,20 @@
             <li>（子div标签页面板）tools:array,selector，标签上右侧的工具栏。</li>
             <li>（子div标签页面板）content:string,selector，标签页面板的内容。</li>
         </ul>
+        <li>事件：</li>
+        <ul>
+            <li>onSelect(title/index)：当用户选择一个标签页面板（tab panel）时触发。</li>
+        </ul>
         <li>方法：</li>
         <ul>
             <li>tabs：none，返回全部的标签页面板。</li>
-            <li>select：which，标签页面板（tab panel）的标题（title）或索引（index），选择一个标签页面板。</li>
-            <li>add：options(tab panel)，添加一个新的标签页面板（tab panel）,selected默认为true。</li>
+            <li>exists(‘title’/index)：是否存在。</li>
+            <li>select(‘title’/index)：which，标签页面板（tab panel）的标题（title）或索引（index），选中一个标签页面板。</li>
+            <li>
+                add(options)：options={title:'',content:''}，添加一个新的标签页面板（tab panel）,selected默认为true。<br/>
+                var content = ' iframe scrolling="auto" frameborder="0" src="'+url+'" style="width:100%;height:100%;">
+                /iframe>';
+            </li>
             <li>close：which，标签页面板（tab panel）的标题（title）或索引（index），关闭一个标签页面板。</li>
             <li>getSelected：none，获取选中的标签页面板（tab panel）。</li>
             <li>getTabIndex：tab panel，获取指定的标签页面板（tab panel）的索引。</li>
