@@ -136,9 +136,7 @@
         <th data-options="field:'ck',checkbox:true"></th>
         <th data-options="field:'itemId',width:80,align:'center',halign:'center',title:'编号(itemId)'">编号</th>
         <th data-options="field:'productId',width:100">产品编号(productId)</th>
-        <th data-options="field:'productName',width:100,editor:{type:'combobox'
-                                                    ,options:{valueField:'productId',textField:'productName'
-                                                                ,url:'./products.json',required:true}}">
+        <th data-options="field:'productName',width:100">
             产品名称(productName)
         </th>
     </tr>
@@ -196,7 +194,7 @@
             }]
         });
         //如果表头有进行过行或者列的合并，则无效
-        $('#dg').datagrid('mergeCells',{
+        $('#dg').datagrid('mergeCells', {
             index: 4,
             field: 'productId',
             rowspan: 2
@@ -252,7 +250,7 @@
             alert('保存')
         }
     }];
-	
+
     function formatMarketPrice(value, rowData, rowIndex) {
         if (value > 30) {
             return '<span style="color:red;">(' + value + ')</span>';
@@ -473,8 +471,8 @@
             <ol>
                 <li>onLoadSuccess：data，当数据加载成功时触发。</li>
                 <li>onClickRow:rowIndex（被点击行的索引，从 0 开始）, rowData（被点击行对应的记录）。当用户点击一行时触发</li>
-                <li>onDblClickCell：index,field,value	在用户双击一个单元格的时候触发。</li>
-                <li>onDblClickRow：	index,row	在用户双击一个单元格的时候触发。 :</li>
+                <li>onDblClickCell：index,field,value 在用户双击一个单元格的时候触发。</li>
+                <li>onDblClickRow： index,row 在用户双击一个单元格的时候触发。 :</li>
             </ol>
         </li>
 
