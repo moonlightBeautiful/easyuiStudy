@@ -1,0 +1,5 @@
+面板（panel）的尺寸就适应它的父容器。
+1.当父容器内，只有一个datagrid只需要把它的属性fit设置为true就能实现自动适应窗体。
+2.当父容器内，在datagrid上方还有其他div的话，div会把datagrid挤压到窗体的下方，影响datagrid下方的显示。如果datagrid有分页控件，影响datagrid下方分页控件的显示。
+3.当父容器内，在datagrid下方还有其他div的话，datagrid会把下方的div挤出父容器，就相当于没有下方的div。
+4.datagrid可以继承父容器的fit属性

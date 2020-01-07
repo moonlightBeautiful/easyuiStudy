@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>页面只有一个datagrid</title>
+    <link rel="stylesheet" type="text/css" href="../../../jquery-easyui-1.4.2/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../../jquery-easyui-1.4.2/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../../jquery-easyui-1.4.2/demo/demo.css">
+    <script type="text/javascript" src="../../../jquery-easyui-1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../../jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<div style="width: 500px;height: 500px">
+    <table class="easyui-datagrid" fit="true" url="../datagrid_data1.json" pagination="true">
+        <thead>
+        <tr>
+            <th data-options="field:'ck',checkbox:true"></th>
+            <th data-options="field:'itemId',align:'center',halign:'center',title:'编号(itemId)'">编号</th>
+            <th data-options="field:'productId'">产品编号(productId)</th>
+            <th data-options="field:'productName'">
+                产品名称(productName)
+            </th>
+        </tr>
+        </thead>
+    </table>
+</div>
+</body>
+</html>

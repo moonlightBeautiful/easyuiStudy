@@ -3,12 +3,12 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>基本对话框（dialog）组件的学习</title>
-    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/icon.css">
-    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/demo/demo.css">
-    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.min.js"></script>
-    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.easyui.min1.3.5.js"></script>
-    <script type="text/javascript" src="../../jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
 </head>
 <body>
 
@@ -80,31 +80,33 @@
 </div>
 <div id="dlg3" class="easyui-dialog" title="对话窗体上的复杂工具栏" style="width:400px;height:200px;padding:10px"
      data-options="
+                closed:true,
 				iconCls: 'icon-save',
 				toolbar: '#dlg-toolbar',
 				buttons: '#dlg-buttons'
 			">
     对话窗体内容.
+    <div id="dlg-toolbar" style="padding:2px 0">
+        <table cellpadding="0" cellspacing="0" style="width:100%">
+            <tr>
+                <td style="padding-left:2px">
+                    <a href="javascript:void(0)" class="easyui-linkbutton"
+                       data-options="iconCls:'icon-edit',plain:true">编辑</a>
+                    <a href="javascript:void(0)" class="easyui-linkbutton"
+                       data-options="iconCls:'icon-help',plain:true">帮助</a>
+                </td>
+                <td style="text-align:right;padding-right:2px">
+                    <input class="easyui-searchbox" data-options="prompt:'请输入...'" style="width:150px"></input>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="dlg-buttons">
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="javascript:alert('保存')">保存</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="javascript:$('#dlg3').dialog('close')">关闭</a>
+    </div>
 </div>
-<div id="dlg-toolbar" style="padding:2px 0">
-    <table cellpadding="0" cellspacing="0" style="width:100%">
-        <tr>
-            <td style="padding-left:2px">
-                <a href="javascript:void(0)" class="easyui-linkbutton"
-                   data-options="iconCls:'icon-edit',plain:true">编辑</a>
-                <a href="javascript:void(0)" class="easyui-linkbutton"
-                   data-options="iconCls:'icon-help',plain:true">帮助</a>
-            </td>
-            <td style="text-align:right;padding-right:2px">
-                <input class="easyui-searchbox" data-options="prompt:'请输入...'" style="width:150px"></input>
-            </td>
-        </tr>
-    </table>
-</div>
-<div id="dlg-buttons">
-    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="javascript:alert('保存')">保存</a>
-    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="javascript:$('#dlg3').dialog('close')">关闭</a>
-</div>
+
 
 <hr>
 <h1>基本对话框组件get：</h1>
