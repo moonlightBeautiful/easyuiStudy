@@ -403,7 +403,9 @@
         </li>
         <li>属性：
             <ol>
-                <li>url：string，从远程站点请求数据的 URL，返回的数据必须是json格式，含有 'total' 和 'rows' 属性，total的值是number，rows的值是jsonArray。
+                <li>url：string，从远程站点请求数据的 URL。
+                    返回的数据必须是json格式，含有 'total' 和 'rows' 属性，total的值是number，rows的值是jsonArray。
+                    {"total": number,"rows": [{json},{json}]}
                 </li>
                 <li>singleSelect：boolean，默认值是false，是否只允许选中一行。</li>
                 <li>collapsible：boolean，默认值是false，是否显示折叠按钮。</li>
@@ -413,11 +415,13 @@
                 <li>selectOnCheck：boolean，默认值是true，点击复选框是否联动选中该行。</li>
                 <li>checkOnSelect：boolean，默认值是true，点击行是否联动选中改行复选框。</li>
                 <li>toolbar：array,selector，数据网格（datagrid）面板头部的工具栏。1、数组，每个工具选项与链接按钮（linkbutton）一样。2、选择器，只是工具栏。</li>
-                <li>pagination：boolean，默认值是false，数据网格（datagrid）底部是否显示分页工具栏。页数会自动计算，但没页显示的数据数目不会变，依然是加载的全部数据。</li>
+                <li>
+                    pagination：boolean，默认值是false，数据网格（datagrid）底部是否显示分页工具栏。页数会自动计算，但没页显示的数据数目不会变，依然是加载的全部数据。
+                    true，会在网格底部显示分页工具栏，点击分页工具栏按钮，会自动从url从新获取数据，默认传参数2个，page: 默认当前页 rows: 默认大小为诶20。
+                </li>
                 <li>rowStyler：function（rowIndex，rowData）。返回例如 'background:red' 的样式，用于整行。</li>
                 <li>checkOnSelect：boolean，默认值是true，点击行是否联动选中改行复选框。</li>
                 <li>showFooter：boolean，默认值是false，是否显示表尾行，加载的数据的footer的json数组数据。</li>
-
                 <li>(列属性)field:string，列的字段名，和加载的数据的rows属性的jason对象的属性名匹配起来。</li>
                 <li>(列属性)title:string，列的标题文本。如果没有设置，则使用th的文本值，如果都设置了，则th的文本值会替换title的值。</li>
                 <li>(列属性)align:string，默认值是left，如何对齐列数据，可能的值：'left'、'right'、'center'。</li>
@@ -430,10 +434,12 @@
                     </br>&nbsp;&nbsp;&nbsp;&nbsp;options：对象，编辑类型对应的编辑器选项。
                 </li>
                 <li>(列属性)styler:function（value，rowData，rowIndex）。返回例如 'background:red' 的样式，用于整列。</li>
-
-
                 <li>(列thead属性)frozen:boolean，默认值是false，使用frozen和thead标签把指定列固定在左侧，不允许滑动，不参与合并列。</li>
-
+                <li>(列冻结在左边，当表格宽度不够时，不参与左右滑动)frozen或者frozenColumns：
+                        frozen:用法，用 thead data-options="frozen:true 把要冻结的列包裹起来，然后剩余列 用另一个thead包裹起来。
+                        (表格属性)frozenColumns：[array]，例如：{[[{field: 'ck', checkbox:true}]]。
+                </li>
+                <li>(列属性)checkbox：设置为 true，则显示复选框。复选框有固定宽度。默认值为false。</li>
             </ol>
         </li>
         <li>方法：
@@ -464,7 +470,6 @@
                 <li>getColumnFields：none/true。返回列的字段名数组，true，则返回冻结列的字段名数组。none，则返回未冻结列的字段名数组。</li>
                 <li>getColumnOption：fieldName，返回指定列的选项jsonObject。</li>
                 <li>mergeCells：options{index：索引,field：字段名,rowspan：合并跨越的行数,colspan：合并跨越的列数}。把一些单元格合并为一个单元格。</li>
-
             </ol>
         </li>
         <li>事件：

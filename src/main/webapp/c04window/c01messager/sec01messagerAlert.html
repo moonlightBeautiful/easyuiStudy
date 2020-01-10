@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>提示信息组件：基本提示信息组件</title>
-    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/icon.css">
-    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/demo/demo.css">
-    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.min.js"></script>
-    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.easyui.min1.3.5.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/plugins/datagrid-filter.js"></script>
 </head>
 <body>
 
@@ -57,7 +59,8 @@
             <ul>
                 <li>title：标题</li>
                 <li>msg：内容</li>
-                <li>icon：消息框关闭时间，默认是4秒。如果定义为 0，除非用户关闭，消息窗口将不会关闭。如果定义为非0值，消息窗口将在超时后自动关闭。</li>
+                <li>icon：要显示的图标图片。默认无图标，可用的值是：error、question、info、warning。</li>
+                <li>fn：当窗口关闭时触发的回调函数。</li>
             </ul>
         </ul>
     </div>
