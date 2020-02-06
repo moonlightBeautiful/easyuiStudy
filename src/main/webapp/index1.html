@@ -3,41 +3,39 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>easyui的学习</title>
-    <link rel="stylesheet" type="text/css" href="./jquery-easyui-1.7.0/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="./jquery-easyui-1.7.0/themes/icon.css">
-    <link rel="stylesheet" type="text/css" href="./jquery-easyui-1.7.0/demo/demo.css">
-    <script type="text/javascript" src="./jquery-easyui-1.7.0/jquery.min.js"></script>
-    <script type="text/javascript" src="jquery-easyui-1.7.0/jquery.easyui.min1.3.5.js"></script>
-    <script type="text/javascript" src="./jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+    <link rel="stylesheet" type="text/css" href="./jquery-easyui-1.4.2/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="./jquery-easyui-1.4.2/themes/icon.css">
+    <script type="text/javascript" src="./jquery-easyui-1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="./jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="./jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
 </head>
 <body>
 <hr>
-<h2>easyui的学习</h2>
-<div class="demo-info" style="font-size: 18px;">
-    <div class="demo-tip icon-tip"></div>
-    <div>easyui简介：基于jquery的富客户端框架。</div>
-</div>
+<h2>easyUI的学习</h2>
 <div style="font-size: 18px;">
-    <p>
-        easyui的使用：引入easyui的4个文件
-    </p>
+    <p>easyUI简介：基于jquery的富客户端框架（前台界面插件结合）。</p>
+    <p>easyUI必须引入的4个文件，如下：</p>
     <ol>
-        <li>样式：themes/default/easyui.css</li>
-        <li>图标：themes/icon.css</li>
-        <li>jquery：jquery.min.js</li>
-        <li>easyui的js库：jquery.easyui.min1.3.5.js</li>
+        <li>所需样式：themes/default/easyui.css</li>
+        <li>所需图标：themes/icon.css</li>
+        <li>基于jquery：jquery.min.js</li>
+        <li>easyUI的js库：jquery.easyui.min.js</li>
+        <li>语言库(如果需要中文支持)：中文easyui-lang-zh_CN.js</li>
     </ol>
-</div>
-
-
-<div class="demo-info" style="font-size:20px;margin:30px 0 0 0">
-    <div class="demo-tip icon-tip"></div>
-    <div>easyui6类组件的学习：</div>
+    <p>easyUI组件的使用：
+    <ol>
+        <li>先在html标签上class指定组件，然后data-options属性配置组件选项。</li>
+        <li>先写空html标签对，然后js中使用指定组件和组件选项var 组件对象 = $('#html标签id').组件({组件配置})</li>
+    </ol>
+    <p>
+    <p>使用版本：easyui1.4.2+jquery1.11.1 开发 bug 较少
+    <p>
+    <p>easyUI大致分为6大组件：</p>
 </div>
 <ol style="font-size: 18px;">
     <li>布局组件</li>
     <ol>
-        <li>面板组件</li>
+        <li><a href="c01Layout布局/c01Panel面板/summary.html" target="_blank">面板组件</a></li>
     </ol>
     <li>表单组件
         <ol>
