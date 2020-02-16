@@ -12,46 +12,6 @@
 </head>
 <body>
 
-<h2>基本数据网格（Datagrid）组件</h2>
-<div class="demo-info" style="font-size:20px;margin-bottom: 10px">
-    <div class="demo-tip icon-tip"></div>
-    <div>一般都是使用table标签创建数据网格（Datagrid）.</div>
-</div>
-
-
-<div style="margin:10px 0;">
-    <div style="font-size:20px;margin-bottom: 10px">1.添加边框和斑马线：</div>
-    <span>边框（给panel对象增加class值,指定边框透明transparent，然后时候后代选择器选择.datagrid-body td）:</span>
-    <select onchange="changeBorder(this.value)">
-        <option value="lines-both">都有</option>
-        <option value="lines-no">无边框</option>
-        <option value="lines-right">右边框</option>
-        <option value="lines-bottom">下边框</option>
-    </select>
-    <span>斑马线（数据网格的striped属性）:</span>
-    <input type="checkbox" onclick="$('#dg').datagrid({striped:$(this).is(':checked')})">
-</div>
-<div style="margin:10px 0;">
-    <div style="font-size:20px;margin-bottom: 10px">2.单选还是多选:</div>
-    <span>singleSelect属性，是否单选</span>
-    <select onchange="$('#dg').datagrid({singleSelect:(this.value==0)})">
-        <option value="0">单选</option>
-        <option value="1">多选</option>
-    </select>
-    </br>
-</div>
-<div style="margin:10px 0;">
-    <div style="font-size:20px;margin-bottom: 10px">3.选中行和复选框的联动:</div>
-    <span>selectOnCheck（点击复选框是否联动选中该行）和checkOnSelect（点击行是否联动选中改行复选框）属性,默认联动，和表头th增加checkbox:true属性</span>
-    </br>行联动复选框: <input type="checkbox" checked onchange="$('#dg').datagrid({checkOnSelect:$(this).is(':checked')})">
-    </br>复选框联动行: <input type="checkbox" checked onchange="$('#dg').datagrid({selectOnCheck:$(this).is(':checked')})">
-</div>
-<div style="margin:10px 0;">
-    <div style="font-size:20px;margin-bottom: 10px">4.获取选中的值:</div>
-    <span>getSelected和getSelections方法</span>
-    <a href="#" class="easyui-linkbutton" onclick="getSelected()">获取单选数据(getSelected)</a>
-    <a href="#" class="easyui-linkbutton" onclick="getSelections()">获取多选数据(getSelections)</a>
-</div>
 <div style="margin:10px 0;">
     <div style="font-size:20px;margin-bottom: 10px">5.面板头部的工具栏:</div>
     <span>toolbar属性，可以指向js变量，可以是string，可以是selector(被toolbar属性指向，默认隐藏)</span>
@@ -200,10 +160,6 @@
             rowspan: 2
         });
     })
-
-    function changeBorder(cls) {
-        $('#dg').datagrid('getPanel').removeClass('lines-both lines-no lines-right lines-bottom').addClass(cls);
-    }
 
     function getSelected() {
         var row = $('#dg').datagrid('getSelected');

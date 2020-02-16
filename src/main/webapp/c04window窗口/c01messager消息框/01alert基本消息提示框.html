@@ -2,18 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>提示信息组件：基本提示信息组件</title>
+    <title>基本消息提示框组件</title>
     <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/icon.css">
     <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/demo/demo.css">
     <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.min.js"></script>
     <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="../../jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
-    <script type="text/javascript" src="../../jquery-easyui-1.4.2/plugins/datagrid-filter.js"></script>
 </head>
 <body>
-
-<h2>提醒消息组件</h2>
 <div class="demo-info">
     <div class="demo-tip icon-tip"></div>
     <div>点击每个按钮显示不同的提醒消息框.</div>
@@ -31,7 +28,7 @@
     }
 
     function alert2() {
-        $.messager.alert('我的标题', '这是一个错误消息!', 'error');
+        $.messager.alert('我的标题', '这是一个错误消息!带回调函数', 'error',close1);
     }
 
     function alert3() {
@@ -45,6 +42,10 @@
     function alert5() {
         $.messager.alert('我的标题', '这是一个警告消息!', 'warning');
     }
+
+    function close1() {
+        $.messager.alert('我的标题', '回调函数');
+    }
 </script>
 
 <hr>
@@ -52,18 +53,13 @@
 <div class="demo-info" style="font-size:20px">
     <div class="demo-tip icon-tip"></div>
     <div>提醒消息组件。$.messager.alert({})</div>
-    <div>提醒消息组件的使用：
-        <ul>
-            <li>显示一个警告提示窗口。</li>
-            <li>（）入参：</li>
-            <ul>
-                <li>title：标题</li>
-                <li>msg：内容</li>
-                <li>icon：要显示的图标图片。默认无图标，可用的值是：error、question、info、warning。</li>
-                <li>fn：当窗口关闭时触发的回调函数。</li>
-            </ul>
-        </ul>
-    </div>
+    <ul>属性
+        <li>title：标题</li>
+        <li>msg：内容</li>
+        <li>icon：要显示的图标图片。默认无图标，可用的值是：error、question、info、warning。</li>
+        <li>fn：当窗口关闭时触发的回调函数。</li>
+    </ul>
+</div>
 </div>
 </body>
 </html>

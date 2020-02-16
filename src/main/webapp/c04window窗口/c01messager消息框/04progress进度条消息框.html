@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>进度条消息框</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<div style="margin:10px 0;">
+    <a href="#" class="easyui-linkbutton" onclick="alertProgress()">弹出进度条消息框</a>
+</div>
+<script>
+    function alertProgress() {
+        $.messager.progress({
+            title: '标题...',
+            msg: '消息内容...',
+            text:'进度条上的文本...'
+        });
+        setTimeout(function () {
+            $.messager.progress('close');
+        }, 10000)
+    }
+</script>
+
+<hr>
+<div class="demo-info" style="font-size:20px">
+    <div class="demo-tip icon-tip"></div>
+    <div>$.messager.progress({})</div>
+    <div>
+        <ul>属性
+            <li>title：标题。</li>
+            <li>msg：内容。</li>
+            <li>text：显示在进度条里的文本，默认值是 undefined 。</li>
+            <li>interval：进度条上的进度每次增长间隔时间，以毫秒为单位的时间长度。默认值是 300。</li>
+        </ul>
+        <ul>方法
+            <li>close：none。关闭显示的进度条。</li>
+        </ul>
+        <ul>心得
+            <li>配合setTimeout(function () {})使用：指定时间段后执行。</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

@@ -36,7 +36,7 @@
     <div data-options="region:'west',split:true" title="西" style="width:100px;"></div>
     <div data-options="region:'center',title:'主区域标题',iconCls:'icon-ok'" title="中">
         <table class="easyui-datagrid"
-               data-options="url:'./datagrid_data1.json',border:false,singleSelect:true,fitColumns:true,pagination:true">
+               data-options="url:'./datagrid_data1.json',fit:true,border:false,singleSelect:true,fitColumns:true,pagination:true">
             <thead>
             <tr>
                 <th data-options="field:'itemid'" width="80">编号</th>
@@ -82,35 +82,20 @@
 <hr>
 <div class="demo-info" style="font-size:20px;margin-top:10px">
     <div class="demo-tip icon-tip"></div>
-    <div>折叠面板（Accordion）组件get：</div>
 </div>
 <div style="font-size:18px">
     <ol>
-        <li>简介：布局（layout）是有五个区域（北区 north、南区 south、东区 east、西区 west 和中区
-            center）的容器。中间的区域面板是必需的，边缘区域面板是可选的。布局（layout）可以嵌套，因此用户可建立复杂的布局。
-        </li>
-        <li>用法：只能通过标记创建窗口，div的class为easyui-layout。</li>
-        <li>依赖：panel和resizable</li>
-        <li>属性：在标记中data-options="key:value,key:value"中配置，全屏布局的话，把easyui-layout放到body的class上
-            <ol>容器属性：
-                <li>fit：boolean，默认值为false，布局（layout）的尺寸是否自动调整适应它的父容器。</li>
-            </ol>
-            <ol>区域面板属性：布局（Layout）的布局面板（layout panel）属性继承自面板（panel），下面是附加的属性：
-                <li>region：string，定义布局面板（layout panel）的位置，其值是下列之一：north、south、east、west、center。</li>
-                <li>split：boolean，默认值false，是否显示拆分栏，可以改变面板（panel）的尺寸。一般用于北、南、东、西四块面板上。</li>
-                <li>(panel)border：boolean，默认值true，是否显示面板（panel）的边框。</li>
-                <li>(panel)title：string，默认值true，显示在面板（panel）头部的标题文字。</li>
-                <li>(panel)width/height：number，面板（panel）的宽度/高度。</li>
-                <li>(panel)collapsible：boolean，默认值true，是否显示折叠按钮。但面板组件默认值为false。</li>
-
-            </ol>
-        </li>
-        <li>方法：
-            <ol>
-                <li>add：options，添加一个指定的面板（panel）。</li>
-                <li>remove：region，移除指定的面板（panel），'region' 参数可能的值：'north'、'south'、'east'、'west'。</li>
-            </ol>
-        </li>
+        属性:
+        <li>region：string，定义布局面板（layout panel）的位置，其值是下列之一：north、south、east、west、center。</li>
+        <li>split：boolean，默认值false，是否显示拆分栏，可以改变面板（panel）的尺寸。一般用于北、南、东、西四块面板上。</li>
+        <li>(panel)border：boolean，默认值true，是否显示面板（panel）的边框。</li>
+        <li>(panel)title：string，默认值true，显示在面板（panel）头部的标题文字。</li>
+        <li>(panel)width/height：number，面板（panel）的宽度/高度。</li>
+        <li>(panel)collapsible：boolean，默认值true，是否显示折叠按钮。但面板组件默认值为false。</li>
+    </ol>
+    <ol>方法：$('#面板容器id').layout('方法', 参数);
+        <li>add：String options 区域面板配置对象。添加一个指定的区域面板（panel）。</li>
+        <li>remove：String 区域north、south、east、west，不能移除中center 。移除一个指定的区域面板（panel）。</li>
     </ol>
 </div>
 

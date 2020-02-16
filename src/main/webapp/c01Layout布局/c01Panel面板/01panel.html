@@ -32,6 +32,10 @@
     <a href="javascript:void(0)" class="easyui-linkbutton" onclick="javascript:$('#p').panel('expand',true)">展开</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" onclick="javascript:$('#p').panel('collapse',true)">折叠</a>
 </div>
+
+
+
+
 <hr>
 <h1>面板组件属性、事件、方法总结：</h1>
 <div class="demo-info" style="font-size:20px">
@@ -48,8 +52,8 @@
             <li>collapsible/closable/minimizable/maximizable：boolean，默认值false。是否显示可折叠按钮/关闭按钮/最小化按钮/最大化按钮。</li>
             <li>collapsed/closed/minimized/maximized：boolean，默认值false。定义初始化面板是否折叠/关闭/最小化/最大化。</li>
             <li>loadingMessage：string。当加载远程数据时在面板主体里显示一条信息。</li>
-            <li>tools：array/selector，默认值[]。自定义工具组，<br>
-                数组，每个数组元素包含 iconCls 和 handler 两个属性。<br>
+            <li>tools：array/selector，默认值是null。自定义工具栏，<br>
+                数组，每个数组元素包含text(非必须)、iconCls、handler属性。<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;tools:[ { iconCls:'icon-add', handler:function(){alert('add')} },{
                 iconCls:'icon-edit', handler:function(){alert('edit')} }]<br>
                 选择器，指示工具组。<br>

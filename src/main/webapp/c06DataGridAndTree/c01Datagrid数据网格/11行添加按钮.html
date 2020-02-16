@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑器</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/icon.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/demo/demo.css">
+</head>
+<body>
+<table id="dg" class="easyui-datagrid" title="基本数据表格" style="width:700px;height:250px"
+       data-options="url:'./datagrid_data1.json',onClickRow: onClickRow,singleSelect: true">
+    <thead>
+    <tr>
+        <th data-options="field:'itemId',width:80">编号</th>
+        <th data-options="field:'productId',width:100">产品编号</th>
+        <th data-options="field:'productName',width:100">产品名称</th>
+        <th data-options="field:'marketPrice',width:80">市场价</th>
+        <th data-options="field:'cost',width:80">成本价</th>
+        <th data-options="field:'description',width:150">描述</th>
+        <th data-options="field:'status'">状态</th>
+    </tr>
+    </thead>
+</table>
+<div>
+    编辑器
+    1.text/numberbox/textarea文本/数字/文本域编辑器
+    2.checkbox复选框编辑器
+    3.datebox日期编辑器
+    4.combobox下拉框编辑器
+    5.combotree下拉树编辑器
+    6.validatebox
+    text、textarea、numberbox、checkbox、combotree、datebox、combobox、validatebox
+</div>
+</body>
+</html>
+
+<script type="text/javascript">
+    function onClickRow(index) {
+        alert(index);
+        $('#dg').datagrid('selectRow', index).datagrid('beginEdit', index);
+    }
+    $(function () {
+
+    });
+</script>
