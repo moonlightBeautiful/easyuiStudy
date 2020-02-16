@@ -81,7 +81,8 @@
             url:'./combobox_data.json',
             valueField:'id',
             textField:'text',
-            panelHeight:'auto'">
+            panelHeight:'auto',
+            onChange:onChange">
 
 <hr>
 <h1>下拉框组件get</h1>
@@ -101,6 +102,7 @@
             <li>formatter：function(row每一行的数据object)，返回String，支持html标签。格式化每一行的数据。</li>
         </ul>
         <ul>事件
+            <li>onChange：function(newValue, oldValue)，当文本域的值改变的时候触发。</li>
 
         </ul>
         <ul>方法
@@ -138,6 +140,10 @@
                 $('#language').combobox('setText', value);
             }
         });
+    }
+
+    function onChange(newValue, oldValue) {
+        alert("newValue：" + newValue + "，oldValue：" + oldValue);
     }
 
 </script>
