@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>下拉框组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<h2>下拉框组件</h2>
+
+<div class="demo-info">
+    <div class="demo-tip icon-tip"></div>
+    <div>select预定义数据创建下拉框组件.option</div>
+</div>
+<div style="margin:10px 0;"></div>
+<select class="easyui-combobox" name="sheng" style="width:200px;">
+    <option value="河北省">河北省</option>
+    <option value="山东省">山东省</option>
+    <option value="辽宁省">辽宁省</option>
+    <option value="黑龙江省">黑龙江省</option>
+    <option value="吉林省">吉林省</option>
+    <option value="甘肃省">甘肃省</option>
+    <option value="青海省">青海省</option>
+    <option value="河南省">河南省</option>
+    <option value="江苏省">江苏省</option>
+    <option value="湖北省">湖北省</option>
+    <option value="湖南省">湖南省</option>
+    <option value="江西省">江西省</option>
+    <option value="浙江省">浙江省</option>
+    <option value="广东省">广东省</option>
+    <option value="云南省">云南省</option>
+    <option value="福建省">福建省</option>
+    <option value="台湾省">台湾省</option>
+    <option value="海南省">海南省</option>
+    <option value="山西省">山西省</option>
+    <option value="四川省">四川省</option>
+    <option value="陕西省">陕西省</option>
+    <option value="贵州省">贵州省</option>
+    <option value="安徽省">安徽省</option>
+</select>
+<br><br><br><br>
+<div class="demo-info" style="margin-bottom:10px">
+    <div class="demo-tip icon-tip"></div>
+    <div>input绑定数据js创建下拉框.url</div>
+</div>
+<input class="easyui-combobox"
+       id="language1"
+       data-options="
+            data:addresses,
+            valueField:'id',
+            textField:'text',
+            panelHeight:'auto'">
+<div style="margin:10px 0;">
+    <br><br><br><br>
+    <div class="demo-info" style="margin-bottom:10px">
+        <div class="demo-tip icon-tip"></div>
+        <div>input远程绑定数据创建下拉框.url</div>
+    </div>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="setValue()">设置值value</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="setText()">设置值text</a>
+</div>
+<div style="margin:10px 0;">
+    <a href="javascript:void(0)" class="easyui-linkbutton"
+       onclick="alert($('#language').combobox('getValue'))">获取值value</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton"
+       onclick="alert($('#language').combobox('getText'))">获取值text</a>
+</div>
+<div style="margin:10px 0;">
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#state').combobox('disable')">禁用</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#state').combobox('enable')">启用</a>
+</div>
+<input class="easyui-combobox"
+       id="language"
+       data-options="
+            url:'./combobox_data.json',
+            valueField:'id',
+            textField:'text',
+            panelHeight:'auto'">
+
+<hr>
+<h1>下拉框组件get</h1>
+<div class="demo-info" style="font-size:20px">
+    <div class="demo-tip icon-tip"></div>
+    <div>input class="easyui-combobox"</div>
+    <div>
+        <ul>属性
+            <li>url：String url。远程加载下拉框的数据。格式为[{"id":number,"text":String,"desc":String可选},{}...]。</li>
+            <li>data：array，格式为[{"id":number,"text":String,"desc":String可选},{}...]。绑定到组合框数据。</li>
+            <li>valueField：String。绑定到该组合框（ComboBox）的 value 上的基础数据的名称。</li>
+            <li>textField：String。绑定到该组合框（ComboBox）的 text 上的基础数据的名称。</li>
+            <li>multiple：boolean，默认值false。定义是否支持多选。</li>
+            <li>selectOnNavigation：boolean，默认值false。定义当通过键盘按钮上下移动选项时文本框是否显示选项。</li>
+            <li>panelWidth：number/'auto'，默认值null。下拉面板的宽度。</li>
+            <li>panelHeight：number/'auto'，默认值200。下拉面板的高度。</li>
+            <li>formatter：function(row每一行的数据object)，返回String，支持html标签。格式化每一行的数据。</li>
+        </ul>
+        <ul>事件
+
+        </ul>
+        <ul>方法
+            <li>reload：String url。重新远程加载下拉框的数据。格式为[{"id":number,"text":String,"desc":String可选},{}...]。</li>
+            <li>disable：none。禁用组件。</li>
+            <li>enable：none。启用组件。</li>
+            <li>setValue：String。设置值valueField，如果和加载的数据匹配，则显示加载的数据项的text。如果不匹配，则添加新项value和text都是设置的值。</li>
+            <li>setText：String。设置值textField。</li>
+            <li>getValue：none。获取值valueField。</li>
+            <li>getText：none。获取值textField。</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
+
+<script>
+    var addresses = [{
+        "id": 1,
+        "text": "Java",
+        "desc": "Write once, run anywhere"
+    }];
+
+    function setValue() {
+        $.messager.prompt('设置值', '请输入一个值(张三,李四,王八等):', function (value) {
+            if (value) {
+                $('#language').combobox('setValue', value);
+            }
+        });
+    }
+
+    function setText() {
+        $.messager.prompt('设置值', '请输入一个值(张三,李四,王八等):', function (value) {
+            if (value) {
+                $('#language').combobox('setText', value);
+            }
+        });
+    }
+
+</script>
