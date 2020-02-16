@@ -51,10 +51,12 @@
                 &nbsp;&nbsp;toolbar:[{ iconCls:'icon-add', handler:function(){alert('add')}} ]<br>
                 选择器，指示工具组。<br>
                 &nbsp;&nbsp;toolbar:'#tt'。
-                <xmp><div id="tt">
-                    <a href="#" class="icon-add" onclick="javascript:alert('add')"></a>
-                    <a href="#" class="icon-edit" onclick="javascript:alert('edit')"></a>
-                </div></xmp>
+                <xmp>
+                    <div id="tt">
+                        <a href="#" class="icon-add" onclick="javascript:alert('add')"></a>
+                        <a href="#" class="icon-edit" onclick="javascript:alert('edit')"></a>
+                    </div>
+                </xmp>
             </li>
             <li>pagination：boolean，默认值是false。底部是否显示分页工具栏。点击分页工具栏按钮，从url获取数据，默认传参数2个，page: 默认当前页 rows: 默认大小为20。
                 <ol>
@@ -66,14 +68,16 @@
             <li>showFooter：boolean，默认值是false。是否显示尾行，加载的数据的footer的json数组数据。</li>
             <li>fitColumns：boolean，默认值是false，是否自动调整列的尺寸以防止水平滚动。</li>
             <li>loadFilter：function(rowData)，默认值为null。此列是否为复选框项。</li>
-            <li>loadData：function(data)，默认值为null。	加载本地数据，旧的行会被移除。</li>
+            <li>loadData：function(data)，默认值为null。 加载本地数据，旧的行会被移除。</li>
             <li>(列属性)checkbox：boolean，默认值为false。此列是否为复选框项。</li>
             <li>(列属性)align:string，默认值是left。如何对齐列数据，可能的值：'left'、'right'、'center'。</li>
             <li>(列属性)halign:string，默认值是align的值，如何对齐该列头，可能的值：'left'、'right'、'center'。</li>
             <li>(列属性)field:string，字段名，和加载的数据的属性名匹配起来。</li>
             <li>(列属性)title:string，列头的文本值。如果没有设置，则使用th标签对里面的文本值，如果都设置了，则title优先级高。</li>
             <li>(列属性)frozen:boolean，默认值是false。thead包裹的列被固定在左侧，不允许滑动，不参与合并列。</li>
-            <li>(列属性)formatter:function(value，rowData，rowIndex)。单元格的格式化函数，返回的数据显示在单元格中，可以解析html标签。value：字段的值。rowData：行的记录数据。rowIndex：行的索引。</li>
+            <li>
+                (列属性)formatter:function(value，rowData，rowIndex)。单元格的格式化函数，返回的数据显示在单元格中，可以解析html标签。value：字段的值。rowData：行的记录数据。rowIndex：行的索引。
+            </li>
             <li>(列属性)styler:function（value，rowData，rowIndex）。返回String，例如 'background:red' 的样式，用于整列样式。</li>
             <li>(列属性)editor:string/object。指示编辑类型。
                 </br>当是字符串（string）时则指编辑类型。
@@ -88,9 +92,9 @@
         <ul>事件
             <li>onClickRow:function(rowIndex,rowData)。当用户点击一行时触发。</li>
             <li>onDblClickCell：function(rowIndex, field, value)。 在用户双击一个单元格的时候触发。</li>
-            <li>onDblClickRow：function(rowIndex,rowData)。 在用户双击一个单元格的时候触发。 </li>
-            <li>onHeaderContextMenu：function(e, field)。 当数据网格（datagrid）的头部被右键单击时触发。 </li>
-            <li>onRowContextMenu：function(e, rowIndex, rowData)。当右键点击行时触发。 </li>
+            <li>onDblClickRow：function(rowIndex,rowData)。 在用户双击一个单元格的时候触发。</li>
+            <li>onHeaderContextMenu：function(e, field)。 当数据网格（datagrid）的头部被右键单击时触发。</li>
+            <li>onRowContextMenu：function(e, rowIndex, rowData)。当右键点击行时触发。</li>
             <li>onLoadSuccess：data，当数据加载成功时触发。</li>
             e.preventDefault(); //原本默认action被禁止
         </ul>
@@ -114,13 +118,25 @@
             <li>mergeCells：options{index：行的索引,field：字段名,rowspan：合并跨越的行数,colspan：合并跨越的列数}。把一些单元格合并为一个单元格。</li>
 
 
-            <li>validateRow：rowindex。验证指定的行，有效时返回 true。</li>
-            <li>getEditor：options。获取指定单元格的编辑器，options 参数包含两个属性，rowIndex：行的索引。field：字段名。</li>
+            <li>validateRow：rowindex。验证指定的行，有效时返回 true。如果不能通过验证（比如不能结束编辑器），则返回false。</li>
+            <li>getEditor：options。获取指定单元格的编辑器（只有在编辑器启用状态才可用，否则获取的为null或者空），options 参数包含两个属性，rowIndex：行的索引。field：字段名。
+            </li>
+            <li>getEditors：rowIndex。获取指定行的编辑器（只有在编辑器启用状态才可用，否则获取的为null或者空）。</li>
             <li>hideColumn：fieldName。隐藏指定的列。</li>
             <li>showColumn：fieldName。显示指定的列。</li>
             <li>getColumnFields：none/true。返回列的字段名数组，true，则返回冻结列的字段名数组。none，则返回未冻结列的字段名数组。</li>
             <li>getColumnOption：fieldName，返回指定列的选项jsonObject。</li>
         </ul>
+        <ul>备注
+            <li>编辑器，只有处于编辑状态的时候才能获取到。</li>
+            <li>编辑器有4个属性：
+                <ol>
+                    <li>actions：编辑器能做的动作，与编辑器定义相同。</li>
+                    <li>target：目标编辑器的 jQuery 对象。</li>
+                    <li>field：字段名。</li>
+                    <li>type：编辑器的类型，比如：'text'、'combobox'、'datebox'，等等。</li>
+                </ol>
+            </li>
     </div>
 </div>
 </body>
