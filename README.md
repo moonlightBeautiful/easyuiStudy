@@ -3,27 +3,23 @@
     百度到，目前来看 jquery1.11.11+easyui-1.4.2对扩展插件支持的比较好，easyui自带jquery。
 # 组件学习：大约三十个组件
 简介：
-    简单的easyui前台框架
+    简单的web前台框架，封装了js和css等。
 使用：
     1.导入jquery+easyui文件
         <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.min.js"></script>
         <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
         <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/default/easyui.css">
         <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/icon.css">
-    2.创建easyui组件，
+    2.创建easyui组件
         2种方式
-            1.直接只用标签创建，class指定组件类型、
+            1.直接只用标签创建，class指定组件类型、data-options指定配置，配置也可以写在标签上，作为标签属性。貌似标签属性优先级高于data-options指定配置。
                 原理：$.parser在起作用。
-            2.创建空标签，使用js指定组件类型， $('选择器').组件类型();
+            2.创建空标签，使用js指定组件类型， 
+                $('选择器').组件类型({配置});
         建议：
-            和后台交互的组件用js方式，没有和后台交互的组件（按钮等）用标签方式
-    3.属性的使用
-        2种方式
-            1.属性可以写在标签节点上也可以写在标签节点的data-options属性上
-            2.属性可以js方式指定
-        建议：
-            不是很复杂的、少的，用标签的方式，复杂的、多的用js方式。
-    4.动态按需引入：不推荐使用，本来easyui就不大，没必要这么复杂
+            和后台交互的组件用js方式
+            没有和后台交互的组件（按钮等）用标签方式
+    3.动态按需引入：不推荐使用，本来easyui就不大，没必要这么复杂
         其实easyui的文件不大，但是如果想更加精细，可以只引入jquery+easyloader
             <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.min.js"></script>
             <script type="text/javascript" src="../../jquery-easyui-1.4.2/easyloader.js"></script>
@@ -34,17 +30,17 @@
 组件学习：
     分类：
         布局组件（panel）
-    布局组件：
-        01panel：面板组件
-            很多组件依赖于面板组件，必须熟悉面板组件
+    1.布局组件：
+        01.panel面板组件
+        02.折叠面板 
+        03.标签面板 
+        04.布局面板
     
-  
-  
     
-    01布局组件
-    01。面板组件
-    02.标签页组件
-    03.折叠面板
+    
+    
+    
+    
 04窗口组件
     01。消息框组件（Messager） 
         包括警示（alert）、确认（confirm）、提示（prompt）、进展（progress）等等。
