@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>可调整尺寸（resizeable）</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/icon.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<!--可调整尺寸示例-->
+<div style="border:3px blue solid;padding: 30px;width: 500px;height: 300px" id="a">
+    <div class="easyui-resizable" data-options="minWidth:50,minHeight:50"
+         style="width:200px;height:150px;border:1px solid #ccc;">
+        调整我的尺寸
+    </div>
+</div>
+
+
+<!--属性、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div class="demo-info" style="font-size:20px">
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ol><b style="font-size: 30px">属性：</b>
+            <li>disabled：boolean，默认false。是否禁止调整尺寸。</li>
+            <li>minWidth/minHeight：number，默认值10。调整尺寸时最小宽度/高度。</li>
+            <li>maxWidth/maxHeight：number，默认值10。调整尺寸时最大宽度/高度。</li>
+        </ol>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ul><b style="font-size: 30px">事件：</b>
+            <li>onStartResize：element。开始调整尺寸时触发。返回 false 时，DOM 元素将不进行实际的调整尺寸动作。</li>
+            <li>onResize：element。调整尺寸期间触发。返回 false 时，DOM 元素将不进行实际的调整尺寸动作。</li>
+            <li>onStopResize：element。停止调整尺寸时触发。返回 false 时，DOM 元素将不进行实际的调整尺寸动作。</li>
+        </ul>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ul><b style="font-size: 30px">方法：</b>
+            <li>enable/disable：none。启用/禁用可调整尺寸。</li>
+        </ul>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ul><b style="font-size: 30px">额外：</b>
+        </ul>
+    </div>
+</div>
+
+
+</body>
+</html>
