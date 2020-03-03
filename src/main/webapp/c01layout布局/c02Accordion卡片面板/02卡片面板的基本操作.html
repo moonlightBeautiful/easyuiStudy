@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>卡片面板的基本操作</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
+
+    <script type="text/javascript">
+        var idx = 1;
+
+        function selectPanel() {
+            $.messager.prompt('系统提示', '请输入面板标题或索引:', function (s) {
+                var n = Number(s);
+                if (isNaN(n)) {//字符串
+                    $('#a').accordion('select', s);
+                } else {    //数字
+                    $('#a').accordion('select', n);
+                }
+            });
+        }
+
+        function addPanel() {
+            $('#a').accordion('add', {
+                title: '标题' + idx,
+                content: '<div style="padding:10px">内容' + idx + '</div>'
+            });
+            idx++;
+        }
+        function removePanel() {
+            var p = $('#a').accordion('getSelected');
+            if (p) {
+                var index = $('#a').accordion('getPanelIndex', p);
+                $('#a').accordion('remove', index);
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div style="border:3px blue solid;padding: 10px;width: 600px;height: 400px">
+    <div style="margin:10px 0;">
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="selectPanel()">选择</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="addPanel()">添加</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="removePanel()">删除</a>
+    </div>
+    <div id="a" class="easyui-accordion" style="width:550px;height:300px;">
+        <div title="关于" data-options="iconCls:'icon-ok',selected:false" style="overflow:auto;padding:10px;">
+            <h3 style="color:#0099FF;">可折叠面板</h3>
+            <p>可折叠面板是jquery easyui框架的一部分. 他可以让你轻松地在Web页面上定义可折叠元素.</p>
+        </div>
+        <div title="帮助2" data-options="iconCls:'icon-help'" style="padding:10px;">
+            <p>可折叠面板允许你同时显示多个面板，每个面板支持展开和折叠，点击面板头部展开和折叠面板体，面板内容可以通过AJAX加载，用户能够定义某一个面板默认选中，如果没有指定，则第一个面板默认选中。</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

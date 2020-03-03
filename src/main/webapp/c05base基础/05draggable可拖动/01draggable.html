@@ -35,11 +35,17 @@
 <div class="demo-info" style="font-size:20px">
     <div>
         <div class="demo-tip icon-tip"></div>
+        <ol><b style="font-size: 30px">hello：</b>
+            <li> 简介：和可放置组件一起使用。</li>
+        </ol>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
         <ol><b style="font-size: 30px">属性：</b>
             <li>handle：拖动组件内部元素的selector，默认值null。可拖动组件的把手。</li>
             <li>disabled：boolean，默认值false。是否可以拖动。</li>
             <li>revert：boolean，默认值false。拖动结束后元素是否回它的开始位置。</li>
-            <li>proxy：'clone'/null/function（source）{必须return jquery对象}，默认值null。拖动时要使用的代理元素。</li>
+            <li>proxy：'clone'/null/function（被代理的dom元素source）{必须return jquery对象}，默认值null。拖动才时创建的要使用的代理元素。</li>
             <li>deltaX/deltaY：number，默认值null。代理元素相对于光标的左/下的距离。</li>
         </ol>
     </div>

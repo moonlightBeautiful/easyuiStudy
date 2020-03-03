@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>日期框组件</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/icon.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<!--基础日期框示例-->
+<div style="border:3px blue solid;padding: 10px;width: 600px;height: 300px">
+    <input class="easyui-datebox">
+</div>
+
+<!--属性、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div class="demo-info" style="font-size:20px">
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ol><b style="font-size: 30px">属性：</b>
+            <li>formatter：function(date编辑框的日期对象)。格式化日期的函数，返回一个字符串值。初始化不格式化。</li>
+            <li>parser：function(date编辑框的日期字符串)。解析日期字符串的函数，返回一个日期值。初始化不解析。
+                <ol>
+                    <li>编辑框输入值：执行解析。</li>
+                    <li>下拉日历面板弹出：执行解析。</li>
+                    <li>下拉日历面板日期选中：格式化-》解析-》格式化。</li>
+                </ol>
+            </li>
+            <li>required：必须输入。</li>
+            <li>value：符合日期时间格式的字符串，中文默认yyyy-MM-dd hh:mm:ss。默认值。
+                <ol>
+                    <li>为空：则默认值为无。</li>
+                    <li>为非日期时间格式字符串，则为当前时间。</li>
+                    <li>为日期时间格式字符串，则为日期时间。</li>
+                </ol>
+            </li>
+        </ol>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ol><b style="font-size: 30px">事件：</b>
+            <li>onSelect：function(下拉日期面板选中的日期对象)。在下拉日期面板中选择一个日期时触发。</li>
+        </ol>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ol><b style="font-size: 30px">方法：</b>
+            <li></li>
+        </ol>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ol><b style="font-size: 30px">额外：</b>
+            <li></li>
+        </ol>
+    </div>
+</div>
+
+</body>
+</html>

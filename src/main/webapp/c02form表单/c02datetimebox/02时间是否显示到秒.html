@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>日期时间是否显示到秒</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/icon.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<!--日期时间是否显示到秒-->
+<div style="border:3px blue solid;padding: 10px;width: 600px;height: 300px">
+    <div style="margin:10px 0;">
+        <span>显示秒: </span>
+        <input type="checkbox" checked onchange="$('#dt').datetimebox({showSeconds:$(this).is(':checked')})">
+    </div>
+
+    <input id="dt" class="easyui-datetimebox" style="width:150px">
+</div>
+
+
+
+</body>
+</html>

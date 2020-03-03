@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>标签页（Tabs）组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/metro-blue/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<!--标签面板 每个面板的高度根据其内容自适应示例-->
+<div style="border:3px blue solid;padding: 10px;width: 600px;height: 400px">
+    <div class="easyui-tabs" style="width:500px;height:auto">
+        <div title="关于" style="padding:10px">
+            <p style="font-size:14px">jQuery EasyUI框架能够让你轻松构建Web页面.</p>
+            <ul>
+                <li>easyui是一套基于JQuery的用户界面插件集合.</li>
+                <li>easyui为构建现代流行的交互式体验JavaScript应用程序提供了基本功能.</li>
+                <li>使用easyui你不需要写很多javascript代码，你通常只需要写一些html标签来定义用户界面.</li>
+                <li>完美支持HTML5.</li>
+                <li>easyui能够有效地节省你的开发时间.</li>
+                <li>easyui很简单但是很强大.</li>
+            </ul>
+        </div>
+        <div title="我的文档" style="padding:10px">
+            这是我的文档。
+        </div>
+        <div title="帮助" data-options="iconCls:'icon-help',closable:true,selected:true" style="padding:10px">
+            这是帮助内容。
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>基本可拖动（draggable）组件事件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/icon.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<!--示例-->
+<div id="a" style="width:500px;height:300px;border:3px blue solid;padding:10px;">
+    <ul>
+        <li class="drag-item">托动物1</li>
+        <li class="drag-item">托动物2</li>
+        <li class="drag-item">托动物3</li>
+        <li class="drag-item">托动物4</li>
+        <li class="drag-item">托动物5</li>
+        <li class="drag-item">托动物6</li>
+    </ul>
+</div>
+
+<style type="text/css">
+    .drag-item {
+        list-style-type: none;
+        padding: 5px;
+        border: 1px solid #ccc;
+        margin: 2px;
+        width: 300px;
+        background: #fafafa;
+        color: #444;
+    }
+
+    .indicator {
+        position: absolute;
+        font-size: 9px;
+        width: 20px;
+        height: 10px;
+        display: none;
+        color: red;
+    }
+</style>
+<script>
+    $(function () {
+        var indicator = $('<div class="indicator">>>></div>').appendTo('body');
+        $('.drag-item').draggable({
+            revert: true
+        }).droppable({
+            onDragOver: function (e, source) {
+                indicator.css({
+                    display: 'block',
+                    left: $(this).offset().left - 10,
+                    top: $(this).offset().top + $(this).outerHeight() - 5
+                });
+            },
+            onDragLeave: function (e, source) {
+                indicator.hide();
+            },
+            onDrop: function (e, source) {
+                $(source).insertAfter(this);
+                indicator.hide();
+            }
+        });
+    });
+</script>
+</body>
+</html>

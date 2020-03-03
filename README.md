@@ -12,9 +12,10 @@
         <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/icon.css">
     2.创建easyui组件
         2种方式
-            1.直接只用标签创建，class指定组件类型、data-options指定配置，配置也可以写在标签上，作为标签属性。貌似标签属性优先级高于data-options指定配置。
-                原理：$.parser在起作用。
-            2.创建空标签，使用js指定组件类型， 
+            1.html标记方式
+                直接只用标签创建，class指定组件类型、data-options指定配置，配置也可以写在标签上，作为标签属性。貌似标签属性优先级高于data-options指定配置。
+            2.javascript方式
+                创建空标签，使用js指定组件类型， 
                 $('选择器').组件类型({配置});
         建议：
             和后台交互的组件用js方式
@@ -27,19 +28,32 @@
              加载单个模块：easyloader.load('模块', callBack);
              加载多个模块：easyloader.load(['模块1','模块2','模块3'], callBack);
              也可以直接使用标签的class创建easyui组件
+对浏览器的支持
+    对IE的支持不太好
 组件学习：
     分类：
         布局组件（panel）
+    1.Base（基础）组件
+        1.parser解析器（无依赖关系）：渲染easyui组件。
+        2.parser加载器（无依赖关系）：页面不需要引入全部组件，加载需要的组件。不建议使用，麻烦，加载全部组件消耗不了多少时间。
+        3.progressbar进度条（无依赖关系）：
+        4.resizable可调整尺寸（无依赖关系）：
+        5.draggable可拖动（无依赖关系）：
+05基础
+    02拖动组件
+    03拖动组件
+    07提示信息（tooltip）组件
+        为元素创建提示信息
+    
+        
+   
+注意：
+    尽量不要多次解析同一个DOM元素(ID)，已经被解析过一次了，再次解析的dom是被parser重构的dom，会出现意想不到的问题。 	    
     1.布局组件：
         01.panel面板组件
         02.折叠面板 
         03.标签面板 
         04.布局面板
-    
-    
-    
-    
-    
     
 04窗口组件
     01。消息框组件（Messager） 
@@ -53,15 +67,7 @@
     02。连接按钮
     03。菜单按钮
     04。分割按钮
-05基础
-    01进度条组件
-    02拖动组件
-    03拖动组件
-    07提示信息（tooltip）组件
-        为元素创建提示信息
-    09基本加载器（EasyLoader）组件
-        不用把整个easyui引入，只需要引入jquery和easyloader.js就可以，
-        调用easyloader.load('所需模块', function () { // 加载指定的模块 });即可。
+
 06数据网格和树
     01数据网格
 

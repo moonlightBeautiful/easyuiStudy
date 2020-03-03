@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>布局学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<!--基础布局面板示例-->
+<div style="border:3px blue solid;padding: 10px;width: 600px;height: 400px">
+    <div id="cc" class="easyui-layout" style="width:550px;height:350px;">
+        <div data-options="region:'north',split:true,collapsible:false" title="北" style="height:80px">
+            北
+        </div>
+        <div data-options="region:'south',split:true" title="南" style="height:80px;">
+            南
+        </div>
+        <div data-options="region:'west',split:true" title="西" style="width:100px;">
+            西
+        </div>
+        <div data-options="region:'center',title:'主区域标题',iconCls:'icon-ok'" title="中">
+            中
+        </div>
+        <div data-options="region:'east',split:true" title="东" style="width:180px;">
+            东
+        </div>
+    </div>
+</div>
+
+
+<!--属性、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div class="demo-info" style="font-size:20px">
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ol><b style="font-size: 30px">容器选项：</b>
+
+        </ol>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ol><b style="font-size: 30px">面板选项：</b>
+            <li>region：string，定义布局面板（layout panel）的位置，其值是下列之一：north、south、east、west、center。</li>
+            <li>split：boolean，默认值false，是否显示拆分栏，可以改变面板（panel）的尺寸。一般用于北、南、东、西四块面板上。</li>
+            <li>border：boolean，默认值true，是否显示面板（panel）的边框。</li>
+            <li>title：string，默认值true，显示在面板（panel）头部的标题文字。</li>
+            <li>width/height：number，面板（panel）的宽度/高度。</li>
+            <li>collapsible：boolean，默认值true，是否显示折叠按钮。但面板组件默认值为false。</li>
+        </ol>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ol><b style="font-size: 30px">事件：</b>
+
+        </ol>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ol><b style="font-size: 30px">方法：</b>
+            <li>add：options。添加一个指定的区域面板（panel）。</li>
+            <li>remove：String，值为区域north、south、east、west。移除一个指定的区域面板（panel），不能移除中center。</li>
+        </ol>
+    </div>
+</div>
+
+</body>
+</html>

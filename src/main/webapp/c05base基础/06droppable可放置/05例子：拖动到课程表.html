@@ -3,21 +3,15 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>课程表实战</title>
-
-    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/themes/icon.css">
-    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.7.0/demo/demo.css">
-    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.min.js"></script>
-    <script type="text/javascript" src="../../jquery-easyui-1.7.0/jquery.easyui.min1.3.5.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/icon.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
 </head>
 <body>
-<h2 align="center">创建一个学校课程表</h2>
-<div class="demo-info" style="margin-bottom:10px">
-    <div class="demo-tip icon-tip">&nbsp;</div>
-    <div>点击拖一个课程到课程表里.</div>
-</div>
-
+<!--示例-->
 <div style="width:700px;">
     <div class="left">
         <table>
@@ -201,7 +195,6 @@
 </style>
 <script>
     $(function () {
-        alert(222);
         $('.left .item').draggable({
             revert: true,
             proxy: 'clone'
@@ -234,31 +227,5 @@
 
     });
 </script>
-
-<hr style="clear:both">
-<div class="demo-info" style="font-size:20px;margin-top:10px">
-    <div class="demo-tip icon-tip"></div>
-    <div>可拖动（draggable）组件实战get：</div>
-</div>
-<div style="font-size: 18px;">
-    <ol>
-        <li>简介：就是可拖动的元素，拖动后元素会脱离文档流。</li>
-        <li>用法：div的class为easyui-draggable。</li>
-        <li>属性：</li>
-        <ul>
-            <li>revert：boolean，默认为false，如果设置为 true，拖动结束后元素将返回它的开始位置，拖动期间会脱离文档流。</li>
-            <li>proxy：'clone'或者none或者func，拖动时要使用的代理元素，设置为 'clone' 时，克隆元素将被用作代理。即拖动元素将由克隆产生供拖动使用，原本的元素不变。</li>
-        </ul>
-        <li>元素的droppable方法：通过标记创建可放置（droppable）区域。</li>
-        <ul>
-            <li>class="easyui-droppable"或者$('#dd').droppable({})</li>
-            <li>onDrop(e,source)：当可拖动元素被放下时触发。source 参数指被拖动的 DOM 元素。</li>
-            <li>onDragEnter(e,source)：当可拖动元素被拖进来时触发（拖进来，松开单击不算离开）。source 参数指被拖动的 DOM 元素。</li>
-            <li>onDragLeave(e,source)：当可拖动元素被拖离开时触发。source 参数指被拖动的 DOM 元素。</li>
-            <li>onDragOver(e,source)：当可拖动元素被拖过时触发，会覆盖onDragEnter和onDragLeave方法。source 参数指被拖动的 DOM 元素。</li>
-        </ul>
-
-    </ol>
-</div>
 </body>
 </html>
