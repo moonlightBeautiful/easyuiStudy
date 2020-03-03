@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>提示信息框为工具条</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<!--提示信息框为工具条-->
+<div style="border:3px blue solid;padding: 30px;width: 600px;height: 200px" id="a">
+    <a id="dd" href="javascript:void(0)">到我这来</a> 搞出一个工具条.
+</div>
+<div style="display:none">
+    <div id="toolbar">
+        <a href="#" class="easyui-linkbutton easyui-tooltip" title="添加"
+           data-options="iconCls:'icon-add',plain:true"></a>
+        <a href="#" class="easyui-linkbutton easyui-tooltip" title="剪切"
+           data-options="iconCls:'icon-cut',plain:true"></a>
+        <a href="#" class="easyui-linkbutton easyui-tooltip" title="删除"
+           data-options="iconCls:'icon-remove',plain:true"></a>
+        <a href="#" class="easyui-linkbutton easyui-tooltip" title="撤销"
+           data-options="iconCls:'icon-undo',plain:true"></a>
+        <a href="#" class="easyui-linkbutton easyui-tooltip" title="恢复"
+           data-options="iconCls:'icon-redo',plain:true"></a>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#dd').tooltip({
+            content: $('#toolbar')
+        });
+    });
+</script>
+</body>
+</html>

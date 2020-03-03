@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>可放置（droppable）组件</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<!--可放置（droppable）组件示例-->
+<div style="border:3px blue solid;padding: 10px;width: 500px;height: 300px" id="a">
+    <div style="float: left;width:100px;border: 1px solid #ccc; margin: 10px">
+        <div class="title">源</div>
+        <div>
+            <div class="draggableItem" style="border: 1px solid #ccc;width: 50px;height: 20px;margin: 10px;">苹果</div>
+            <div class="draggableItem" style="border: 1px solid #ccc;width: 50px;height: 20px;margin: 10px;">桃子</div>
+            <div class="draggableItem" style="border: 1px solid #ccc;width: 50px;height: 20px;margin: 10px;">桔子</div>
+        </div>
+    </div>
+    <div style="float:left;width:150px;border: 1px solid #ccc; margin: 10px">
+        <div class="title">目标</div>
+        <div class="droppableArea" style="border: 1px solid red;margin: 10px;height: 150px;"></div>
+    </div>
+</div>
+<style type="text/css">
+    .proxy {
+        border: 1px solid blueviolet;
+        width: 80px;
+        background: #fafafa;
+    }
+</style>
+<script>
+    $(function () {
+        $('.draggableItem').draggable({
+            revert: true,
+            deltaX: 10,
+            deltaY: 10,
+            proxy: function (source) {
+                var n = $('<div class="proxy"></div>');
+                n.html($(source).html()).appendTo('body');
+                return n;
+            }
+        });
+        $('.droppableArea').droppable({
+            accept: '.draggableItem',
+            onDragEnter: function (e, source) {
+                $(this).html('进入');
+            },
+            onDragLeave: function (e, source) {
+                $(this).html('离开');
+            },
+            onDrop: function (e, source) {
+                $(this).html($(source).html() + ' 拽入');
+            }
+        });
+    });
+</script>
+
+
+<!--属性、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div class="demo-info" style="font-size:20px">
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ol><b style="font-size: 30px">hello：</b>
+            <li> 简介：和可拖动组件一起使用。</li>
+        </ol>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ol><b style="font-size: 30px">属性：</b>
+            <li>accept：可拖动元素的selector，默认值null。被接受的可拖动元素。</li>
+            <li>disabled：boolean，默认值false。停止可放置。</li>
+        </ol>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ul><b style="font-size: 30px">事件：</b>
+            <li> onDragEnter/onDragLeave：event,被拖动的DOM元素source。当可拖动元素被拖进来/离开时触发。</li>
+            <li> onDragOver：event,被拖动的DOM元素source。当可拖动元素被拖过时触发。</li>
+            <li> onDrop：event,被拖动的DOM元素source。当可拖动元素被放下时触发。</li>
+        </ul>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ul><b style="font-size: 30px">方法：</b>
+            <li>enable/disable：none。启用/禁用可拖动。</li>
+        </ul>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ul><b style="font-size: 30px">额外：</b>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

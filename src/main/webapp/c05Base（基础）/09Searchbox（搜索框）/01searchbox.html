@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>基本搜索框（searchbox）组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<!--搜索框组件示例-->
+<div style="border:3px blue solid;padding: 30px;width: 600px;height: 100px" id="a">
+    <input class="easyui-searchbox" name='我是name' data-options="prompt:'请输入...',searcher:doSearch">
+</div>
+<script>
+    function doSearch(value, name) {
+        alert('您输入的是: ' + value);
+        alert('第二个参数: ' + name);
+    }
+</script>
+
+<!--属性、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div style="font-size:20px">
+    <div>
+        <ol><b style="font-size: 30px">属性：</b>
+            <li>prompt：string，默认值""。显示在输入框里的提示信息。</li>
+            <li>searcher：func(value,name)，当用户按下搜索按钮或者按下 ENTER 键时，searcher 函数将被调用。</li>
+            <ul>
+                <li>value：输入框里的值。</li>
+                <li>name：搜索框的name属性值或者搜索类型的菜单项的name属性值。</li>
+            </ul>
+            <li>menu：selector。搜索类型的菜单对象，但是菜单div不用写easyui-menu，会自动渲染为easyui的菜单。</li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">事件：</b>
+
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">方法：</b>
+            <li>menu：none。返回搜索类型的菜单对象。</li>
+            <li>textbox：none。返回文本框对象</li>
+            <li>getValue|setValue：none|value。返回|设置当前的搜索值。</li>
+            <li>getName|selectName：none|name。返回|选择当前的搜索类型名称。</li>
+        </ol>
+    </div>
+</div>
+
+</body>
+</html>

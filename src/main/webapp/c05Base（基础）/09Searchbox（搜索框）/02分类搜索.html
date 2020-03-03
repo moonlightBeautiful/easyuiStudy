@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>基本搜索框（searchbox）组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<!--分类搜索示例-->
+<div style="border:3px blue solid;padding: 30px;width: 600px;height: 100px" id="a">
+    <input class="easyui-searchbox" style="width:300px" name='我是name' data-options="prompt:'请输入...',searcher:doSearch,menu:'#mm'">
+    <div id="mm" style="width:40px">
+        <div data-options="name:'all',iconCls:'icon-ok'">所有新闻</div>
+        <div data-options="name:'sports'">体育新闻</div>
+    </div>
+</div>
+<script>
+    function doSearch(value,name){
+        alert('您输入的是: ' + value);
+        alert('第二个参数: ' + name);
+    }
+</script>
+</body>
+</html>

@@ -34,48 +34,98 @@
     分类：
         布局组件（panel）
     1.Base（基础）组件
-        1.parser解析器（无依赖关系）：渲染easyui组件。
-        2.parser加载器（无依赖关系）：页面不需要引入全部组件，加载需要的组件。不建议使用，麻烦，加载全部组件消耗不了多少时间。
-        3.progressbar进度条（无依赖关系）：
-        4.resizable可调整尺寸（无依赖关系）：
-        5.draggable可拖动（无依赖关系）：
-05基础
-    02拖动组件
-    03拖动组件
-    07提示信息（tooltip）组件
-        为元素创建提示信息
-    
-        
-   
-注意：
-    尽量不要多次解析同一个DOM元素(ID)，已经被解析过一次了，再次解析的dom是被parser重构的dom，会出现意想不到的问题。 	    
-    1.布局组件：
-        01.panel面板组件
-        02.折叠面板 
-        03.标签面板 
-        04.布局面板
-    
-04窗口组件
-    01。消息框组件（Messager） 
-        包括警示（alert）、确认（confirm）、提示（prompt）、进展（progress）等等。
-    02。对话框组件（dialog）
-        和窗口组件有啥区别 具体不懂
-    03。窗口组件（Window） 
-        窗口（window）是一个浮动的、可拖拽的面板，可以当做应用程序窗口使用。
-03菜单和按钮
-    01。菜单
-    02。连接按钮
-    03。菜单按钮
-    04。分割按钮
+        无依赖关系的：
+            1.parser解析器：渲染easyui组件。
+            2.parser加载器：页面不需要引入全部组件，加载需要的组件。不建议使用，麻烦，加载全部组件消耗不了多少时间。
+            3.progressbar进度条：
+            4.resizable可调整尺寸：
+            5.draggable可拖动：
+            6.droppable可放置：
+            7.tooltip提示框：
+        有依赖关系的：
+            8. Searchbox 搜索框，依赖 Menubutton 菜单按钮
+            9. Pagination 分页，依赖 Linkbutton 链接按钮
+    2.Menu（菜单）与 Button（按钮）组件
+        无依赖关系的：
+            1.Linkbutton 链接按钮
+            2.Menu 菜单
+            3.Switchbutton 开关按钮
+        有依赖关系的：
+            4.Menubutton 菜单按钮
+            5.Splitbutton 分割菜单按钮
+    3.Layout（布局）组件：
+        有依赖关系的：
+            1.panel面板组件
+                2.折叠面板 
+                3.标签面板 
+                4.布局面板       
+    4.Window（窗口）组件
+        有依赖关系的：
+            1.Window 窗口
+                2.Messager 消息框
+                3.Dialog 对话框
+    5.DataGrid（数据网格）与 Tree（树）
+        有依赖关系的：
+            1.Datagrid 数据网格
+                3.Propertygrid 属性网格
+                4.Treegrid 树形网格
+            2.Tree 树
+    6.Form（表单）
+        无依赖关系的：
+            1.Form 表单
+            2.Calendar 日历
+        有依赖关系的：    
+            3.Validatebox 验证框
+            4.textbox 文本框
+                5.passwordbox 密码框
+                6.filebox 文件框
+                7.Numberbox 数字框
+                8.Spinner 微调器
+                    9.Numberspinner 数值微调器
+                    10.Timespinner 时间微调器
+                        11.DateTimeSpinner 日期时间微调框
+            12.Combo 组合
+                13.Datebox 日期框
+                    14.Datetimebox 日期时间框
+                15.Combobox 组合框           
+                    16.tagbox 标签框
+                17.Combotree 组合树
+                18.Combogrid 组合网格
+                19.ComboTreeGrid 树形表格下拉框
+            20.checkbox（复选框）和 radiobutton（单选框） 使用
+            
+            
+            
+           
 
-06数据网格和树
-    01数据网格
 
 
-# 项目应用
-    
-    1，datagrid的crud：简单的增删改查，利用了对话框。
-        传到后台的参数有2个，page页码和rows页面尺寸
-    2，edatagrid：扩展，用到在学
-    3，datagrid-detailview：扩展，用到在学。
-    
+
+
+Slider 滑块
+
+
+
+
+
+
+
+
+Base（基础）组件
+        无依赖关系的：
+            1.parser解析器：渲染easyui组件。
+            2.parser加载器：页面不需要引入全部组件，加载需要的组件。不建议使用，麻烦，加载全部组件消耗不了多少时间。
+            3.progressbar进度条：
+            4.resizable可调整尺寸：
+            5.draggable可拖动：
+            6.Droppable可放置：
+            7.Tooltip提示框：
+            
+Menu（菜单）与 Button（按钮）组件
+        无依赖关系的：
+            1.Linkbutton 链接按钮
+            2.Menu 菜单
+            3.Switchbutton 开关按钮
+        有依赖关系的：
+            4.Menubutton 菜单按钮
+            5.Splitbutton 分割菜单按钮

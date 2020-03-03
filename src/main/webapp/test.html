@@ -2,32 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>测试</title>
-    <link rel="stylesheet" type="text/css" href="./jquery-easyui-1.7.0/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="./jquery-easyui-1.7.0/themes/icon.css">
-    <link rel="stylesheet" type="text/css" href="./jquery-easyui-1.7.0/demo/demo.css">
-    <script type="text/javascript" src="./jquery-easyui-1.7.0/jquery.min.js"></script>
-    <script type="text/javascript" src="jquery-easyui-1.7.0/jquery.easyui.min1.3.5.js"></script>
-    <script type="text/javascript" src="./jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+    <title>基本面板组件</title>
+    <link rel="stylesheet" type="text/css" href=" ./jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ./jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ./jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ./jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
 </head>
 <body>
-<input type="checkbox" name="materialType" value="part">
-<input type="checkbox" name="materialType" value="resource">
-<input type="button" name="material" onclick="startMap()" value="获取">
-<script>
-
-
-    function startMap() {
-        var materialTypes = "";
-        $("input:checked").each(function () {
-            if (materialTypes == "") {
-                materialTypes = $(this).val();
-            } else {
-                materialTypes = materialTypes + "," + $(this).val();
-            }
-        });
-        alert(materialTypes);
-    }
-</script>
+<div id='Loading'>
+    <image src='images/loading.gif'/>
+    <font color="#2bd4cd" size="4">页面正在载入中···</font>
+</div>
 </body>
 </html>
+<script>
+    function closes() {
+        $("#Loading").fadeOut("normal", function () {
+            $(this).remove();
+            alert("数据载入完毕");
+        });
+    }
+    var pc;
+    $.parser.onComplete = function () {
+        if (pc) {
+            clearTimeout(pc);
+        }
+        pc = setTimeout(closes, 1000);
+    }
+</script>

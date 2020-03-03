@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>提示信息为对话框</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<!-- onUpdate-->
+<div style="border:3px blue solid;padding: 30px;width: 600px;height: 100px" id="a">
+    <a id="pp1" href="#" class="easyui-tooltip">到我这来</a> 显示AJAX加载的提示信息.
+</div>
+
+<div style="padding:10px 200px">
+    <p><a id="dd" href="javascript:void(0)">点这里</a> 来显示一个提示信息对话框.
+</div>
+<script>
+    $(function () {
+        $('#dd').tooltip({
+            content: $('<div></div>'),
+            showEvent: 'click',
+            onUpdate: function (content) {
+                content.panel({
+                    width: 200,
+                    border: false,
+                    title: '登录',
+                    href: './_dialog.html'
+                });
+            }
+        });
+    });
+</script>
+<hr>
+
+<div class="demo-info" style="font-size:20px;margin-top:10px">
+    <div class="demo-tip icon-tip"></div>
+    <div>提示信息（tooltip）组件get：</div>
+</div>
+<div style="font-size:18px">
+    <ol>
+        <li>简介：当用户移动鼠标指针在某个元素/组件上时，出现提示信息窗口用来显示额外信息。</li>
+        <li>用法：div的class为easyui-tooltip。</li>
+        <li>属性：在data-options="key:value,key:value"中配置 或者 在js中$('#dd').tooltip({key:value,key:value})配置</li>
+        <ul>
+            <li>data-options：↓</li>
+            <ul>
+                <li>content：string，提示框内容，如果元素带有title属性，content属性没有配置的时候，提示框内容为title内容。</li>
+                <li>position：string，默认值bottom，提示框位置。可能的值：'left'、'right'、'top'、'bottom'。</li>
+                <li>hideEvent：string，默认值mouseleave，引发提示框消失的事件。</li>
+            </ul>
+        </ul>
+        <li>事件：</li>
+        <ul>
+            <li>onShow：e，当显示提示框（tooltip）时触发。</li>
+            <li>onPosition：left,top，当提示框位置改变时触发。没看懂，貌似里面的代码可以写在onShow事件中.</li>
+            <li>onUpdate：content，当提示框（tooltip）内容更新时触发，可以ajax加载提示内容。</li>
+        </ul>
+        <li>方法：</li>
+        <ul>
+            <li>tip：none，返回提示对象。</li>
+            <li>arrow：none，返回箭头对象。</li>
+            <li>show/hide：e，显示/隐藏提示框（tooltip）。</li>
+        </ul>
+        <li>额外学习到的：</li>
+        <ul>
+            <li>boxShadow：css属性，元素添加阴影。</li>
+            <li>offset： js方法，返回或设置匹配元素相对于文档的偏移（位置）。</li>
+        </ul>
+
+    </ol>
+</div>
+
+</body>
+</html>

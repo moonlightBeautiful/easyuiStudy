@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>加载器（easyLoader）组件</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<!-- 加载器示例：不全部引入组件，用到哪些组件加载哪些组件 -->
+<div style="border:3px blue solid;padding: 30px;width: 600px;height: 100px" id="a">
+    <a href="#" class="easyui-linkbutton" onclick="load1()">加载日历</a>
+    <a href="#" class="easyui-linkbutton" onclick="load2()">加载对话框</a>
+    <a href="#" class="easyui-linkbutton" onclick="load3()">加载数据表格</a>
+</div>
+<div id="cc"></div>
+<div id="dd"></div>
+<table id="tt"></table>
+
+
+<script>
+    /* easyloader.base = "../../jquery-easyui-1.4.2/";
+     easyloader.locale = "zh_CN";*/
+
+    function load1() {
+        easyloader.load('calendar', function () { // 加载指定的模块
+            $('#cc').calendar({
+                width: 180,
+                height: 180
+            });
+        });
+        /* using('calendar', function () {
+             $('#cc').calendar({
+                 width: 180,
+                 height: 180
+             });
+         });*/
+    }
+
+    function load2() {
+        using(['dialog', 'messager'], function () {
+            $('#dd').dialog({
+                title: '对话框',
+                msg: '对话框被创建',
+                width: 300,
+                height: 200
+            });
+            $.messager.show({
+                title: '系统提示',
+                msg: '对话框被创建'
+            });
+        });
+    }
+
+    function load3() {
+        using('datagrid', function () {
+            $('#tt').datagrid({
+                title: '数据表格',
+                width: 300,
+                height: 200,
+                fitColumns: true,
+                columns: [[
+                    {field: 'productid', title: '产品编号', width: 100},
+                    {field: 'productname', title: '产品名称', width: 200}
+                ]],
+                data: [
+                    {"productid": "FI-SW-01", "productname": "Koi"},
+                    {"productid": "K9-DL-01", "productname": "Dalmation"},
+                    {"productid": "RP-SN-01", "productname": "Rattlesnake"},
+                    {"productid": "RP-LI-02", "productname": "Iguana"},
+                    {"productid": "FL-DSH-01", "productname": "Manx"},
+                    {"productid": "FL-DLH-02", "productname": "Persian"},
+                    {"productid": "AV-CB-01", "productname": "Amazon Parrot"}
+                ]
+            });
+        });
+    }
+</script>
+
+<!--属性、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div class="demo-info" style="font-size:20px">
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ol><b style="font-size: 30px">hello：</b>
+            <li>简介：按需加载组件和脚本，只需要在页面中引用 jQuery 脚本 和 easyloader 脚本。</li>
+            <li>用法：easyloader.load还有一个别名叫using，定义在window对象上。
+                <br>easyloader.load('modules',function(){})
+                <br>using('modules',function(){})
+            </li>
+        </ol>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ol><b style="font-size: 30px">属性：</b>
+            <li>easyloader.base：'url/'，默认值为相对路径下的easyload.js文件。easyui 基础目录，必须用'/'结束。</li>
+            <li>easyloader.locale：String，默认值null。语言， 预定义区域jp日本、zh_CN简体中文、zh_TW繁体中文、en英语。</li>
+            <li>easyloader.theme：String，默认值default。 加载模块的主题，名称预定义在themes目录下。</li>
+            <li>easyloader.css：boolean，默认值true。 加载模块的时候是否加载 CSS 文件。</li>
+        </ol>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ul><b style="font-size: 30px">事件：</b>
+        </ul>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ul><b style="font-size: 30px">方法：</b>
+            <li>load(modules[,callback])：
+                <ol>
+                    <li>modules：加载的模块。模块参数有效的类型包括：一个模块名称、模块名称数组、 .css"后缀结尾的CSS文件、 .js"后缀结尾的JS文件。</li>
+                    <li>callback：加载指定模块成功的回调函数。</li>
+                </ol>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>基本分页（pagination ）组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<!--分页（pagination ）组件示例-->
+<div style="border:3px blue solid;padding: 30px;width: 600px;height: 100px" id="a">
+        <div class="easyui-pagination" style="border:1px solid #ddd;"></div>
+</div>
+
+<!--属性、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div style="font-size:20px">
+    <div>
+        <ol><b style="font-size: 30px">属性：</b>
+            <li>total：number，默认值1。记录总数，应该在创建分页（pagination）时设置。</li>
+            <li>pageSize：number，默认值10。初始页面尺寸，只能是pageList中的值。（注：每页显示的最大记录数）。</li>
+            <li>pageNumber：number，默认值1，创建分页（pagination）时显示的页码。</li>
+            <li>pageList：numberArray，默认值[10,20,30,50]，用户能改变页面尺寸。</li>
+            <li>showPageList：boolean，默认值true。是否显示页面尺寸列表。</li>
+            <li>showRefresh：boolean，默认值true。是否显示刷新按钮。</li>
+            <li>beforePageText：string，默认值 第。在 页码框 之前显示。</li>
+            <li>afterPageText：string，默认值 共{pages}页。在 页码框 之后显示。</li>
+            <li>displayMsg：string，默认值显示 {from}到{to},共 {total}记录。页面分页信息。</li>
+            <li>buttons：jsonArray/selector。定义自定义按钮组。
+                <ol>
+                    <li>jsonArray的jsonObject有2个属性，iconCls：CSS class，它将显示一个背景图片，handler：当按钮被点击时的处理函数</li>
+                    <li>selector，</li>
+                </ol>
+            </li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">事件：</b>
+            <li>onSelectPage ：newPageNumber, newPageSize。用户选择新的页面时触发。</li>
+            <li>onBeforeRefresh/onRefresh ：newPageNumber, newPageSize。刷新之前/之后触发。</li>
+            <li>onChangePageSize ：newPageNumber, newPageSize。当用户改变页面尺寸时触发。</li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">方法：</b>
+        </ol>
+    </div>
+</div>
+
+</body>
+</html>
