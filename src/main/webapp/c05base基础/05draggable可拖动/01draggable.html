@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>基本可拖动（draggable）组件</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/icon.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<div style="border:3px blue solid;padding: 30px;width: 500px;height: 300px" id="a">
+    <div class="easyui-draggable" style="width:200px;height:120px;background:gray;border:10px solid blue">
+        第一个div
+    </div>
+    你懂的
+    <div class="easyui-draggable" data-options="handle:'#title',disabled:false"
+         style="width:200px;height:100px;background:yellow;border:5px solid red;margin-top:30px">
+        第二个div
+        <div id="title" style="padding:20px;background:#ccc;color:blueviolet;height:5px;border:5px solid red">点击这块区域拖动</div>
+    </div>
+    你懂的
+</div>
+
+
+
+<!--属性、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div class="demo-info" style="font-size:20px">
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ol><b style="font-size: 30px">属性：</b>
+            <li>handle：拖动组件内部元素的selector，默认值null。可拖动组件的把手。</li>
+            <li>disabled：boolean，默认值false。是否可以拖动。</li>
+        </ol>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ul><b style="font-size: 30px">事件：</b>
+            <li>onBeforeDrag：点击的元素element。拖动前触发，返回 false 就取消拖动。</li>
+            <li>onStartDrag：点击的元素element。开始拖动时触发。</li>
+            <li>onStopDrag：点击的元素element。拖动停止时触发。。</li>
+            <li>onDrag：点击的元素element。拖动期间触发，返回 false 将不进行实际的拖动。</li>
+        </ul>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ul><b style="font-size: 30px">方法：</b>
+            <li>enable/disable：none。启用/禁用可拖动。</li>
+        </ul>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ul><b style="font-size: 30px">额外：</b>
+        </ul>
+    </div>
+</div>
+
+
+</body>
+</html>
