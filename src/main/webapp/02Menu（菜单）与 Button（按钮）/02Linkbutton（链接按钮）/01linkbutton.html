@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>链接按钮（Linkbutton）组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<!-- 连接按钮 -->
+<div style="border:3px blue solid;padding: 30px;width: 600px;height: 100px" id="a">
+    <div style="padding:5px;">
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add',iconAlign:'right'">添加，图标右侧</a>
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add',text:'添加1'">添加2</a>
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove',toggle:true">开关</a>
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true">无边框</a>
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cut',disabled:true">禁用</a>
+        <a href="#" class="easyui-linkbutton">文本按钮</a>
+    </div>
+</div>
+
+
+<!--属性、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div style="font-size:20px">
+
+    <div>
+        <ol><b style="font-size: 30px">属性：</b>
+            <li>iconCls：string。按钮标题图标。</li>
+            <li>text：string。按钮文本。优先级比a标记中的文本低。</li>
+            <li>disabled：boolean,默认值false。是否禁用按钮。</li>
+            <li>plain：boolean,默认值false。是否显示一个简单的效果，没有边框。</li>
+            <li>iconAlign：string,默认值left。按钮图标的位置。可能的值：'left'、'right'。</li>
+            <li>selected：boolean,默认值false。定义按钮状态是否已选择。</li>
+            <li>toggle：boolean,默认值false。是否是开关按钮。</li>
+            <li>group：string。按钮所属的分组名称，一个组的按钮只允许选中一个，可以配合toggle属性使用。</li>
+        </ol>
+    </div>
+
+    <div>
+        <ol><b style="font-size: 30px">事件：</b>
+
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">方法：</b>
+            <li>disable/enable：none。禁用/启用按钮。</li>
+            <li>select/unselect：none。选中/未选中按钮。</li>
+        </ol>
+    </div>
+</div>
+
+</body>
+</html>

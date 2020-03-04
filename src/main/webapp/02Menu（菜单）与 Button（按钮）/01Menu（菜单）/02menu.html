@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>基本菜单（Menu）组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<!-- 解析器示例：第一个自动渲染，第二个需要手动渲染 -->
+<div style="border:3px blue solid;padding: 30px;width: 600px;height: 100px" id="a">
+    <div id="mm" class="easyui-menu" style="width:120px;" data-options="name:'menu',onClick:menuHandler">
+        <div onclick="itemHandler()" data-options="name:'new'">新建</div>
+        <div>
+            <span>嵌套菜单</span>
+            <div class="easyui-menu" style="width:150px;">
+                <div><b>Word</b></div>
+                <div>Excel</div>
+                <div>PowerPoint</div>
+                <div>
+                    <span>M1</span>
+                    <div style="width:120px;">
+                        <div>sub1</div>
+                        <div>sub2</div>
+                        <div>
+                            <span>Sub</span>
+                            <div style="width:80px;">
+                                <div onclick="javascript:alert('sub21')">sub21</div>
+                                <div>sub22</div>
+                                <div>sub23</div>
+                            </div>
+                        </div>
+                        <div>sub3</div>
+                    </div>
+                </div>
+                <div>
+                    <span>Window Demos</span>
+                    <div style="width:120px;">
+                        <div data-options="href:'http://www.baidu.com'">Window</div>
+                        <div data-options="href:'dialog.html'">Dialog</div>
+                        <div><a href="http://www.jeasyui.com" target="_blank">EasyUI</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-options="iconCls:'icon-save'">
+            <span>定制菜单项</span>
+            <div class="menu-content" style="text-align:left;padding:10px">
+                <div style="font-weight:bold;font-size:16px">选择一种语言:</div>
+                <ul style="margin:0;padding:0 0 0 40px">
+                    <li><a href="javascript:void(0)">Java</a></li>
+                    <li><a href="javascript:void(0)">Basic</a></li>
+                    <li><a href="javascript:void(0)">C++</a></li>
+                    <li><a href="javascript:void(0)">Fortran</a></li>
+                    <li>
+                        <span>其他</span>
+                        <input type="text">
+                    </li>
+                </ul>
+                <div style="padding:10px 0 0 30px">
+                    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">确定</a>
+                </div>
+            </div>
+        </div>
+        <div data-options="iconCls:'icon-print',disabled:true">打印</div>
+        <div class="menu-sep"></div>
+        <div>退出</div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $(document).bind('contextmenu', function (e) {
+            /*return false;*/
+            e.preventDefault();
+            $('#mm').menu('show', {
+                left: e.pageX,
+                top: e.pageY
+            });
+        });
+    });
+
+    function menuHandler(item) {
+        alert("menuHandler");
+        alert(item.name);
+    }
+
+    function itemHandler() {
+        alert("itemHandler");
+        ;
+    }
+</script>
+
+
+
+<!--属性、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div style="font-size:20px">
+    <div>
+        <ol><b style="font-size: 30px">hello：</b>
+            <li>菜单项：div的class指定菜单项种类，div标记中的文本指定菜单项标题文本。
+                <ol>
+                    <li>无class，默认的简单菜单项，图标+文本。</li>
+                    <li>menu-sep，分隔符。</li>
+                    <li>menu-content，显示自定义内容。</li>
+                </ol>
+            </li>
+            <ol>菜单项属性：
+                <li>iconCls：string，菜单项标题图标。</li>
+                <li>disabled：boolean，默认值为false，否禁用菜单项（menu item）。</li>
+                <li>href：string，点击菜单项（menu item）时设置页面位置。</li>
+                <li>onclick：function(menuItem)，当点击菜单项（menuItem）时被调用的函数。</li>
+            </ol>
+            <li>$(selector).bind(event,data,function)：向被选元素添加的一个事件处理程序，以及当事件发生时运行的函数。</li>
+            <li>contextmenu：右键元素事件，即使绑定新的函数，也会执行默认的动作。return false，则取消右击事件。任何HTML元素都可以接受此事件。</li>
+            <li>event.preventDefault()：取消事件的默认动作。</li>
+            <li>Event 对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态。</li>
+            <li>jquery事件对象属性：</li>
+            <ol>
+                <li>event.pageX 和 event.pageY：获取鼠标当前相对于页面的坐标</li>
+            </ol>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">属性：</b>
+
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">事件：</b>
+
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">方法：</b>
+            <li>show：pos，在指定的位置显示菜单（menu）。 pos 参数有两个属性： left：新的左边位置。 top：新的顶部位置</li>
+
+        </ol>
+    </div>
+</div>
+
+没有学习，以后补上
+appendItem
+setIcon param 给指定的菜单项（menu item）设置图标。'param' 参数包含两个属性：
+arget：DOM 对象，即菜单项（menu item）。
+iconCls：新图标的 CSS class。
+
+</body>
+</html>

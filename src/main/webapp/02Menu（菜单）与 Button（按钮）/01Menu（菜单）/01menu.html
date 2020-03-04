@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>基本菜单（Menu）组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<!-- 右键菜单 -->
+<div style="border:3px blue solid;padding: 30px;width: 600px;height: 100px" id="a">
+    <div id="mm" class="easyui-menu" style="width:120px;" data-options="name:'menu',onClick:menuHandler">
+        <div data-options="onclick:itemHandler">New</div>
+        <div>
+            <span>Open</span>
+            <div style="width:150px;">
+                <div><b>Word</b></div>
+                <div>Excel</div>
+                <div>PowerPoint</div>
+            </div>
+        </div>
+        <div data-options="iconCls:'icon-save',href:'#mm'">Save</div>
+        <div class="menu-sep" ></div>
+        <div>Exit</div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $(document).bind('contextmenu', function (e) {
+            /*return false;*/
+            e.preventDefault();
+            $('#mm').menu('show', {
+                left: e.pageX,
+                top: e.pageY
+            });
+        });
+        //增加菜单项
+        /*$('#mm').menu('appendItem', {
+            text: 'New Item',
+            iconCls: 'icon-ok',
+            onclick: function(event){alert(event);}
+        });*/
+        //增加子菜单项
+        /*var item = $('#mm').menu('findItem', 'Exit');
+        $('#mm').menu('appendItem', {
+            parent: item.target,
+            text: 'Open Excel',
+            iconCls: 'icon-excel',
+            onclick: function(){alert('Open Excel')}
+        });*/
+    });
+
+    function menuHandler(item) {
+        alert("menuHandler" + item.text);
+    }
+
+    function itemHandler(item) {
+        alert("itemHandler" + item.text);
+    }
+
+</script>
+
+
+<!--属性、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div style="font-size:20px">
+    <div>
+        <ol><b style="font-size: 30px">hello：</b>
+            <li>预备知识：
+                <ol>
+                    <li>$(selector).bind(event,data,function(event){返回fasle则取消要绑定的事件})：向被选元素的事件绑定处理函数。</li>
+                    <li>contextmenu：右键元素事件，即使绑定新的函数，也会执行默认的动作。return false，则取消右击事件。任何HTML元素都可以接受此事件。</li>
+                    <li>event.preventDefault()：取消事件的默认动作。</li>
+                    <li>jquery事件对象属性：
+                        <ol>
+                            <li>event.pageX 和 event.pageY：获取鼠标当前相对于页面的坐标</li>
+                        </ol>
+                    </li>
+                </ol>
+            </li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">菜单项类型：</b>
+            <li>普通菜单项：标记div，js为json对象 {}。</li>
+            <li>分隔符菜单项：标记class为menu-sep的div，js为"|"。</li>
+            <li>嵌套菜单菜单项：标记 div（span+div（菜单项）） ，js为 。</li>
+            <li>嵌套其他内容擦弹项：标记class为menu-content的div（其他内容，解析html标记），js为。</li>
+
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">菜单项属性：</b>
+            <li>text：string。js方式有用，项目文本。</li>
+            <li>iconCls：string。菜单项标题图标。</li>
+            <li>disabled：boolean，默认值为false。否禁用菜单项（menu item）。</li>
+            <li>href：string。点击菜单项（menu item）时设置页面位置。 这个没看懂</li>
+            <li>onclick：function(event)。当点击菜单项时被调用的函数。标记使用无用，js菜单项有用，先调用菜单项的onclick再调用菜单的onClick。</li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">菜单属性：</b>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">菜单事件：</b>
+            <li>onClick：function(item)。当点击菜单项时被调用的函数。</li>
+            <li>onShow|onHide：none。当菜单（menu）显示|隐藏之后触发。</li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">菜单方法：</b>
+            <li>show|hide：pos|none。在指定的位置显示菜单|隐藏菜单。 pos 参数有两个属性： left：新的左边位置。 top：新的顶部位置。</li>
+            <li>enableItem|disableItem：item。启用|禁用菜单项（menu item）。</li>
+            <li>findItem：text。找到指定的菜单项（menu item）。</li>
+            <li>appendItem：options。追加一个新的菜单项（menu item）。
+            <ol>
+                <li>默认情况下，新增的项目将作为顶级菜单项（menu item）</li>
+                <li>如需追加一个子菜单项，需为options增加 'parent' 属性，为item.target。</li>
+            </ol>
+            </li>
+            <li>removeItem：item。移除指定的菜单项（menu item）。</li>
+        </ol>
+    </div>
+</div>
+</body>
+</html>
