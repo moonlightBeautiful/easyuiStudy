@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>下拉表格组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<!--下拉网格 -->
+<div style="border:3px blue solid;padding: 10px;width: 600px;height: 300px">
+    <select class="easyui-combogrid" style="width:250px" data-options="
+			panelWidth: 500,
+			idField: 'itemid',
+			textField: 'productname',
+			url: './combogrid_data.json',
+			columns: [[
+				{field:'itemid',title:'产品编号',width:80},
+				{field:'productname',title:'产品名称',width:120},
+				{field:'listprice',title:'市场价',width:80,align:'right'},
+				{field:'unitcost',title:'成本价',width:80,align:'right'},
+				{field:'attr1',title:'描述',width:200},
+				{field:'status',title:'状态',width:60,align:'center'}
+			]],
+			fitColumns: true">
+    </select>
+</div>
+
+<!--属性、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div class="demo-info" style="font-size:20px">
+    <div>
+        <ol><b style="font-size: 30px">选项：扩展自组合（combo）和树（tree）</b>
+            <li> loadMsg string 当数据网格（datagrid）加载远程数据时显示的消息。 null</li>
+            <li> idField string id 的字段名。 null</li>
+            <li> textField string 显示在文本框中的 text 字段名。 null</li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">事件：扩展自组合（combo）和数据网格（datagrid）</b>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">方法：扩展自组合（combo）</b>
+            <li> grid none 返回数据网格（datagrid）对象。</li>
+            <li> setValues values 设置组件值的数组。 代码实例： $('#cc').combogrid('setValues', ['001','007']);。</li>
+            <li> setValue value 设置组件的值。代码实例： $('#cc').combogrid('setValue', '002');</li>
+            <li> clear none 清除组件的值。</li>
+        </ol>
+    </div>
+</div>
+<div style="margin:10px 0;"></div>
+<input class="easyui-combogrid" style="width:250px" data-options="
+			panelWidth: 500,
+			idField: 'itemid',
+			textField: 'productname',
+			url: '../c10combogrid/combogrid_data.json',
+			columns: [[
+				{field:'itemid',title:'产品编号',width:80},
+				{field:'productname',title:'产品名称',width:120},
+				{field:'listprice',title:'市场价',width:80,align:'right'},
+				{field:'unitcost',title:'成本价',width:80,align:'right'},
+				{field:'attr1',title:'描述',width:200},
+				{field:'status',title:'状态',width:60,align:'center'}
+			]],
+			fitColumns: true
+		">
+
+
+</html>

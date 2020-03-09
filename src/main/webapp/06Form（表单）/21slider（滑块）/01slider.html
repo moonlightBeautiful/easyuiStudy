@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>滑动器组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<div style="border:3px blue solid;padding: 20px;width: 600px;height: 300px">
+    <input class="easyui-slider" style="width:300px" data-options="showTip:true,rule:[0,'|',25,'|',50,'|',75,'|',100]">
+</div>
+
+
+<!--属性、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div class="demo-info" style="font-size:20px">
+    <div>
+        <ol><b style="font-size: 30px">hello：</b>
+            <li>在同一个form中</li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">选项：</b>
+            <li></li>
+            width number 滑块（slider）的宽度。 auto
+            height number 滑块（slider）的高度。 auto
+            mode string 只是滑块（slider）的类型。可能的值：'h'(horizontal)、'v'(vertical)。 h
+            reversed boolean 当设置为 true 时，将会对调最小值和最大值的位置。该属性自版本 1.3.2 起可用。 false
+            showTip boolean 定义是否显示值信息提示框。 false
+            disabled boolean 定义是否禁用滑块（slider）。 false
+            value number 默认值。 0
+            min number 允许的最小值。 0
+            max number 允许的最大值。 100
+            step number 增加或减少的值。 1
+            rule array 在滑块旁边显示标签，'|' — 值显示线。 []
+            tipFormatter function 格式化滑块值的函数。返回作为提示框显示的字符串值。
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">事件：完全扩展自combo(自定义下拉框)和treegrid(数据表格)。</b>
+            onChange newValue,oldValue 当文本域的值改变时触发。
+            onSlideStart value 当开始拖拽滑块时触发。
+            onSlideEnd value 当停止拖拽滑块时触发。
+            onComplete value 当滑块的值被用户改变时触发，无论是通过拖拽滑块改变还是通过点击滑块改变都会触发。该事件自版本 1.3.4 起可用
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">方法：扩展自组合（combo）</b>
+            <li></li>
+            resize param 设置滑块尺寸。'param' 参数包含下列属性：
+            width：新的滑块宽度
+            height：新的滑块高度
+            getValue none 获取滑块（slider）的值。
+            setValue value 设置滑块（slider）的值。
+            clear none 清除滑块（slider）的值。该方法自版本 1.3.5 起可用。
+            reset none 重置滑块（slider）的值。该方法自版本 1.3.5 起可用。
+            enable none 启用滑块（slider）组件。
+            disable none 禁用滑块（slider）组件。
+        </ol>
+    </div>
+</div>
+</body>
+</html>

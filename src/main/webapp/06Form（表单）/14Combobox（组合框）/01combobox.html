@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>组合框组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<!--基础日期时间框示例-->
+<div style="border:3px blue solid;padding: 10px;width: 600px;height: 300px">
+    <select class="easyui-combobox" name="sheng" style="width:200px;">
+        <option value="hebei">河北省</option>
+        <option value="shandong">山东省</option>
+        <option value="liaoning">辽宁省</option>
+    </select>
+</div>
+
+
+<!--属性、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div class="demo-info" style="font-size:20px">
+    <div>
+        <ol><b style="font-size: 30px">选项：</b>
+            <li>valueField：String。绑定到该组合框（ComboBox）的 value 上的基础数据的名称。</li>
+            <li>textField：String。绑定到该组合框（ComboBox）的 text 上的基础数据的名称。</li>
+            <li>url：String url。远程加载下拉框的数据。格式为[{"id":number,"text":String,"desc":String可选},{}...]。</li>
+            <li>data：array，格式为[{"id":number,"text":String,"desc":String可选},{}...]。绑定到组合框数据。</li>
+            <li>formatter：function(row每一行的数据object)，返回String，支持html标签。格式化每一行的数据。</li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">事件：</b>
+            <li>onBeforeLoad param 在请求加载数据之前触发，返回 false 则取消加载动作。</li>
+            <li>onLoadSuccess none 当远程数据加载成功时触发。</li>
+            <li>onSelect record 当用户选择一个列表项时触发。。</li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">方法：</b>
+            <li>getData：none 返回加载的数据。。</li>
+            <li>loadData：data。加载本地列表数据。。</li>
+            <li>reload：url。请求重新加载远程的列表数据。。</li>
+            <li>setValues|setValue：values|value。设置组合框（combobox）的值。</li>
+            <li>clear none 清除组合框（combobox）的值。</li>
+            <li>select|unselect value|value 选择|取消选择指定的选项。</li>
+        </ol>
+    </div>
+</div>
+
+</body>
+</html>

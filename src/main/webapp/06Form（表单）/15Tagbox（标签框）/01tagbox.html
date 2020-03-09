@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>标签框</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<!--基础日期时间框示例-->
+<div style="border:3px blue solid;padding: 10px;width: 600px;height: 300px">
+    <input class="easyui-tagbox" value="Apple, Orange" label="Add a tag" style="width:100%" data-options="tagFormatter:tagFormatter,tagStyler:tagStyler">
+</div>
+<script>
+    function tagFormatter(value, row) {
+        var opts = $(this).tagbox('options');
+        return row ? row[opts.textField] : value;
+    }
+
+    function tagStyler(value, row) {
+        if (value == 'Apple') {
+            return 'background:#ffd7d7;color:#c65353';
+        }
+    }
+</script>
+
+<!--属性、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div class="demo-info" style="font-size:20px">
+    <div>
+        <ol><b style="font-size: 30px">选项：扩展自 combobox (组合框)</b>
+            <li>value：String。绑定到该标签框（ComboBox）的 value。"String,String..."</li>
+            <li>hasDownArrow： boolean 定义是否显示向下的箭头。false</li>
+            <li>tagFormatter ：function(value,row) 该格式化器用于格式化返回值。</li>
+            <li>tagStyler：function(value,row)。该格式化器用于格式化标签样式。</li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">事件：</b>
+            <li>onClickTag value 在点击标签框的时候触发该事件。</li>
+            <li>onBeforeRemoveTag value 在移除一个标签框之前触发，返回false则取消移除操作。</li>
+            <li>onRemoveTag value 在移除标签框时触发。</li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">方法：扩展自 combobox</b>
+        </ol>
+    </div>
+</div>
+
+</body>
+</html>

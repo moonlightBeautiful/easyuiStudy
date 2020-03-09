@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>日期时间微调器</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<!--例子 -->
+<div style="border:3px blue solid;padding: 10px;width: 600px;height: 300px" id="a">
+    <input class="easyui-datetimespinner" style="width:180px;" data-options="
+                onChange: function(value){
+                    $('#vv').text(value);
+                }">
+    <div style="margin:10px 0;">
+        值: <span id="vv"></span>
+    </div>
+</div>
+
+
+<!--属性、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div class="demo-info" style="font-size:20px">
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ol><b style="font-size: 30px">选项：扩展自 timespinner</b>
+            <li> selections array 选择高亮部分的值。 [[0,2],[3,5],[6,10],[11,13],[14,16],[17,19]]</li>
+        </ol>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ol><b style="font-size: 30px">事件：扩展自 timespinner</b>
+            <li></li>
+        </ol>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ol><b style="font-size: 30px">方法：扩展自 timespinner</b>
+        </ol>
+    </div>
+</div>
+</body>
+</html>

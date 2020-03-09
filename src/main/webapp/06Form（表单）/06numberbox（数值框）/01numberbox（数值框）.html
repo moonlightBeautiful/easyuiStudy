@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>文件框</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<!--例子 -->
+<div style="border:3px blue solid;padding: 10px;width: 800px;height: 400px" id="a">
+    <input class="easyui-numberbox" style="width:300px" >
+</div>
+
+<!--选项、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div style="font-size:20px">
+    <div>
+        <ol><b style="font-size: 30px">选项：扩展自验证框（validatebox）</b>
+            <li>buttonText：string，默认值" "。在文本框上附加的按钮显示的文本。</li>
+            <li>disabled boolean 定义是否禁用该字段。 false</li>
+            <li> value number 默认值。</li>
+            <li> min number 允许的最小值。 null</li>
+            <li> max number 允许的最大值。 null</li>
+            <li>precision number 显示在小数点后面的最大精度。 0</li>
+            <li>decimalSeparator string 分隔数字的整数部分和小数部分的分隔字符。 .</li>
+            <li> groupSeparator string 分隔整数组合的字符。</li>
+            <li>prefix string 前缀字符串。</li>
+            <li>suffix string 后缀字符串。</li>
+            <li>filter function(e) 定义如何过滤被按下的键，返回 true 则接受输入字符。该属性自版本 1.3.3 起可用。</li>
+            <li>formatter function(value) 用来格式数字框（numberbox）值的函数。返回显示在框中的字符串值。。</li>
+            <li>parser function(s) 用来解析字符串的函数。返回数字框（numberbox）值。</li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">事件： </b>
+            <li>onChange：newValue,oldValue。当字段值改变时触发。</li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">方法：扩展自验证框（validatebox）</b>
+            disable none 禁用该域。
+            enable none 启用该域。
+            fix none 把值固定为有效的值。
+            setValue none 设置数字框（numberbox）的值。
+            代码实例：
+            $('#nn').numberbox('setValue', 206.12);
+            getValue none 获取数字框（numberbox）的值。
+            代码实例：
+            var v = $('#nn').numberbox('getValue');
+            alert(v);
+            clear none 清除数字框（numberbox）的值。
+            reset none 重置数字框（numberbox）的值。该方法自版本 1.3.2 起可用。
+        </ol>
+    </div>
+</div>
+
+</body>
+</html>

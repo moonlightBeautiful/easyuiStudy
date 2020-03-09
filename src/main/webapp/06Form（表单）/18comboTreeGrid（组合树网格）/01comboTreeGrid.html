@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>下拉表格组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<!--下拉树网格 -->
+<div style="border:3px blue solid;padding: 10px;width: 600px;height: 300px">
+    <input class="easyui-combotreegrid" data-options="
+                        width:'100%',
+                        panelWidth:500,
+                        label:'Select Item:',
+                        labelPosition:'top',
+                        url:'comboTreeGrid_data.json',
+                        idField:'id',
+                        treeField:'name',
+                        columns:[[
+                            {field:'name',title:'Name',width:200},
+                            {field:'size',title:'Size',width:100},
+                            {field:'date',title:'Date',width:100}
+                        ]]">
+</div>
+
+<!--属性、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div class="demo-info" style="font-size:20px">
+    <div>
+        <ol><b style="font-size: 30px">选项：扩展自combo(自定义下拉框)和treegrid(树形表格)</b>
+            <li></li>
+            idField string ID字段名称。 null
+            treeField string 要显示在文本框中的文本字段。 null
+            textField string 要绑定到该组件对应的底层数据结构的字段名。（该属性自1.5.2版开始可用） null
+            limitToGrid boolean 限制输入的值只能是树形表格中的值。 FALSE
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">事件：完全扩展自combo(自定义下拉框)和treegrid(数据表格)。</b>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">方法：扩展自组合（combo）</b>
+            <li>grid none 返回数据表格对象。</li>
+            <li> setValue value 设置组件值。
+                $('#cc').combogrid('setValue', '002');
+                $('#cc').combogrid('setValue', {id:'003',name:'name003'});
+            </li>
+            <li>setValues values 设置组件值数组。
+                $('#cc').combogrid('setValues', ['001','007']);
+                $('#cc').combogrid('setValues', ['001','007',{id:'008',name:'name008'}]);
+            </li>
+            <li> clear none 清除组件的值。</li>
+        </ol>
+    </div>
+</div>
+</body>
+
+</html>

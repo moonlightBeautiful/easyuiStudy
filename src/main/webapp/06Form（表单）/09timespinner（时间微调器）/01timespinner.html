@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>时间微调器</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<!--例子 -->DateTimeSpinner 日期时间微调框
+<div style="border:3px blue solid;padding: 10px;width: 600px;height: 300px" id="a">
+    <input class="easyui-timespinner" style="width:80px;" data-options="
+                onChange: function(value){
+                    $('#vv').text(value);
+                }">
+    <div style="margin:10px 0;">
+        值: <span id="vv"></span>
+    </div>
+</div>
+
+
+<!--属性、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div class="demo-info" style="font-size:20px">
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ol><b style="font-size: 30px">选项：扩展自微调器（spinner）</b>
+            <li> separator string 时分秒之间的分隔符。 :</li>
+            <li> showSeconds boolean 定义是否显示秒的信息。 false</li>
+            <li>highlight number 初始高亮的域，0 = 时，1 = 分，... 0</li>
+        </ol>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ol><b style="font-size: 30px">事件：扩展自微调器（spinner）</b>
+            <li></li>
+        </ol>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ol><b style="font-size: 30px">方法：扩展自微调器（spinner）</b>
+            <li>getHours none 获取当前的时钟的值。</li>
+            <li>getMinutes none 获取当前的分钟的值。</li>
+            <li>getSeconds none 获取当前的秒钟的值。</li>
+        </ol>
+    </div>
+</div>
+</body>
+</html>

@@ -76,27 +76,28 @@
     6.Form（表单）
         无依赖关系的：
             1.Calendar 日历
-            20.Form 表单
+            22.Form 表单
         有依赖关系的：    
             2.Validatebox 验证框  依赖tooltip
-            3.textbox 文本框  依赖validatebox 和linkbutton
-                4.passwordbox 密码框
-                5.filebox 文件框
-                6.Numberbox 数字框
-                7.Spinner 微调器
-                    8.Numberspinner 数值微调器
+            3.Textbox 文本框  依赖validatebox 和linkbutton
+                4.passwordbox 密码框  依赖textbox
+                5.filebox 文件框   依赖textbox 
+            6.Numberbox 数字框 依赖 Validatebox
+            7.Spinner 微调器 依赖 Validatebox
+                    8.Numberspinner 数值微调器   依赖 Spinner 和 Numberbox
                     9.Timespinner 时间微调器
-                        10.DateTimeSpinner 日期时间微调框
-            11.Combo 组合
-                12.Datebox 日期框
-                    13.Datetimebox 日期时间框
-                14.Combobox 组合框           
-                    15.tagbox 标签框
-                16.Combotree 组合树
-                17.Combogrid 组合网格
-                18.ComboTreeGrid 组合树网格
-            19.checkbox（复选框）和 radio（单选框） 使用  使用原生的
-            20.slide滑块 
+                        10.DateTimeSpinner 日期时间微调框   依赖 timespinner
+            11.Combo 组合 依赖 validatebox 和 panel                    
+                12.Datebox 日期框 依赖 combo 和 calendar
+                    13.Datetimebox 日期时间框  依赖 datebox 和 timespinner
+                14.Combobox 组合框  依赖 Combo                
+                    15.tagbox 标签框  依赖 combobox 
+                16.Combotree 组合树 依赖 combo 和 tree
+                17.Combogrid 组合网格 依赖 combo 和 datagrid
+                18.ComboTreeGrid 组合树网格  依赖 combo 和 treegrid 
+            19.checkbox 复选框
+            20.radiobutton 单选框 
+            21.slide滑块 依赖draggable
 应用场景
     左侧菜单栏：卡片布局+树形菜单
     右侧数据栏：连接按钮+菜单按钮+搜索框+数据网格+菜单

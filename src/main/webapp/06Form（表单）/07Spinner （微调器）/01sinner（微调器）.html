@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>文件框</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<!--例子 -->
+<div style="border:3px blue solid;padding: 10px;width: 800px;height: 400px" id="a">
+    <input class="easyui-spinner" style="width:300px" value="2">
+</div>
+
+<!--选项、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div style="font-size:20px">
+    <div>
+        <ol><b style="font-size: 30px">选项：扩展自验证框（validatebox）</b>
+            <li>  width	number	该组件的宽度。	auto</li>
+
+            height	number	该组件的高度。该属性自版本 1.3.2 起可用。	22
+            value	string	初始值。
+            min	string	允许的最小值。	null
+            max	string	允许的最大值。	null
+            increment	number	点击微调器按钮时的增量值。	1
+            editable	boolean	定义用户是否可以往文本域中直接输入值。	true
+            disabled	boolean	定义是否禁用文本域。	false
+            spin	function(down)	当用户点击微调按钮时调用的函数。'down' 参数指示用户是否点击了向下微调按钮。
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">事件： </b>
+            onSpinUp	none	当用户点击向上微调按钮时触发。
+            onSpinDown	none	当用户点击向下微调按钮时触发。
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">方法：扩展自验证框（validatebox）</b>
+            disable none 禁用该域。
+            enable	none	启用组件。
+            getValue	none	获取组件的值。
+            setValue	value	设置组件的值。
+            clear	none	清除组件的值。
+            reset	none	重置组件的值。该方法自版本 1.3.2 起可用。
+        </ol>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>下拉树组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<!--下拉树-->
+<div style="border:3px blue solid;padding: 10px;width: 600px;height: 300px">
+    <ul id="tt" class="easyui-tree">
+        <li>
+            <span>Folder</span>
+            <ul>
+                <li>
+                    <span>Sub Folder 1</span>
+                    <ul>
+                        <li><span><a href="#">File 11</a></span></li>
+                        <li><span>File 12</span></li>
+                        <li><span>File 13</span></li>
+                    </ul>
+                </li>
+                <li><span>File 2</span></li>
+                <li><span>File 3</span></li>
+            </ul>
+        </li>
+        <li><span>File21</span></li>
+    </ul>
+</div>
+
+
+<!--属性、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div class="demo-info" style="font-size:20px">
+    <div>
+        <ol><b style="font-size: 30px">选项：扩展自组合（combo）和树（tree）</b>
+            editable boolean 定义用户是否可以直接往文本域中输入文字。 false
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">事件：扩展自组合（combo）和树（tree）</b>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">方法：扩展自组合（combo）</b>
+            <li>tree none 返回树（tree）对象。</li>
+            loadData data 记住本地的树（tree）数据。
+            reload url 再一次请求远程的树（tree）数据。
+            clear none 清除组件的值。
+            setValues values 设置组件值的数组。
+            setValue value 设置组件的值。
+        </ol>
+    </div>
+</div>
+</body>
+</html>
