@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>基本数据网格组件</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<div style="border:3px blue solid;padding: 10px;width: 800px;height: 400px" id="a">
+    <table id="dg" class="easyui-datagrid" title="基本数据表格" style="width: 600px;height: 350px"
+           data-options="url:'./datagrid_data.json',pagination:true,showFooter: true,onHeaderContextMenu:onHeaderContextMenu">
+        <thead>
+        <tr>
+            <th data-options="field:'itemId',width:80">编号</th>
+            <th data-options="field:'productId',width:80">产品编号</th>
+            <th data-options="field:'productName',width:80">产品名称</th>
+            <th data-options="field:'cost',width:80">成本价</th>
+            <th data-options="field:'marketPrice',width:80">市场价</th>
+            <th data-options="field:'description',width:80">描述</th>
+            <th data-options="field:'status',width:80">状态</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+<script type="text/javascript">
+
+    function onHeaderContextMenu(e, field) {
+        e.preventDefault();
+        if (!cmenu) {
+            createColumnMenu();
+        }
+        cmenu.menu('show', {
+            left: e.pageX,
+            top: e.pageY
+        });
+    }
+
+    var cmenu;
+
+    function createColumnMenu() {
+        cmenu = $('<div/>').appendTo('body');
+        cmenu.menu({
+            onClick: function (item) {
+                if (item.iconCls == 'icon-ok') {
+                    $('#dg').datagrid('hideColumn', item.name);
+                    cmenu.menu('setIcon', {
+                        target: item.target,
+                        iconCls: 'icon-empty'
+                    });
+                } else {
+                    $('#dg').datagrid('showColumn', item.name);
+                    cmenu.menu('setIcon', {
+                        target: item.target,
+                        iconCls: 'icon-ok'
+                    });
+                }
+            }
+        });
+        var fields = $('#dg').datagrid('getColumnFields');
+        for (var i = 0; i < fields.length; i++) {
+            var field = fields[i];
+            var col = $('#dg').datagrid('getColumnOption', field);
+            cmenu.menu('appendItem', {
+                text: col.title,
+                name: field,
+                iconCls: 'icon-ok'
+            });
+        }
+    }
+</script>
+
+</body>
+</html>

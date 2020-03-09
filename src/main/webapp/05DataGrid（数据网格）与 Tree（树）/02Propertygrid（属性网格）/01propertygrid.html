@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>属性网格（Propertygrid）组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<div style="border:3px blue solid;padding: 10px;width: 800px;height: 400px" id="a">
+    <table id="pg" class="easyui-propertygrid" style="width:300px" data-options="url:'./propertygrid_data.json',
+        showGroup:true,columns: mycolumns ,groupFormatter: groupFormatter">
+
+    </table>
+</div>
+<script type="text/javascript">
+    var mycolumns = [[
+        {field: 'name', title: '名称', width: 100, sortable: true},
+        {field: 'value', title: '值', width: 100, resizable: false},
+        {field: 'desc', title: '描述', width: 100, resizable: false}
+    ]];
+
+    function groupFormatter(group, rows) {
+        return group + ' - <span style="color:red">' + rows.length + ' 行</span>';
+    }
+</script>
+
+<!--属性、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div style="font-size:20px">
+
+    <div>
+        <ol><b style="font-size: 30px">hello</b>
+            <li>列是内置的，2列， name 和 value。可进行覆盖。[[{},{}]]</li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">网格选项：扩展自datagrid</b>
+            <li>showGroup：boolean，默认值false，是否显示属性组，属性组可以折叠或者展开同组的属性列表。</li>
+            <li>groupFormatter：function(group[组的字段名],rows[属于该组的行])。格式化组字段的值。</li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">行数据（Row Data）：</b>
+            <li>name：字段名。</li>
+            <li>value：要被编辑的字段值。</li>
+            <li>group：组的字段值。</li>
+            <li>editor：编辑属性值的编辑器。</li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">事件：官网无扩展</b>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">方法：</b>
+            <li>expandGroup：groupIndex 展开指定的组。如果 'groupIndex' 参数未分配，则展开所有的组。</li>
+            <li>collapseGroup：groupIndex 折叠指定的组。如果 'groupIndex' 参数未分配，则折叠所有的组。</li>
+        </ol>
+        <ol>备注
+            <li>编辑器，只有处于编辑状态的时候才能获取到。</li>
+        </ol>
+    </div>
+</div>
+
+</body>
+</html>

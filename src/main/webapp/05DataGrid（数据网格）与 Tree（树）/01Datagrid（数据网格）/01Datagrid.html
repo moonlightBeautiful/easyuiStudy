@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>基本数据网格组件</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<div style="border:3px blue solid;padding: 10px;width: 800px;height: 400px" id="a">
+    <table id="dg" class="easyui-datagrid" title="基本数据表格" style="width: 600px;height: 350px"
+           data-options="url:'./0datagrid_data.json',toolbar:toolbar,pagination:true">
+        <thead>
+        <tr>
+            <th data-options="field:'itemId'">编号</th>
+            <th data-options="field:'productId'">产品编号</th>
+            <th data-options="field:'productName'">产品名称</th>
+            <th data-options="field:'marketPrice'">市场价</th>
+            <th data-options="field:'cost'">成本价</th>
+            <th data-options="field:'description'">描述</th>
+            <th data-options="field:'status'">状态</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+<script type="text/javascript">
+    var toolbar = [{
+        text: '添加',
+        iconCls: 'icon-add',
+        handler: function () {
+            alert('添加')
+        }
+    }, {
+        text: '剪切',
+        iconCls: 'icon-cut',
+        handler: function () {
+            alert('剪切')
+        }
+    }, '-', {
+        text: '保存',
+        iconCls: 'icon-save',
+        handler: function () {
+            alert('保存')
+        }
+    }];
+</script>
+
+<!--属性、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div style="font-size:20px">
+    <div>
+        <ol><b style="font-size: 30px">网格选项：</b>
+            <li>idField：string，默认值是null。指示哪个字段是标识字段。</li>
+            <li>columns：array的array。数据网格（datagrid）的列（column）的配置对象。[[{},{}]]</li>
+            <li>editors：object。定义编辑行时的编辑器。predefined editors。</li>
+            <li>method：string，默认值是post。请求远程数据的方法（method）类型。</li>
+            <li>url：URL string。从远程站点请求数据的 URL。
+                <ol>返回的数据必须是json格式，必须含有 'total' 和 'rows' 属性，可选footer属性。
+                    <li>total的值是number</li>
+                    <li>rows的值是jsonArray</li>
+                    <li>footer的值是jsonArray</li>
+                    <li>{"total": number,"rows": [{json},{json}],"footer": [{json},{json}]}</li>
+                </ol>
+            </li>
+            <li>data：array|object。默要加载的数据。</li>
+            <li>loader：function(param)，默认值为null。 定义如何从远程服务器加载数据。网上有教程，等用到的时候再学。先用url。</li>
+            <li>loadFilter：function(data)，过滤数据后返回过滤后的数据给网格。</li>
+            <li>queryParams：object。当请求远程数据时，发送的额外参数。</li>
+            <li>toolbar：array/selector，默认值是null。自定义工具栏。
+                <ol>
+                    <li>
+                        数组，每个元素包含text(非必须)、iconCls、handler属性。<br>
+                        toolbar:[{ iconCls:'icon-add', handler:function(){alert('add')}} ]
+                    </li>
+                    <li>选择器，div按钮组。<br>
+                        <xmp>
+                            <div id="tt">
+                                <a href="#" class="icon-add" onclick="javascript:alert('add')"></a>
+                                <a href="#" class="icon-edit" onclick="javascript:alert('edit')"></a>
+                            </div>
+                        </xmp>
+                    </li>
+                </ol>
+            </li>
+            <li>pagination：boolean，默认值是false。底部是否显示分页工具栏。
+                <ol>点击分页工具栏按钮，会向从url传参2个，page: 默认当前页 rows: 默认大小为20。
+                    <li>pageNumber：number，默认值1。pagination属性为true时，初始化页码。</li>
+                    <li>pageSize：number，默认值10。pagination属性为true时，初始化页面尺寸。</li>
+                    <li>pageList：array，默认值[10,20,30,40,50]。pagination属性为true时，初始化页面尺寸的选择列表。</li>
+                </ol>
+            </li>
+            <li>loadMsg：string，默认Processing, please wait …。当从远程站点加载数据时，显示的提示消息。</li>
+            <li>rownumbers：boolean，默认值是false。是否在第一列显示行号。</li>
+            <li>singleSelect：boolean，默认值是false。是否单选，选中的行颜色会加深。</li>
+            <li>selectOnCheck：boolean，默认值是true。点击复选框是否联动选中该行。</li>
+            <li>checkOnSelect：boolean，默认值是true。选中行是否联动选中该行复选框。</li>
+            <li>sortName：string，默认值null。定义可以排序的列。</li>
+            <li>sortOrder：string，默认值asc。定义列的排序顺序。</li>
+            <li>multiSort：boolean，是否启用多列排序。</li>
+            <li>showFooter：boolean，默认值false。是否显示页脚。</li>
+            <li>frozenColumns：array，默认值是undefined。冻结列在左边。其值[[列options,列options]]</li>
+            <li>fitColumns：boolean，默认值是false。是否自动调整列的尺寸以防止水平滚动。</li>
+            <li>autoRowHeight：boolean，默认值是true。行高度否设置基于该行内容的。设置为 false，则可以提高加载性能。</li>
+            <li>striped：boolean，默认值是false。是否奇偶行使用不同背景色，俗称斑马线。</li>
+            <li>pagePosition：string，默认值是bottom。定义分页栏的位置。可用的值有：'top'、'bottom'、'both'。</li>
+            <li>scrollbarSize：number，默认值18。滚动条宽度（当滚动条是垂直的时候）或者滚动条的高度（当滚动条是水平的时候）。</li>
+            <li>rowStyler：function（rowIndex，rowData）。返回用于整行的样式，例如 'background:red' 的样式。</li>
+            view object 定义数据网格（datagrid）的视图。 default view
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">列选项：</b>
+            <li>title:string。列头的文本值。如果没有设置，则使用th标签对里面的文本值，如果都设置了，则title优先级高。</li>
+            <li>field:string。字段名，和加载的数据的属性名匹配起来。</li>
+            <li>width:number。列的宽度。如果未定义，则宽度会自动扩展以适应它的内容。没有定义宽度将会降低性能。</li>
+            <li>rowspan|colspan：number。一个单元格占据多少行|列。</li>
+            <li>align:string，默认值是left。如何对齐列数据，可能的值：'left'、'right'、'center'。</li>
+            <li>halign:string，默认值是align的值，如何对齐该列头，可能的值：'left'、'right'、'center'。</li>
+            <li>sortable:boolean，默认值false。该列是否可排序。</li>
+            <li>order:string，默认值asc。排序顺序。</li>
+            <li>resizable:boolean，默认值false。设置为 true，则允许该列可调整尺寸。</li>
+            <li>checkbox：boolean，默认值为false。此列是否为复选框项。</li>
+            <li>hidden：boolean，默认值为false。是否隐藏该列。</li>
+            <li>formatter:function(value，rowData，rowIndex)。此列的单元格的格式化函数，返回的数据显示在单元格中，可以解析html标签，但不会渲染easyui组件。一行一行的调用格式化。</li>
+            <li>styler:function（value，rowData，rowIndex）。返回String，例如 'background:red' 的样式，用于整列样式。</li>
+            <li>editor:string/object。指示编辑类型。
+                <ol>类型：text、textarea、numberbox、checkbox、datebox、combobox、combotree、validatebox。
+                    <li>当是字符串（string）时则指编辑类型，其他使用默认类型。</li>
+                    <li>当是对象（object）时则包含两个属性：type：字符串，编辑类型，options：编辑器选项。</li>
+                </ol>
+                <ol>编辑器选项
+                    <li>text/numberbox/textarea文本/数字/文本域编辑器，选项参照文本/数字/文本域组件</li>
+                    <li>checkbox复选框编辑器，当值为on的值，编辑状态是选中状态。当值为非on的值，编辑状态是非选中状态。结束编辑，值只能是on或者off的值。</li>
+                    <li>datebox日期框编辑器，选项参照datebox日期框组件</li>
+                    <li>combobox下拉框编辑器，选项参照datebox下拉框组件</li>
+                    <li>combotree下拉树编辑器，选项参照datebox下拉树框组件</li>
+                    <li>validatebox</li>
+                </ol>
+            </li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">编辑器：</b>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">视图：</b>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">事件：</b>
+            <li>onLoadSuccess：data。当数据加载成功时触发。</li>
+            <li>onLoadError：none。加载远程数据发生某些错误时触发。</li>
+            <li>onBeforeLoad：param外参数和分页参数。发送加载数据的请求前触发，如果返回 false 加载动作就会取消。</li>
+            <li>onClickRow:function(rowIndex,rowData)。当用户点击一行时触发。</li>
+            <li>onDblClickRow：function(rowIndex,rowData)。 在用户双击一个单元格的时候触发。</li>
+            <li>onClickCell：function(rowIndex, field, value)。 在用户双击一个单元格的时候触发。</li>
+            <li>onDblClickCell：function(rowIndex, field, value)。 在用户双击一个单元格的时候触发。</li>
+            <li>onSelect|onUnselect：function(rowIndex, value)。 当用户选中|取消选中一行时触发。</li>
+            <li>onSelectAll|onUnselectAll：function(rowIndex, value)。 当用户选中|取消选中全部行时触发。</li>
+            <li>onCheck|onUncheck：function(rowIndex, value)。 当用户勾选|取消勾选一行时触发。</li>
+            <li>onCheckAll|onUncheckAll：function(rowIndex, value)。 当用户勾选|取消勾选全部行时触发。</li>
+            <li>onBeforeEdit：function(rowIndex, value)。 开始编辑一行前触发。</li>
+            <li>onAfterEdit：function(rowIndex, value,changes更改的字段/值对)。 编辑完一行时触发。</li>
+            <li>onCancelEdit：function(rowIndex, rowData)。当用户取消编辑一行时触发。不知都返回false有什么反应。</li>
+            <li>onHeaderContextMenu：function(e, field)。 当数据网格（datagrid）的头部被右键单击时触发。不知都返回false有什么反应。</li>
+            <li>onRowContextMenu：function(e, rowIndex, rowData)。当右键点击行时触发。</li>
+            note：e.preventDefault(); //原本默认action被禁止
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">方法：</b>
+            <li>getPager：none。返回分页对象。</li>
+            <li>getPanel：none。返回面板对象。</li>
+            <li>getColumnFields：none|true。返回列的未冻结|冻结的字段。</li>
+            <li>getColumnOption：field。返回指定列的选项。</li>
+            <li>load/reload：param。后台请求加载并显示第一页的行。</li>
+            <li>reloadFooter：param。重新加载底部的行。</li>
+            <li>loading|loaded：none。显示|隐藏正在加载状态。</li>
+            <li>freezeRow：rowIndex。冻结指定的行，以便数据网格（datagrid）向下滚动时这些冻结行总是被显示在顶部。</li>
+            <li>loadData：data。加载本地数据，旧的数据会被移除。</li>
+            <li>getData：none。返回加载的数据。</li>
+            <li>getRows：none。返回当前页的行。</li>
+            <li>getFooterRows：none。返回底部的行。</li>
+            <li>getRowIndex：row|id字段值。返回指定行的索引。</li>
+            <li>getChecked：none。返回复选框选中的所有行。</li>
+            <li>getSelected：none。返回第一个选中的行或者null。</li>
+            <li>getSelections：none。返回所有选中的行。</li>
+            <li>clearSelections：none。清除所有的选择。</li>
+            <li>clearChecked：none。清除所有勾选的行。</li>
+            <li>scrollTo：index。滚动到指定行。</li>
+            <li>highlightRow：index。高亮显示一行。</li>
+            <li>selectAll|unselectAll：none。选中|取消选中当前页所有的行。。</li>
+            <li>selectRow：rowIndex。选中指定行，索引从 0 开始。</li>
+            <li>selectRecor：idValue。选中一行。</li>
+            <li>unselectRow index 取消选中一行。</li>
+            <li>checkAll|uncheckAll none 勾选当前页所有的行。取消勾选当前页所有的行。</li>
+            <li>checkRow|uncheckRow index 勾选指定行。取消勾选指定行。</li>
+            <li>beginEdit/endEdit/cancelEdit：rowIndex。开启/结束/取消指定行的编辑器。</li>
+            <li>getEditor：index,field。获取指定单元格的编辑器（只有在编辑器启用状态才可用，否则获取的为null或者空），options 参数包含两个属性，rowIndex：行的索引。field：字段名。</li>
+            <li>getEditors：rowIndex。获取指定行的编辑器（只有在编辑器启用状态才可用，否则获取的为null或者空）。</li>
+            <li>validateRow：rowindex。验证指定的行，有效时返回 true。如果不能通过验证（比如不能结束编辑器），则返回false。</li>
+            <li>updateRow param(index,{fieldid:"新数据"，fieldid:"新数据"})。row：新的行数据。更新指定的行。</li>
+            <li>appendRow：rowData。追加一个新行，新的行将被添加在最后的位置。</li>
+            <li>insertRow：rowIndex，rowData。在指定索引插入一个新行。</li>
+            <li>deleteRow：rowIndex。删除指定行。</li>
+            <li>getChanges：none|type。获取最后一次提交以来更改的行。none代表所有。可能的值是：inserted、deleted、updated。</li>
+            <li>acceptChanges：none。提交自从被加载以来或最后一次调用 acceptChanges 的所有更改的数据。</li>
+            <li>rejectChanges：none。回滚最后一次调用 acceptChanges 以来所有更改的数据。</li>
+            <li>mergeCells：options{index：行的索引,field：字段名,rowspan：合并跨越的行数,colspan：合并跨越的列数}。把一些单元格合并为一个单元格。</li>
+            <li>hideColumn|showColumn：fieldName。隐藏|显示指定的列。</li>
+        </ol>
+        <ol>备注
+            <li>编辑器，只有处于编辑状态的时候才能获取到。</li>
+        </ol>
+    </div>
+</div>
+
+</body>
+</html>

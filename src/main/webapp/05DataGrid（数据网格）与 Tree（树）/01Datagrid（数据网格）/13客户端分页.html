@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>基本数据网格（Datagrid）组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<div style="border:3px blue solid;padding: 10px;width: 800px;height: 400px" id="a">
+    <div>其实就是把数据一次性读取出来到客户端</div>
+    <table id="dg" class="easyui-datagrid" title="基本数据表格" style="width: 600px;height: 350px"
+           data-options="url:'./datagrid_data.json',pagination:true,pageSize:10">
+        <thead>
+        <tr>
+            <th data-options="field:'itemId',width:80">编号</th>
+            <th data-options="field:'productId',width:80">产品编号</th>
+            <th data-options="field:'productName',width:80">产品名称</th>
+            <th data-options="field:'cost',width:80">成本价</th>
+            <th data-options="field:'marketPrice',width:80">市场价</th>
+            <th data-options="field:'description',width:80">描述</th>
+            <th data-options="field:'status',width:80">状态</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+
+<script>
+    $(function () {
+        $('#dg').datagrid({loadFilter: loadFilter}).datagrid('loadData', getData());
+    });
+
+    /*
+        随机产生800条数据
+     */
+    function getData() {
+        var rows = [];
+        for (var i = 1; i <= 800; i++) {
+            var amount = Math.floor(Math.random() * 1000);
+            var price = Math.floor(Math.random() * 1000);
+            rows.push({
+                inv: i + '月',
+                date: $.fn.datebox.defaults.formatter(new Date()),
+                name: '姓名 ' + i,
+                amount: amount,
+                price: price,
+                cost: amount * price,
+                note: '备注 ' + i
+            });
+        }
+        return rows;
+    }
+
+    /*
+        加载数据的过滤器
+     */
+   var i = 1;
+    function loadFilter(data) {
+        alert(i++);
+        //第一次加载数据的时候时候，data是数组，要转成json对象，必须含有 'total' 和 'rows' 属性
+        if ($.isArray(data)) {
+            data = {
+                total: data.length,
+                rows: data
+            }
+        }
+        alert(data.rows[0].itemId);
+        //第一次加载数据的时候，给data对象originalRows属性赋值为data的全部数据，以后根据页码和分页尺寸从这里获取数据
+        //alert(data.originalRows);
+        if (data.originalRows == undefined) {
+            data.originalRows = (data.rows);
+        }
+
+        //根据工具栏分页信息配置分页onSelectPage事件和datagrid的option信息，然后跟你讲option信息选择页面数据给rows属性
+        var dg = $(this); //$("#dg");
+        var opts = dg.datagrid('options');
+        // alert(JSON.stringify(opts));
+        var pager = dg.datagrid('getPager');
+        pager.pagination({
+            onSelectPage: function (pageNum, pageSize) {
+                opts.pageNumber = pageNum;
+                opts.pageSize = pageSize;
+                dg.datagrid('loadData', data);
+            }
+        });
+        var start = (opts.pageNumber - 1) * parseInt(opts.pageSize);
+        var end = start + parseInt(opts.pageSize);
+        data.rows = data.originalRows.slice(start, end);
+
+        return data;
+    }
+
+
+</script>
+
+</body>
+</html>

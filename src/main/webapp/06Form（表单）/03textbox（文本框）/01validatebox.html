@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>文本框学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<!--例子 -->
+<div style="border:3px blue solid;padding: 10px;width: 800px;height: 400px" id="a">
+    <input class="easyui-textbox" style="width:300px" data-options="iconCls:'icon-search',
+                                                                prompt:'prompt',
+                                                                value:2,
+                                                                label:'我是标签',onClickIcon:onClickIcon"><br>
+    <input id="tb" style="width:300px">
+</div>
+<script>
+    $('#tb').textbox({
+        icons: [{
+            iconCls: 'icon-add',
+            handler: function (e) {
+                $(e.data.target).textbox('setValue', 'Something added!');
+            }
+        }, {
+            iconCls: 'icon-remove',
+            handler: function (e) {
+                $(e.data.target).textbox('clear');
+            }
+        }],
+        buttonText: 'Search',
+        buttonIcon: 'icon-man',
+        iconCls: 'icon-man',
+        iconAlign: 'left'
+
+    });
+
+    function onClickIcon() {
+        alert(1);
+    }
+</script>
+<!--选项、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div style="font-size:20px">
+    <div>
+        <ol><b style="font-size: 30px">选项：</b>
+            <li>width/height：number，默认值false。组件的宽度|高度。</li>
+            <li>prompt：string，默认值""。在输入框显示提示消息。</li>
+            <li>value：string，默认值""。输入框默认值。</li>
+            <li>type："text"和"password"，默认值"text"。文本框类型。</li>
+            <li>label：string，默认值null。文本框标签。</li>
+            <li>labelWidth：number，默认值auto。标签宽度。</li>
+            <li>labelPosition：string，可用值：'before','after','top'，默认值before。标签位置。。</li>
+            <li>editable/disabled/readonly：boolean，默认值true|false|false。定义是可编辑|禁用|只读。</li>
+            <li>iconCls：string，默认值null。在文本框中显示的背景小图标。</li>
+            <li>iconAlign：string，默认值right。背景图标的位置。可用值有："left", "right"。</li>
+            <li>iconWidth：number，默认值18。背景图标宽度。</li>
+            <li>icons：array，默认值[]。文本框中点击图标，{iconCls:string,handler：function}。</li>
+
+            <li>buttonText：string。文本框附加按钮显示的文本内容。</li>
+            <li>buttonIcon：string。文本框旁边附加按钮显示的图标。</li>
+            <li>buttonAlign：string，附加按钮的位置。</li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">事件：</b>
+            <li>onChange：newValue, oldValue。在字段值更改的时候触发。。</li>
+            <li>onClickButton：none。在用户点击按钮的时候触发。</li>
+            <li>onClickIcon:index。在用户点击图标的时候触发。</li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">方法：</b>
+            <li>textbox/button：none。返回文本框|按钮对象。</li>
+            <li>enable/disable：none。启用/禁用。</li>
+            <li>readonly：mode，启用/禁用只读模式 用只读模式：$('#tb').textbox('readonly');、 $('#tb').textbox('readonly',true);
+                禁用只读模式 $('#tb').textbox('readonly',false);
+            </li>
+            <li>clear/reset：none。清除|重置组件中的值。</li>
+            <li>initValue：value。初始化组件值，不会触发“onChange”事件。</li>
+            <li>setText/getText：text|none。设置|获取显示的文本值。</li>
+            <li>setValue/getValue：value|none。设置|获取值。</li>
+        </ol>
+    </div>
+</div>
+
+</body>
+</html>

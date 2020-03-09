@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title> 树形网格（Treegrid）组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<div style="border:3px blue solid;padding: 10px;width: 800px;height: 400px" id="a">
+    <div style="margin:10px 0;">
+        <a href="#" class="easyui-linkbutton" onclick="collapseAll()">收缩所有</a>
+        <a href="#" class="easyui-linkbutton" onclick="expandAll()">展开所有</a>
+        <a href="#" class="easyui-linkbutton" onclick="expandTo()">展开到</a>
+        <a href="#" class="easyui-linkbutton" onclick="getSelected()">获取选中节点</a>
+    </div>
+    <ul id="tt" class="easyui-tree" data-options="url:'./json1.json',animate:true"></ul>
+    <script type="text/javascript">
+        function collapseAll(){
+            $('#tt').tree('collapseAll');
+        }
+        function expandAll(){
+            $('#tt').tree('expandAll');
+        }
+        function expandTo(){
+            var node = $('#tt').tree('find',113);
+            $('#tt').tree('expandTo', node.target).tree('select', node.target);
+        }
+        function getSelected(){
+            var node = $('#tt').tree('getSelected');
+            if (node){
+                var s = node.text;
+                if (node.attributes){
+                    s += ","+node.attributes.p1+","+node.attributes.p2;
+                }
+                alert(s);
+            }
+        }
+    </script>
+</div>
+
+</body>
+</html>

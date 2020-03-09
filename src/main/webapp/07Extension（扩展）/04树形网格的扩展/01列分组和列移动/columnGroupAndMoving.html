@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Group Data on TreeGrid - jQuery EasyUI Demo</title>
+    <link rel="stylesheet" type="text/css" href="../../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src="../../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="columns-ext.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var data = [
+                {id:1,name:'name1',city:'city1',country:'country1'},
+                {id:2,name:'name2',city:'city1',country:'country2'},
+                {id:3,name:'name3',city:'city2',country:'country1'},
+                {id:31,name:'name31',city:'city2',country:'country1'},
+                {id:4,name:'name4',city:'city1',country:'country2'},
+                {id:5,name:'name5',city:'city2',country:'country3'},
+                {id:6,name:'name6',city:'city2',country:'country3'}
+            ];
+            $('#tg').treegrid('groupData', {
+                data: data,
+                fields: ['country','city'],
+                groupHeader: '#fc'
+            }).datagrid('columnMoving');
+        });
+    </script>
+</head>
+<body>
+    <h2>Group Data</h2>
+    <div style="margin:20px 0;"></div>
+    <div id="fc" style="background:blue;"></div>
+    <table id="tg" class="easyui-treegrid" style="width:500px;height:250px"
+            data-options="
+                idField: 'id',
+                treeField: 'name',
+                toolbar: '#fc'
+            ">
+        <thead>
+            <tr>
+                <th data-options="field:'name'" width="220">Name</th>
+                <th data-options="field:'city'" width="100">City</th>
+                <th data-options="field:'country'" width="150">Country</th>
+            </tr>
+        </thead>
+    </table>
+
+    <!--属性、方法、事件-->
+    <br>
+    <br>
+    <br>
+    <hr>
+    <div style="font-size:20px">
+        <div>
+            <ol><b style="font-size: 30px">hello：</b>
+                <li>简介：拖动移动列。继承datagrid。</li>
+            </ol>
+        </div>
+        <div>
+            <ol><b style="font-size: 30px">属性：继承datagrid</b>
+            </ol>
+        </div>
+        <div>
+            <ol><b style="font-size: 30px">事件：扩展</b>
+                <li>onBeforeDragColumn：field，在拖动列之前触发，false时拒绝拖动。 </li>
+                <li>onStartDragColumn|onStopDragColumn：field，当开始拖动列时触发。停止拖动列时触发。  </li>
+            </ol>
+        </div>
+        <div>
+            <ol><b style="font-size: 30px">方法：扩展treegrid</b>
+                <li>groupData;param{ data: data, fields: ['country','city'], groupHeader: '#fc分组指示器' }。对特殊列上的数据进行分组。 。</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>

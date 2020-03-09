@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>TextEditor - jQuery EasyUI</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="jquery.texteditor.js"></script>
+    <link rel="stylesheet" type="text/css" href="texteditor.css">
+</head>
+<body>
+<h1>TextEditor</h1>
+
+<a class="easyui-linkbutton" onclick="getV()">得到编辑器的值</a>
+<div style="border:3px blue solid;padding: 5px;width: 780px;height: 400px" id="a">
+    <div id="td" class="easyui-texteditor" title="TextEditor" style="width:740px;height:300px;padding:20px">
+        <h3 style="text-align:center">TextEditor</h3>
+        <p style="text-align:center">TextEditor is a lightweight html5 editor based on EasyUI. It is completely customizable to fit your needs.</p>
+    </div>
+</div>
+<script>
+    function getV() {
+        alert($("#td").texteditor("getValue"));
+    }
+</script>
+</body>
+</html>
+属性
+toolbar 	array 	The top toolbar of the texteditor。 	['bold','italic','strikethrough','underline','-','justifyleft','justifycenter','justifyright','justifyfull','-','insertorderedlist','insertunorderedlist','outdent','indent','-','formatblock','fontname','fontsize']
+方法
+options 	none 	Return the options property。
+execCommand 	cmd 	Execute a command。
+getEditor 	none 	Get the editor object。
+insertContent 	html 	Insert the html at the current cursor position。
+destroy 	none 	Destroy the texteditor。
+getValue 	none 	Get the texteditor value。
+setValue 	html 	Set the texteditor value。
+disable 	none 	Disable the texteditor component。
+enable 	none 	Enable the texteditor component。
+readonly 	mode 	Enable/Disable readonly mode。

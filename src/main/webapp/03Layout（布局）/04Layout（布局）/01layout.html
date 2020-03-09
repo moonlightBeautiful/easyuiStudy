@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>布局学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/metro/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<!--基础布局面板示例-->
+<div style="border:3px blue solid;padding: 10px;width: 600px;height: 400px">
+    <div id="cc" class="easyui-layout" style="width:550px;height:350px;">
+        <div data-options="region:'north',split:true,collapsible:false" title="北" style="height:80px">
+            北
+        </div>
+        <div data-options="region:'south',split:true" title="南" style="height:80px;">
+            南
+        </div>
+        <div data-options="region:'west',split:true" title="西" style="width:100px;">
+            西
+        </div>
+        <div data-options="region:'center',title:'主区域标题',iconCls:'icon-ok'" title="中">
+            中
+        </div>
+        <div data-options="region:'east',split:true" title="东" style="width:180px;">
+            东
+        </div>
+    </div>
+</div>
+
+
+<!--属性、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div class="demo-info" style="font-size:20px">
+    <div>
+        <ol><b style="font-size: 30px">容器选项：</b>
+            <li>fit：boolean，默认为false。布局的尺寸是否适应它的父容器。当在 'body' 标签上创建布局（layout）时，它将自动最大化到整个页面的全部尺寸。</li>
+        </ol>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ol><b style="font-size: 30px">面板选项：</b>
+            <li>title：string。显示在面板（panel）头部的标题文字。</li>
+            <li>border：boolean，默认值true。是否显示面板（panel）的边框。</li>
+            <li>split：boolean，默认值false。是否显示拆分栏，可以改变面板（panel）的尺寸。</li>
+            <li>iconCls：string。面板（panel）头部显示一个图标的 CSS class。</li>
+            <li>region：string。定义布局面板（layout panel）的位置，其值是下列之一：north、south、east、west、center。</li>
+            <li>collapsible：boolean，默认值true。是否显示折叠按钮。</li>
+        </ol>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ol><b style="font-size: 30px">事件：</b>
+
+        </ol>
+    </div>
+    <div>
+        <div class="demo-tip icon-tip"></div>
+        <ol><b style="font-size: 30px">方法：</b>
+            <li>add：options。添加一个指定的区域面板（panel）。</li>
+            <li>remove：String，值为区域north、south、east、west。移除一个指定的区域面板（panel），不能移除中center。</li>
+        </ol>
+    </div>
+</div>
+
+</body>
+</html>

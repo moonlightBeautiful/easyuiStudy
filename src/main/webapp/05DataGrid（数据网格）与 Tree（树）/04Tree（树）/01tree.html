@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>树（Tree）组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<!--简单 -->
+<ul id="tt" class="easyui-tree" data-options="url:'./json1.json',animate:true"></ul>
+
+
+<!--属性、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div style="font-size:20px">
+    <div>
+        <ol><b style="font-size: 30px">hello</b>
+            <li>树每个节点node数据格式：
+                <ol>
+                    <li>id：节点的 id，它对于加载远程数据很重要。</li>
+                    <li>text：要显示的节点文本。</li>
+                    <li>iconCls：节点图标。</li>
+                    <li>state：节点状态，'open' 或 'closed'，默认是 'open'。<br>
+                        当设置为 'closed' 时，并未加载子节点。打开该节点若有子节点，从远程站点加载它们。
+                    </li>
+                    <li>checked：指示节点是否被选中。</li>
+                    <li>attributes：给一个节点添加的自定义属性。</li>
+                    <li>children：定义了一些子节点的节点数组。</li>
+                </ol>
+            </li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">属性：</b>
+            <li> url string 获取远程数据的 URL 。 null</li>
+            <li>method string 检索数据的 http 方法（method）。 post</li>
+            <li>animate boolean 定义当节点展开折叠时是否显示动画效果。 false</li>
+            <li> checkbox boolean 定义是否在每个节点前边显示复选框。 false</li>
+            <li>cascadeCheck boolean 定义是否级联选中复选框。 true</li>
+            <li>onlyLeafCheck boolean 定义是否只在叶节点前显示复选框。 false</li>
+            <li>lines boolean 定义是否显示树线条和展开图标下三角变成+。 false</li>
+            <li>dnd boolean 定义是否启用拖放。 false</li>
+            <li>data array 要加载的节点数据。[{}...]</li>
+            <li> formatter function(node) 定义如何呈现节点文本。</li>
+            <li> param：要传递到远程服务器的参数对象。</li>
+            <li>loadFilter function(data要加载的原始数据,parentDOM 对象，表示父节点。) 返回要显示的过滤数据。返回数据时以标准树格式返回的。该函数有下列参数：</li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">事件：单击双击节点</b>
+            <li>onClick/onDblClick node 当用户单击/双击一个节点时触发</li>
+            。
+            <li>onBeforeLoad node, param 当加载数据的请求发出前触发，返回 false 则取消加载动作。</li>
+            <li>onLoadSuccess node, data 当数据加载成功时触发。</li>
+            <li>onBeforeExpand/onBeforeCollapse node 节点折叠前触发，返回 false 则取消折叠动作。|节点展开前触发，返回 false 则取消展开动作。</li>
+            <li>onExpand/onCollapse node 当节点展开/折叠时触发。</li>
+            <li>onBeforeCheck node, checked 当用户点击复选框前触发，返回 false 则取消该选中动作。该事件自版本 1.3.1 起可用。</li>
+            <li>onCheck node, checked 当用户点击复选框时触发。</li>
+            <li>onBeforeSelect node 节点被选中前触发，返回 false 则取消选择动作。</li>
+            <li>onSelect node 当节点被选中时触发。</li>
+            <li>onContextMenu e, node 当右键点击节点时触发。</li>
+            <li>onBeforeDrag node 当节点的拖拽前触发，返回 false 则禁止拖拽。</li>
+            <li>onStartDrag node 当开始拖拽节点时触发。</li>
+            <li>onStopDrag node 当停止拖拽节点时触发。</li>
+            <li>onBeforeDrop target,source,point 节点被放置之前触发，返回 false 则禁止放置。</li>
+            <li>onDrop target,source,point 当节点被放置时触发。</li>
+            <li>onBeforeEdit node 编辑节点前触发。</li>
+            <li>onAfterEdit node 编辑节点后触发。</li>
+            <li>onCancelEdit node 当取消编辑动作时触发。</li>
+            <li>onDragEnter target, source当节点被拖拽进入某个允许放置的目标节点时触发，返回 false 则禁止放置。</li>
+            <li>onDragOver target, source 当节点被拖拽到允许放置的目标节点上时触发，返回 false 则禁止放置。</li>
+            <li>onDragLeave target, source 当节点被拖拽离开允许放置的目标节点时触发。</li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">方法：很多懒得看了用到再学</b>
+            <li>loadData data 加载树的数据。</li>
+            <li>getNode target 获取指定的节点对象。</li>
+            <li>getData target 获取指定的节点数据，包括它的子节点。</li>
+            <li>reload target 重新加载树的数据。</li>
+            <li>getRoot none 获取根节点，返回节点对象。</li>
+            <li>getRoots none 获取根节点，返回节点数组。</li>
+            <li>getParent target 获取父节点，target 参数表示节点的 DOM 对象。</li>
+            <li>getChildren target 获取子节点， target 参数表示节点的 DOM 对象。</li>
+            <li>getChecked state 获取选中的节点。状态可用值有：'checked'、'unchecked'、。</li>
+            <li>getSelected none 获取选中的节点并返回它，如果没有选中节点，则返回 null。</li>
+            <li>find id 找到指定的节点并返回该节点对象。</li>
+            <li>select target 选中一个节点，target 参数表示节点的 DOM 对象。</li>
+            <li>check target 把指定节点设置为勾选。</li>
+            <li>uncheck target 把指定节点设置为未勾选。</li>
+            <li>collapse target 折叠一个节点，target 参数表示节点的 DOM 对象。</li>
+            <li>expand target 展开一个节点，target 参数表示节点的 DOM 对象。当节点关闭且没有子节点时，节点的 id 值（名为 'id' 参数）将被发送至服务器以请求子节点数据。</li>
+            <li>collapseAll target 折叠所有的节点。</li>
+            <li>expandAll target 展开所有的节点。</li>
+            <li>expandTo target 从根部展开一个指定的节点。</li>
+            <li>scrollTo target 滚动到指定节点。</li>
+            <li>append param 追加一些子节点到一个父节点。
+                parent：DOM 对象，要追加到的父节点，如果没有分配，则追加为根节点。
+                data：数组，节点的数据。
+            </li>
+            <li>toggle target 切换节点的展开/折叠状态，target 参数表示节点的 DOM 对象。</li>
+            <li>insert param 在指定节点的前边或后边插入一个节点，param 参数包括下列属性：before：DOM 对象，前边插入的节点。
+                after：DOM 对象，后边插入的节点。
+                data：对象，节点数据。
+            </li>
+            <li>remove target 移除一个节点和它的子节点，target 参数表示节点的 DOM 对象。</li>
+            <li>pop target 弹出一个节点和它的子节点，该方法和 remove 一样，但是返回了移除的节点数据。</li>
+            <li>update param 更新指定的节点，'param' 参数有下列属性：
+                target（DOM 对象，要被更新的节点）、id、text、iconCls、checked，等等。
+            </li>
+            <li>enableDnd none 启用拖放功能。</li>
+            <li>disableDnd none 禁用拖放功能。</li>
+            <li>beginEdit target 开始编辑节点。</li>
+            <li>endEdit target 结束编辑节点。</li>
+            <li>cancelEdit target 取消编辑节点。</li>
+        </ol>
+    </div>
+</div>
+</body>
+</html>

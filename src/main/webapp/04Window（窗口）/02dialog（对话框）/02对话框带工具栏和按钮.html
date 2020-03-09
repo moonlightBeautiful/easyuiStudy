@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>基本对话框（dialog）组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<div style="border:3px blue solid;padding: 30px;width: 600px;height: 100px" id="a">
+    <div id="dlg" class="easyui-dialog" title="工具栏和按钮" style="width:400px;height:200px;padding:10px"
+         data-options="
+            iconCls: 'icon-save',
+            toolbar: '#dlg-toolbar',
+            buttons: [{
+                    text:'确定',
+                    iconCls:'icon-ok',
+                    handler:function(){
+                        alert('确定');
+                    }
+                },{
+                    text:'关闭',
+                    handler:function(){
+                        alert('关闭');;
+                    }
+                }]">
+        对话窗体内容.
+    </div>
+</div>
+<div id="dlg-toolbar" style="padding:2px 0">
+    <table cellpadding="0" cellspacing="0" style="width:100%">
+        <tr>
+            <td style="padding-left:2px">
+                <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">编辑</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-help',plain:true">帮助</a>
+            </td>
+            <td style="text-align:right;padding-right:2px">
+                <input class="easyui-searchbox" data-options="prompt:'请输入...'" style="width:150px">
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

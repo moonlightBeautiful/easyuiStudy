@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>链接按钮（Linkbutton）组件的学习</title>
-    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/gray/easyui.css">
     <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
     <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
     <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
@@ -13,16 +13,24 @@
 <!-- 连接按钮 -->
 <div style="border:3px blue solid;padding: 30px;width: 600px;height: 100px" id="a">
     <div style="padding:5px;">
-        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add',iconAlign:'right'">添加，图标右侧</a>
+        <a  href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add',iconAlign:'right'">添加，图标右侧</a>
         <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add',text:'添加1'">添加2</a>
-        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove',toggle:true">开关</a>
+        <a id="bb" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove',toggle:true">开关</a>
         <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true">无边框</a>
-        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cut',disabled:true">禁用</a>
-        <a href="#" class="easyui-linkbutton">文本按钮</a>
+        <a id="cc" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cut'">禁用</a>
+        <a  href="#" class="easyui-linkbutton">文本按钮</a>
     </div>
 </div>
-
-
+<script>
+    $(function(){
+       // alert(JSON.stringify($("#bb").linkbutton("options")));
+        //$("#bb").linkbutton("options").selected = true;
+        /*var  ops = $("#bb").linkbutton("options");
+        ops.selected = true;*/
+        /* $("#bb").linkbutton({"selected":true});*/
+        $("#cc").linkbutton({"disabled":true});
+    });
+</script>
 <!--属性、方法、事件-->
 <br>
 <br>
@@ -45,7 +53,7 @@
 
     <div>
         <ol><b style="font-size: 30px">事件：</b>
-
+            <li>onClick：func(none)。单击事件。</li>
         </ol>
     </div>
     <div>

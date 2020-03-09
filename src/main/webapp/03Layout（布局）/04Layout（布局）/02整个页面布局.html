@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>整个页面布局</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body class="easyui-layout">
+<div data-options="region:'north'" style="height:100px" title="北">
+    北
+</div>
+<div data-options="region:'south'" title="南" style="height:100px" >南</div>
+<div data-options="region:'west'" style="width:100px" title="西">西</div>
+<div data-options="region:'center'" title="中">
+    中
+</div>
+<div data-options="region:'east'" title="东" style="width:700px">
+    <ul>如果一开始每个区域面板不指定高度和宽度
+        <li>布局一开始，则默认东区域面板占整个body，西和中和东区域面板大小为body大小，北和南区域面板大小为0。</li>
+    </ul>
+    <ul>一开始每个区域面板指定高度和宽度
+        <li>北和南指定宽度，无用。宽度为body宽度。</li>
+        <li>西和中和东指定高度，无用。高度为北和南之后剩余的高度。宽度计算麻烦，最好全部指定。</li>
+    </ul>
+</div>
+
+</body>
+</html>

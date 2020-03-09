@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>基本数据网格组件</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<div style="border:3px blue solid;padding: 10px;width: 800px;height: 400px" id="a">
+    <table id="dg" class="easyui-datagrid" title="基本数据表格" style="width: 600px;height: 250px"
+           data-options="url:'./0datagrid_data.json',frozenColumns:[[{field:'itemId',width:140,title:'编号'}]]">
+        <thead>
+        <tr>
+            <th data-options="field:'productId',width:140">产品编号</th>
+            <th data-options="field:'productName',width:140">产品名称</th>
+            <th data-options="field:'marketPrice',width:140">市场价</th>
+            <th data-options="field:'cost',width:140">成本价</th>
+            <th data-options="field:'description',width:140">描述</th>
+            <th data-options="field:'status',width:140">状态</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+
+
+</body>
+</html>

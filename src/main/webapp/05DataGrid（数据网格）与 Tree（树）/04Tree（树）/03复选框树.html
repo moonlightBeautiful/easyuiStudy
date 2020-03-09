@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title> 树形网格（Treegrid）组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<div style="margin:10px 0;">
+    <a href="#" class="easyui-linkbutton" onclick="getChecked()">获取选中值</a>
+    <br/>
+    <input type="checkbox" checked onchange="$('#tt').tree({cascadeCheck:$(this).is(':checked')})">级联选中
+    <input type="checkbox" onchange="$('#tt').tree({onlyLeafCheck:$(this).is(':checked')})">只有叶子节点有复选框
+</div>
+
+<div style="border:3px blue solid;padding: 10px;width: 800px;height: 400px" id="a">
+    <ul id="tt" class="easyui-tree" data-options="url:'./json1.json',animate:true,checkbox:true"></ul>
+</div>
+<script type="text/javascript">
+    function getChecked() {
+        var nodes = $('#tt').tree('getChecked');
+        var s = '';
+        for (var i = 0; i < nodes.length; i++) {
+            if (s != '') s += ',';
+            s += nodes[i].text;
+        }
+        alert(s);
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+{
+  "rows": [
+    {
+      "name": "姓名",
+      "value": "高旭",
+      "desc": "描述",
+      "group": "ID Settings",
+      "editor": "text"
+    },
+    {
+      "name": "地址",
+      "value": "山东",
+      "group": "ID Settings",
+      "editor": "text"
+    },
+    {
+      "name": "年龄",
+      "value": "40",
+      "group": "ID Settings",
+      "editor": "text"
+    },
+    {
+      "name": "生日",
+      "value": "2013-06-12",
+      "group": "ID Settings",
+      "editor": "datebox"
+    },
+    {
+      "name": "SSN",
+      "value": "123-456-7890",
+      "group": "ID Settings",
+      "editor": "text"
+    },
+    {
+      "name": "Email",
+      "value": "bill@gmail.com",
+      "group": "Marketing Settings",
+      "editor": {
+        "type": "validatebox",
+        "options": {
+          "validType": "email"
+        }
+      }
+    },
+    {
+      "name": "FrequentBuyer",
+      "value": "false",
+      "group": "Marketing Settings",
+      "editor": {
+        "type": "checkbox",
+        "options": {
+          "on": true,
+          "off": false
+        }
+      }
+    }
+  ]
+}

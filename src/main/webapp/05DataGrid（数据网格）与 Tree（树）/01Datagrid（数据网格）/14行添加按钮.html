@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>行添加按钮 1.列格式化 2.loadFilter</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<table id="dg" class="easyui-datagrid" title="基本数据表格" style="width:700px;height:250px"
+       data-options="url:'./test_data.json',pagination:true,loadFilter:loadFilter,onLoadSuccess:onLoadSuccess,onBeforeLoad:onBeforeLoad,queryParams: {
+		name: 'easyui',
+		subject: 'datagrid'
+	}">
+    <thead>
+    <tr>
+        <th data-options="field:'itemId',width:80">编号</th>
+        <th data-options="field:'productId',width:100">产品编号</th>
+        <th data-options="field:'productName',width:100">产品名称</th>
+        <th data-options="field:'marketPrice',width:80">市场价</th>
+        <th data-options="field:'cost',width:80">成本价</th>
+        <th data-options="field:'status',width:80">状态</th>
+        <th name="c" data-options="field:'op',width:80,formatter:formatter">op</th>
+    </tr>
+    </thead>
+</table>
+<script>
+    $(function () {
+
+    });
+
+    function onBeforeLoad(param) {
+        /*    alert("onBeforeLoad");
+            alert(JSON.stringify(param));*/
+
+
+    }
+
+    function loadFilter(data) {
+        /*  alert("loadFilter");
+          alert(JSON.stringify(data));*/
+        return data;
+    }
+
+    function formatter(value, row, index) {
+        /* alert("formatter");*/
+        var str = '<a  href="#" rel="external nofollow" name="view" class="easyui-linkbutton" id="" onclick="viewAndModify('
+            + index
+            + ')">处理</a>';
+        return str;
+    }
+
+    function onLoadSuccess(data) {
+        //在onLoadSuccess中重新渲染一下
+        /*  $("a[name='view']").linkbutton({
+              plain : false,
+              iconAlign : 'left',
+              iconCls : 'icon-tip',
+              height : '18px'
+          });*/
+
+        // $.parser.parse("td");
+
+        /* alert("onLoadSuccess");
+         alert(JSON.stringify(data));*/
+    }
+</script>
+
+</body>
+</html>
+

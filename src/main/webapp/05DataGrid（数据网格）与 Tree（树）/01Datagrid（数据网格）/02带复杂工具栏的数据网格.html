@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<div style="border:3px blue solid;padding: 10px;width: 800px;height: 400px" id="a">
+    <table id="dg" class="easyui-datagrid" title="基本数据表格" style="width: 600px;height: 350px"
+           data-options="url:'./0datagrid_data.json',toolbar:'#toolbar',pagination:true">
+        <thead>
+        <tr>
+            <th data-options="field:'itemId'">编号</th>
+            <th data-options="field:'productId'">产品编号</th>
+            <th data-options="field:'productName'">产品名称</th>
+            <th data-options="field:'marketPrice'">市场价</th>
+            <th data-options="field:'cost'">成本价</th>
+            <th data-options="field:'description'">描述</th>
+            <th data-options="field:'status'">状态</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+<div id="toolbar" style="padding:5px;height:auto">
+    <div style="margin-bottom:5px">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true"></a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true"></a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true"></a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-cut" plain="true"></a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true"></a>
+    </div>
+    <div>
+        日期从: <input class="easyui-datebox" style="width:80px">
+        到: <input class="easyui-datebox" style="width:80px">
+        语言:
+        <select class="easyui-combobox" panelHeight="auto" style="width:100px">
+            <option value="java">Java</option>
+            <option value="c">C</option>
+            <option value="basic">Basic</option>
+            <option value="perl">Perl</option>
+            <option value="python">Python</option>
+        </select>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-search">搜索</a>
+    </div>
+</div>
+</body>
+</html>

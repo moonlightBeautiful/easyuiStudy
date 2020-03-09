@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>基本数据网格组件</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<div style="border:3px blue solid;padding: 10px;width: 800px;height: 400px" id="a">
+    <table id="dg" class="easyui-datagrid" title="基本数据表格" style="width: 600px;height: 350px"
+           data-options="url:'./0datagrid_data.json',toolbar:toolbar,pagination:true">
+        <thead>
+        <tr>
+            <th data-options="field:'itemId'">编号</th>
+            <th data-options="field:'productId'">产品编号</th>
+            <th data-options="field:'productName'">产品名称</th>
+            <th data-options="field:'marketPrice'">市场价</th>
+            <th data-options="field:'cost'">成本价</th>
+            <th data-options="field:'description'">描述</th>
+            <th data-options="field:'status'">状态</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+<script type="text/javascript">
+    $(function () {
+        var pager = $('#dg').datagrid('getPager');	// get the pager of datagrid
+        pager.pagination({
+            buttons: [{
+                iconCls: 'icon-search',
+                handler: function () {
+                    alert('搜索');
+                }
+            }, {
+                iconCls: 'icon-add',
+                handler: function () {
+                    alert('添加');
+                }
+            }, {
+                iconCls: 'icon-edit',
+                handler: function () {
+                    alert('编辑');
+                }
+            }]
+        });
+    });
+    var toolbar = [{
+        text: '添加',
+        iconCls: 'icon-add',
+        handler: function () {
+            alert('添加')
+        }
+    }, {
+        text: '剪切',
+        iconCls: 'icon-cut',
+        handler: function () {
+            alert('剪切')
+        }
+    }, '-', {
+        text: '保存',
+        iconCls: 'icon-save',
+        handler: function () {
+            alert('保存')
+        }
+    }];
+</script>
+
+
+</body>
+</html>

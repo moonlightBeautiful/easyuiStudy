@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title> 树形网格（Treegrid）组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<div style="border:3px blue solid;padding: 10px;width: 800px;height: 400px" id="a">
+    <ul id="tt" class="easyui-tree" data-options="
+			url: './json1.json',
+			animate: true,
+			onContextMenu: function(e,node){
+				e.preventDefault();
+				$(this).tree('select',node.target);
+				$('#mm').menu('show',{
+					left: e.pageX,
+					top: e.pageY
+				});
+			}
+		"></ul>
+    <div id="mm" class="easyui-menu" style="width:120px;">
+        <div onclick="append()" data-options="iconCls:'icon-add'">添加</div>
+        <div onclick="remove()" data-options="iconCls:'icon-remove'">删除</div>
+        <div class="menu-sep"></div>
+        <div onclick="expand()">展开</div>
+        <div onclick="collapse()">收缩</div>
+    </div>
+    <script type="text/javascript">
+        function append() {
+            var t = $('#tt');
+            var node = t.tree('getSelected');
+            t.tree('append', {
+                parent: (node ? node.target : null),
+                data: [{
+                    text: 'new item1'
+                }, {
+                    text: 'new item2'
+                }]
+            });
+        }
+
+        function remove() {
+            var node = $('#tt').tree('getSelected');
+            $('#tt').tree('remove', node.target);
+        }
+
+        function collapse() {
+            var node = $('#tt').tree('getSelected');
+            $('#tt').tree('collapse', node.target);
+        }
+
+        function expand() {
+            var node = $('#tt').tree('getSelected');
+            $('#tt').tree('expand', node.target);
+        }
+    </script>
+</div>
+
+</body>
+</html>

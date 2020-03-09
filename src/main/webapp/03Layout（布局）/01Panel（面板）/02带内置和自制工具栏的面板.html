@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面板（带内置和定制工具栏）</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<!--面板（带内置和定制工具栏）示例-->
+<div style="border:3px blue solid;padding: 10px;width:600px;height: 400px">
+    <div id="p" class="easyui-panel" title="定制面板工具" style="width:550px;height:350px"
+         data-options="tools:'#myTools',collapsible:true,minimizable:true,maximizable:true">
+        <p style="font-size:14px">jQuery EasyUI框架能够让你轻松构建Web页面.</p>
+        <ul>
+            <li>easyui是一套基于JQuery的用户界面插件集合.</li>
+            <li>easyui为构建现代流行的交互式体验JavaScript应用程序提供了基本功能.</li>
+            <li>使用easyui你不需要写很多javascript代码，你通常只需要写一些html标签来定义用户界面.</li>
+            <li>完美支持HTML5.</li>
+            <li>easyui能够有效地节省你的开发时间.</li>
+        </ul>
+    </div>
+</div>
+<div id="myTools">
+    <a href="javascript:void(0)" class="icon-add" onclick="javascript:alert('添加')"></a>
+    <a href="javascript:void(0)" class="icon-edit" onclick="javascript:alert('编辑')"></a>
+    <a href="javascript:void(0)" class="icon-cut" onclick="javascript:alert('剪切')"></a>
+    <a href="javascript:void(0)" class="icon-help" onclick="javascript:alert('帮助')"></a>
+</div>
+
+</body>
+</html>

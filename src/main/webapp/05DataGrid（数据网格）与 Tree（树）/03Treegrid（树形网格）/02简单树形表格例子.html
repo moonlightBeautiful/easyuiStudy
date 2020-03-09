@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title> 树形网格（Treegrid）组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<div style="border:3px blue solid;padding: 10px;width: 800px;height: 400px" id="a">
+    <table id="tg" class="easyui-treegrid" title="树形表格" style="width:700px;height:250px"
+           data-options="
+				iconCls: 'icon-ok',
+				rownumbers: true,
+				animate: true,
+				collapsible: true,
+				fitColumns: true,
+				url: './json2.json',
+				idField: 'id',
+				treeField: 'name'
+			">
+        <thead>
+        <tr>
+            <th data-options="field:'name',width:180">任务名称</th>
+            <th data-options="field:'persons',width:60,align:'right'">人员</th>
+            <th data-options="field:'begin',width:80">开始日期</th>
+            <th data-options="field:'end',width:80">结束日期</th>
+            <th data-options="field:'progress',width:120,formatter:formatProgress">进度</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+
+
+</body>
+</html>

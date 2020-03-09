@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>基本数据网格组件</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<div style="border:3px blue solid;padding: 10px;width: 800px;height: 400px" id="a">
+    <table id="dg" class="easyui-datagrid" title="基本数据表格" style="width: 600px;height: 350px"
+           data-options="url:'./datagrid_data.json',pagination:true,onClickRow: onClickRow">
+        <thead>
+        <tr>
+            <th data-options="field:'itemId',editor:{type:'datebox',options:{onSelect:onChange1}}">日期编辑器</th>
+            <th data-options="field:'productId',editor:{
+                                                    type:'combobox',
+                                                    options:{
+                                                        valueField:'productId',
+                                                        textField:'productName',
+                                                        url:'./products.json',
+                                                        required:true,
+                                                        onSelect:onChange1
+                                                    }
+                                                },formatter:function(value,row){return row.productName;}">
+                下拉框编辑器
+            </th>
+            <th data-options="field:'marketPrice',editor:{type:'numberbox',options:{precision:1}}">市场价</th>
+            <th data-options="field:'cost',editor:'numberbox'">成本价</th>
+            <th data-options="field:'description',editor:'text'">描述</th>
+            <th data-options="field:'status',editor:{type:'checkbox',options:{on:'P',off:''}}">复选框</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+<div>
+    <ol>编辑器
+        <li>text/numberbox/textarea文本/数字/文本域编辑器，选项参照文本/数字/文本域组件</li>
+        <li>checkbox复选框编辑器，当值为on的值，编辑状态是选中状态。当值为非on的值，编辑状态是非选中状态。结束编辑，值只能是on或者off的值。</li>
+        <li>datebox日期框编辑器，选项参照datebox日期框组件</li>
+        <li>combobox下拉框编辑器，选项参照datebox下拉框组件</li>
+        <li>combotree下拉树编辑器，选项参照datebox下拉树框组件</li>
+        <li>validatebox</li>
+    </ol>
+</div>
+<script type="text/javascript">
+    var editIndex = undefined;
+
+    function endEditing() {
+        if (editIndex == undefined) {
+            return true
+        }
+        if ($('#dg').datagrid('validateRow', editIndex)) {
+            var ed = $('#dg').datagrid('getEditor', {index: editIndex, field: 'productid'});
+            var productname = $(ed.target).combobox('getText');
+            $('#dg').datagrid('getRows')[editIndex]['productname'] = productname;
+            $('#dg').datagrid('endEdit', editIndex);
+            editIndex = undefined;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function onClickRow(index) {
+        if (editIndex != index) {
+            if (endEditing()) {
+                $('#dg').datagrid('selectRow', index)
+                    .datagrid('beginEdit', index);
+                editIndex = index;
+            } else {
+                $('#dg').datagrid('selectRow', editIndex);
+            }
+        }
+    }
+    function onChange1(a,b) {
+        alert(JSON.stringify(a));
+        alert(b);
+    }
+
+    function alert1() {
+        var eds = $('#dg').datagrid('getEditors', 0);
+    }
+</script>
+
+</body>
+</html>

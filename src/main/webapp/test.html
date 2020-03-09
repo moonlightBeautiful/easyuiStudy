@@ -9,24 +9,10 @@
     <script type="text/javascript" src=" ./jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
 </head>
 <body>
-<div id='Loading'>
-    <image src='images/loading.gif'/>
-    <font color="#2bd4cd" size="4">页面正在载入中···</font>
-</div>
+<input type="checkbox" name="fruit" value="Apple" label="Apple:">
+
 </body>
 </html>
 <script>
-    function closes() {
-        $("#Loading").fadeOut("normal", function () {
-            $(this).remove();
-            alert("数据载入完毕");
-        });
-    }
-    var pc;
-    $.parser.onComplete = function () {
-        if (pc) {
-            clearTimeout(pc);
-        }
-        pc = setTimeout(closes, 1000);
-    }
+
 </script>

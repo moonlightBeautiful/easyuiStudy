@@ -1,0 +1,35 @@
+{
+  "total": 23,
+  "rows": [
+    {
+      "itemId": "编号1",
+      "productId": "产品编号1",
+      "productName": "产品名称1",
+      "cost": 16.00,
+      "marketPrice": 30.50,
+      "status": "1",
+      "description": "Large"
+    },
+    {
+      "itemId": "编号2",
+      "productId": "产品编号2",
+      "productName": "产品名称2",
+      "cost": 18.00,
+      "marketPrice": 26.50,
+      "status": "1",
+      "description": "Large"
+    }
+  ],
+  "footer": [
+    {
+      "productId": "Average:",
+      "cost": 19.80,
+      "marketPrice": 60.40
+    },
+    {
+      "productId": "Total:",
+      "cost": 198.00,
+      "marketPrice": 604.00
+    }
+  ]
+}

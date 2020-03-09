@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单元格编辑</title>
+    <link rel="stylesheet" type="text/css" href="../jquery-easyui-1.4.2/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../jquery-easyui-1.4.2/themes/icon.css">
+    <script type="text/javascript" src="../jquery-easyui-1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/demo/demo.css">
+    <script type="text/javascript" src="../扩展插件/datagrid-cellediting.js"></script>
+</head>
+<body>
+<a class="easyui-linkbutton" onclick="getRowData()">获取第一行的值</a>
+<a class="easyui-linkbutton" onclick="getEditorOptions()">获取编辑状态的编辑器options对象</a>
+<a class="easyui-linkbutton" onclick="destroyEditor()">销毁编辑状态的编辑器</a>
+<a class="easyui-linkbutton" onclick="updateEditor()">编辑状态的编辑器更新（必须保存一下，改变options，在编辑才可以更新）</a>
+<a class="easyui-linkbutton" onclick="isEditing()">指定是否处于编辑状态</a>
+<a class="easyui-linkbutton" onclick="getEditingCell()">获取处于编辑状态的单元格</a>
+<a class="easyui-linkbutton" onclick="endEditing()">结束编辑状态</a>
+<a class="easyui-linkbutton" onclick="canEditing()">是否可以结束编辑</a>
+<a class="easyui-linkbutton" onclick="removeEditor()">移除编辑器</a>
+<a class="easyui-linkbutton" onclick="addEditor()">添加编辑器</a>
+
+<table id="dg" class="easyui-datagrid" title="单元格编辑学习" style="height:250px"
+       data-options="url:'./datagrid_data10.json',onClickCell:onClickCell,onBeforeCellEdit:onBeforeCellEdit">
+    <thead>
+    <tr>
+        <th data-options="field:'itemId'">编号</th>
+        <th data-options="field:'productId'">产品编号</th>
+        <th data-options="field:'productName',editor:'text'">产品名称(文本编辑器)</th>
+        <th data-options="field:'cost',editor:'numberbox'">成本价(数字编辑器)</th>
+        <th data-options="field:'marketPrice',editor:{type:'numberbox',options:{precision:1}}">市场价(数字编辑器)</th>
+        <th data-options="field:'status',editor:{type:'checkbox',options:{on:'有货',off:'无货'}}">是否急需(复选框编辑器)</th>
+        <th data-options="field:'description',editor:'textarea'">描述(文本域编辑器)</th>
+        <th data-options="field:'deliveryDate',editor:'datebox'">发货日期(日期编辑器)</th>
+        <th data-options="field:'deliveryAddress',editor:
+                                        { type:'combobox',options:
+                                                {valueField:'addressValue',textField:'addressName',
+                                                 url:'./address10.json',required:true}
+                                        },formatter:deliveryAddressFormatter">发货地址(下拉框编辑器)
+        <th data-options="field:'deliveryAddress2',editor:
+                                        { type:'combobox',options:
+                                                {valueField:'addressValue',textField:'addressName',
+                                                 data:[]}
+                                        }">发货地址2(下拉框编辑器)
+            <!--,formatter:deliveryAddressFormatter-->
+        </th>
+        <th data-options="field:'doOrder',width:110,formatter:opFormatter">操作</th>
+    </tr>
+    </thead>
+</table>
+<div style="font-size: 20px">
+    <ol>
+        <b>单元格编辑器使用步骤：</b>
+        <li>引入扩展插件：datagrid-cellediting.js</li>
+        <li>开启扩展插件： $('#dg')..datagrid('enableCellEditing');</li>
+        <li>默认是单击单元格启动编辑，和离开自动保存。</li>
+    </ol>
+
+    <ol><b>属性：</b>
+        <li>table属性clickToEdit：boolean，默认true。当单击该单元格时，是否编辑该单元格。</li>
+        <li>table属性dblclickToEdit：boolean，默认false。当双击该单元格时，是否编辑该单元格。</li>
+    </ol>
+    <ol><b>事件：</b>
+        <li>onBeforeCellEdit：index,field 在编辑单元格之前触发，返回false以拒绝编辑操作。</li>
+    </ol>
+    <ol><b>方法：</b>
+        <li>enableCellEditing：none，在datagrid中启用单元格编辑。</li>
+        <li>disableCellEditing：none，在datagrid中禁用单元格编辑。</li>
+        <li>cell：none，获取编辑单元格对象，包含两个属性index行index和field。</li>
+        <li>isEditing：index，如果选定行正在编辑，则返回true，否则false。</li>
+        <li>editCell：{index: number, field: '字段'}。编辑一个单元格。</li>
+        <li>endCellEdit：{index: number, field: '字段'}。编辑一个单元格。</li>
+    </ol>
+
+    <ol><b>积累：</b>
+        <li>combobox编辑器，每次显示的是text，但是传递给rowObject是value，所以保存编辑的后，单元格显示的是value。
+            解决保存编辑后，显示text不要显示value：formatter
+        </li>
+        <li>解决编辑器二级联动：onBeforeCellEdit在onClickCell之前执行。
+            1.onClickCell，使用获取编辑器，
+                改变编辑器的options：$(eds[0].target).combobox({ valueField: 'addressValue', textField: 'addressName', data: [] });
+                或者
+                禁用编辑器$(eds[0].target).combobox('disbale')
+            2.onBeforeCellEdit，获取列配置getColumnOption
+                改变列的option
+                    var option = $('#dg').datagrid('getColumnOption', 'deliveryAddress2');
+                    option.editor = 'text';
+        </li>
+    </ol>
+</div>
+</body>
+</html>
+
+<script type="text/javascript">
+    $(function () {
+        $('#dg').datagrid('enableCellEditing');
+    });
+
+    function onClickRow(index) {
+        $('#dg').datagrid('selectRow', index).datagrid('beginEdit', index);
+    }
+
+    function opFormatter(value, row, index) {
+        var str = '<a href="#" name="opera" class="easyui-linkbutton" onclick="javascripet:doOrder(' + index + ')">下订单</a>';
+        return str;
+    }
+
+    function doOrder(index) {
+        alert("下订单：" + JSON.stringify($('#dg').datagrid("getRows")[index]));
+    }
+
+    function deliveryAddressFormatter(value, row, rowIndex) {
+        if (value == "shanDong") {
+            return "山东";
+        } else if (value == "beiJing") {
+            return "北京";
+        } else if (value == "shangHai") {
+            return "上海";
+        }
+        return value;
+    }
+
+
+    function getEditorOptions() {
+        var eds = $('#dg').datagrid('getEditors', 0);
+        alert(JSON.stringify($(eds[0].target).combobox('options')));
+    }
+
+    function getRowData() {
+        alert(JSON.stringify($('#dg').datagrid('getRows')[0]));
+    }
+
+    function destroyEditor() {
+        var eds = $('#dg').datagrid('getEditors', 0);
+        $(eds[0].target).combobox('destroy');
+    }
+
+    function onClickCell(rowIndex, field, value) {
+        alert("后执行onClickCell");
+        //动态改变编辑器
+        //1.原本就有编辑器
+        /*if ($('#dg').datagrid('validateRow', rowIndex)) {
+            if (field == 'deliveryAddress2') {
+                var eds = $('#dg').datagrid('getEditors', 0);
+                var a = $('#dg').datagrid('getRows')[rowIndex].deliveryAddress;
+                if (a == 'shanDong') {
+                    $(eds[0].target).combobox({
+                        valueField: 'addressValue', textField: 'addressName',
+                        data: [{
+                            "addressValue": "linYi",
+                            "addressName": "临沂"
+                        }]
+                    });
+                }
+            }
+        }*/
+        //2.原本没有编辑器
+        /*var option = $('#dg').datagrid('getColumnOption', 'deliveryAddress2');
+        option.editor = 'text';*/
+
+    }
+
+    function onBeforeCellEdit() {
+        alert("先执行onBeforeCellEdit");
+        /*var eds = $('#dg').datagrid('getEditors', 0);
+        var a = $('#dg').datagrid('getRows')[0].deliveryAddress;
+        if (a == 'shanDong') {
+            $(eds[0].target).combobox({
+                valueField: 'addressValue', textField: 'addressName',
+                data: [{
+                    "addressValue": "linYi",
+                    "addressName": "临沂"
+                }]
+            });
+        }*/
+    }
+    function removeEditor() {
+        var e = $('#dg').datagrid('getColumnOption', 'deliveryAddress2');
+        e.editor = {};
+        alert(1);
+    }
+
+    function addEditor() {
+        var e = $('#dg').datagrid('getColumnOption', 'deliveryAddress2');
+        e.editor = 'text';
+        alert(2);
+    }
+
+
+    function isEditing() {
+        alert($('#dg').datagrid('isEditing', 0));
+    }
+
+    function endEditing() {
+        $('#dg').datagrid('endEdit', 0)
+    }
+
+    function canEditing() {
+        alert($('#dg').datagrid('validateRow', 0));
+    }
+
+    function getEditingCell() {
+        alert(JSON.stringify($('#dg').datagrid('cell')));
+    }
+</script>

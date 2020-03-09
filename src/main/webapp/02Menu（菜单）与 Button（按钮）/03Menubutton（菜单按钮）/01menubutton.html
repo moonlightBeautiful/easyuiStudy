@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>菜单按钮（Menubutton）组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<!-- 菜单按钮 -->
+<div style="border:3px blue solid;padding: 30px;width: 600px;height: 300px" id="a">
+    <div style="margin:10px 0;">
+        <a href="#" class="easyui-linkbutton" onclick="$('#btn-edit').menubutton('disable')">禁用编辑</a>
+        <a href="#" class="easyui-linkbutton" onclick="$('#btn-edit').menubutton('enable')">启用编辑</a>
+    </div>
+
+    <div style="padding:5px;border:1px solid #ddd">
+        <a href="#" class="easyui-linkbutton" data-options="plain:false">主页</a>
+        <a id="btn-edit" href="#" class="easyui-menubutton" data-options="menu:'#mm1',iconCls:'icon-edit',showEvent:'click'">编辑</a>
+        <a href="#" class="easyui-menubutton" data-options="menu:'#mm2',iconCls:'icon-help',plain:false">帮助</a>
+        <a href="#" class="easyui-menubutton" data-options="menu:'#mm3',duration:2000">关于</a>
+    </div>
+    <div id="mm1" style="width:150px;">
+        <div data-options="iconCls:'icon-undo'">撤销</div>
+        <div data-options="iconCls:'icon-redo'">恢复</div>
+        <div class="menu-sep"></div>
+        <div>剪切</div>
+        <div>复制</div>
+        <div>粘贴</div>
+        <div class="menu-sep"></div>
+        <div>
+            <span>工具条</span>
+            <div style="width:150px;">
+                <div>地址</div>
+                <div>链接</div>
+                <div>导航工具条</div>
+                <div>书签工具条</div>
+                <div class="menu-sep"></div>
+                <div>新建工具条...</div>
+            </div>
+        </div>
+        <div data-options="iconCls:'icon-remove'">删除</div>
+        <div>全选</div>
+    </div>
+    <div id="mm2" style="width:100px;">
+        <div>帮助</div>
+        <div>更新</div>
+        <div>关于</div>
+    </div>
+    <div id="mm3" class="menu-content" style="background:#f0f0f0;padding:10px;text-align:left">
+        <img src="http://www.jeasyui.com/images/logo1.png" style="width:150px;height:50px">
+        <p style="font-size:14px;color:#444;">EasyUI就是好.</p>
+    </div>
+</div>
+
+
+<!--属性、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div style="font-size:20px">
+
+    <div>
+        <ol><b style="font-size: 30px">属性：</b>
+            <li>plain：boolean，默认为true。是否简单效果，即是否无边框。</li>
+            <li>duration：number，默认为100ms。当悬停在按钮上时，延迟显示菜单（menu）的时间。</li>
+            <li>menu：selector。对应菜单（menu）的选择器，菜单div的class默认为easyui-menu。</li>
+        </ol>
+    </div>
+
+    <div>
+        <ol><b style="font-size: 30px">事件：</b>
+            <li>showEvent：事件string，默认为'mouseenter'。指定事件触发菜单显示。</li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">方法：</b>
+            <li>disable/enable：none。禁用/启用按钮。</li>
+            <li>select/unselect：none。选中/未选中按钮。</li>
+        </ol>
+    </div>
+</div>
+</body>
+</html>

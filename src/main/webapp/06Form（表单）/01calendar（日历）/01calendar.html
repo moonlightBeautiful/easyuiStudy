@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>日历组件学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<!--例子 -->
+<div style="border:3px blue solid;padding: 10px;width: 800px;height: 400px" id="a">
+    <div class="easyui-calendar" style="width:180px;height:180px;"></div>
+</div>
+
+<!--选项、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div style="font-size:20px">
+    <div>
+        <ol><b style="font-size: 30px">选项：</b>
+            <li>width/height：number，默认值180。日历（calendar）组件的宽度/高度。指示哪个字段是标识字段。</li>
+            <li>fit：boolean，默认值false。日历（calendar）调整尺寸到父容器大小以适应它的父容器。</li>
+            <li>border：boolean，默认值true。定义是否显示边框。</li>
+            <li>firstDay：number，默认值0。定义每星期从周几开始排序。星期日（Sunday）是 0，星期一（Monday）是 1，...</li>
+            <li>weeks：array，默认值['S','M','T','W','T','F','S']。显示星期的列表。</li>
+            <li>months：array，默认值['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']。显示月份的列表。</li>
+            <li>year/month：number，默认值当前年份（4 位）/当前月份（从 1 开始）。yyyy/mm。</li>
+            <li>current：Date。当前的日期。日期创建：new Date(2012, 6, 1)。</li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">事件：</b>
+            <li>onSelect：date。当用户选择一个日期时触发。</li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">方法：</b>
+            <li>moveTo：date。移动日历到一个指定的日期。</li>
+        </ol>
+        <ol>备注
+            <li>日期创建：new Date(2012, 6, 1)。</li>
+        </ol>
+    </div>
+</div>
+</body>
+</html>

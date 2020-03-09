@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>输入消息框</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/demo/demo.css">
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<div style="border:3px blue solid;padding: 30px;width: 600px;height: 200px" id="a">
+    <a href="#" class="easyui-linkbutton" onclick="prompt();">弹出输入消息框</a>
+</div>
+<script>
+    function prompt() {
+        $.messager.prompt('我的标题', '请输些东西', function (val) {
+            if (val) {
+                alert('确定后，值为: ' + val);
+            } else {
+                alert('取消后，值为: ' + val);
+            }
+        });
+    }
+</script>
+<!--消息框属性-->
+<br>
+<br>
+<br>
+<hr>
+<div style="font-size:20px">
+    <div>所有的消息框都是异步的
+        <ol><b style="font-size: 30px">alert配置项：</b>
+            <li>title：String。标题。</li>
+            <li>msg：String。内容。</li>
+            <li>icon：String，默认无图标。要显示的图标。可用的值是：error、question、info、warning。</li>
+            <li>fn：String，确定为输入的值，取消undefined。当窗口被确定或取消触发的回调函数。</li>
+        </ol>
+    </div>
+</div>
+</body>
+</html>

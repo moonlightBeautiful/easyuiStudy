@@ -28,15 +28,18 @@
              加载单个模块：easyloader.load('模块', callBack);
              加载多个模块：easyloader.load(['模块1','模块2','模块3'], callBack);
              也可以直接使用标签的class创建easyui组件
-对浏览器的支持
-    对IE的支持不太好
+    4.改变组件的选项值后生效问题
+        直接 .组件（{选项}）形式渲染。
+    5.更改主题        
+    6.对浏览器的支持
+        对IE的支持不太好
 组件学习：
     分类：
         布局组件（panel）
     1.Base（基础）组件
         无依赖关系的：
             1.parser解析器：渲染easyui组件。
-            2.parser加载器：页面不需要引入全部组件，加载需要的组件。不建议使用，麻烦，加载全部组件消耗不了多少时间。
+            2.easyLoader加载器：页面不需要引入全部组件，加载需要的组件。不建议使用，麻烦，加载全部组件消耗不了多少时间。
             3.progressbar进度条：
             4.resizable可调整尺寸：
             5.draggable可拖动：
@@ -49,51 +52,56 @@
         无依赖关系的：
             1.Linkbutton 链接按钮
             2.Menu 菜单
-            3.Switchbutton 开关按钮
         有依赖关系的：
-            4.Menubutton 菜单按钮
-            5.Splitbutton 分割菜单按钮
+            3.Menubutton 菜单按钮，依赖 Menu 菜单 和 Linkbutton 链接按钮
+            4.Splitbutton 分割菜单按钮，依赖 Menubutton 菜单按钮
     3.Layout（布局）组件：
+        无依赖关系的：
+            1.Panel 面板
         有依赖关系的：
-            1.panel面板组件
-                2.折叠面板 
-                3.标签面板 
-                4.布局面板       
+            2.Accordion 折叠面板，依赖 Panel 面板               
+            3.Tabs 标签页/选项卡，依赖 Panel 面板 和 Linkbutton 链接按钮  
+            4.Layout 布局，依赖 Panel 面板 和 Resizable可调整尺寸  
     4.Window（窗口）组件
         有依赖关系的：
-            1.Window 窗口
-                2.Messager 消息框
-                3.Dialog 对话框
+            1.Window 窗口，依赖 Panel 面板 和 draggable 和 resizable
+            2.Dialog 对话框，依赖 window 和 linkbutton
+            3.Messager 消息框，依赖 window 和 linkbutton 和 progressbar
     5.DataGrid（数据网格）与 Tree（树）
         有依赖关系的：
-            1.Datagrid 数据网格
-                3.Propertygrid 属性网格
-                4.Treegrid 树形网格
-            2.Tree 树
+            1.Datagrid 数据网格 依赖 panel resizable linkbutton pagination
+                3.Propertygrid 属性网格 依赖 datagrid
+                4.Treegrid 树形网格 依赖 datagrid
+            2.Tree 树 依赖 draggable droppable
     6.Form（表单）
         无依赖关系的：
-            1.Form 表单
-            2.Calendar 日历
+            1.Calendar 日历
+            20.Form 表单
         有依赖关系的：    
-            3.Validatebox 验证框
-            4.textbox 文本框
-                5.passwordbox 密码框
-                6.filebox 文件框
-                7.Numberbox 数字框
-                8.Spinner 微调器
-                    9.Numberspinner 数值微调器
-                    10.Timespinner 时间微调器
-                        11.DateTimeSpinner 日期时间微调框
-            12.Combo 组合
-                13.Datebox 日期框
-                    14.Datetimebox 日期时间框
-                15.Combobox 组合框           
-                    16.tagbox 标签框
-                17.Combotree 组合树
-                18.Combogrid 组合网格
-                19.ComboTreeGrid 树形表格下拉框
-            20.checkbox（复选框）和 radiobutton（单选框） 使用
-            
+            2.Validatebox 验证框  依赖tooltip
+            3.textbox 文本框  依赖validatebox 和linkbutton
+                4.passwordbox 密码框
+                5.filebox 文件框
+                6.Numberbox 数字框
+                7.Spinner 微调器
+                    8.Numberspinner 数值微调器
+                    9.Timespinner 时间微调器
+                        10.DateTimeSpinner 日期时间微调框
+            11.Combo 组合
+                12.Datebox 日期框
+                    13.Datetimebox 日期时间框
+                14.Combobox 组合框           
+                    15.tagbox 标签框
+                16.Combotree 组合树
+                17.Combogrid 组合网格
+                18.ComboTreeGrid 组合树网格
+            19.checkbox（复选框）和 radio（单选框） 使用  使用原生的
+            20.slide滑块 
+应用场景
+    左侧菜单栏：卡片布局+树形菜单
+    右侧数据栏：连接按钮+菜单按钮+搜索框+数据网格+菜单
+    头部模块栏：连接按钮
+    顶部信息栏：logo+菜单按钮        
             
             
            

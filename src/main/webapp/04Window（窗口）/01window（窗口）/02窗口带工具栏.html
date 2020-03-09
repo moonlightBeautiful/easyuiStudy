@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>基本窗体（window）组件的学习</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<!-- 简单窗体组件 -->
+<div style="border:3px blue solid;padding: 30px;width: 600px;height: 100px" id="a">
+    <div id="w" class="easyui-window" title="窗口带工具栏" data-options="iconCls:'icon-save',minimizable:false,tools:'#tt'"
+         style="width:500px;height:200px;padding:10px;">
+        窗体内容
+    </div>
+    <div id="tt">
+        <a href="javascript:void(0)" class="icon-add" onclick="javascript:alert('add')"></a>
+        <a href="javascript:void(0)" class="icon-edit" onclick="javascript:alert('edit')"></a>
+        <a href="javascript:void(0)" class="icon-cut" onclick="javascript:alert('cut')"></a>
+        <a href="javascript:void(0)" class="icon-help" onclick="javascript:alert('help')"></a>
+    </div>
+</div>
+</body>
+</html>

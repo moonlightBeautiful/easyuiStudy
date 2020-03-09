@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>文件框</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href=" ../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<!--例子 -->
+<div style="border:3px blue solid;padding: 10px;width: 800px;height: 400px" id="a">
+    <input class="easyui-filebox" style="width:300px" data-options="multiple:true,accept:'application/msword'">
+</div>
+
+<!--选项、方法、事件-->
+<br>
+<br>
+<br>
+<hr>
+<div style="font-size:20px">
+    <div>
+        <ol><b style="font-size: 30px">选项：</b>
+            <li>buttonText：string，默认值"Choose File"。在文本框上附加的按钮显示的文本。</li>
+            <li>buttonIcon：string，默认值null。在文本框上附加的按钮显示的图标。	</li>
+            <li>buttonAlign：string，默认值"right"。附加按钮位置。可用值有："left", "right"。</li>
+            <li>accept：string。指定接受的文件类型，指定之后，会在打开上传文件框中对文件进行筛选，参考类型地址https://blog.csdn.net/justinytsoft/article/details/52583595。</li>
+            <li>multiple：boolean，默认值FALSE。是否接受多文件选择。</li>
+            <li>separator：string，默认值","。多个文件名称之间的分隔符。	</li>
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">事件：扩展自textbox</b>
+
+        </ol>
+    </div>
+    <div>
+        <ol><b style="font-size: 30px">方法：扩展自textbox</b>
+        </ol>
+    </div>
+</div>
+
+</body>
+</html>
