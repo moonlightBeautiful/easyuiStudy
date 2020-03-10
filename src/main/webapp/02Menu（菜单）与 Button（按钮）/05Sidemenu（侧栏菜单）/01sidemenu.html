@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本面板组件</title>
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.9.4/themes/icon.css">
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+    <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.easyui.min.js"></script>
+</head>
+<body>
+<h2>Basic SideMenu</h2>
+<p>Collapse the side menu to display the main icon.</p>
+<div style="margin:20px 0;">
+    <a href="javascript:;" class="easyui-linkbutton" onclick="toggle()">Toggle</a>
+</div>
+<div id="sm" class="easyui-sidemenu" data-options="data:data"></div>
+<script type="text/javascript">
+    var data = [{
+        text: 'Item1',
+        iconCls: 'icon-sum',
+        state: 'open',
+        children: [{
+            text: 'Option1'
+        }, {
+            text: 'Option2'
+        }, {
+            text: 'Option3',
+            children: [{
+                text: 'Option31'
+            }, {
+                text: 'Option32'
+            }]
+        }]
+    }, {
+        text: 'Item2',
+        iconCls: 'icon-more',
+        children: [{
+            text: 'Option4'
+        }, {
+            text: 'Option5'
+        }, {
+            text: 'Option6'
+        }]
+    }];
+
+    function toggle() {
+        var opts = $('#sm').sidemenu('options');
+        $('#sm').sidemenu(opts.collapsed ? 'expand' : 'collapse');
+        opts = $('#sm').sidemenu('options');
+        $('#sm').sidemenu('resize', {
+            width: opts.collapsed ? 60 : 200
+        })
+    }
+</script>
+</body>
+</html>
+
+属性
+属性名    属性值类型    描述    默认值
+width    number    侧栏菜单组件的宽度。    200
+height    number    侧侧栏菜单组件的高度。    auto
+border    boolean    定义是否显示边框。    true
+animate    boolean    定义在展开或折叠菜单时是否显示动画效果。    true
+multiple    boolean    定义是否可以同时展开多个面板。    true
+data    array    要显示的菜单数据。    null
+floatMenuWidth    number    浮动菜单宽度。(    200
+floatMenuPosition    string    浮动菜单的位置。可选值:“left”、“right”。    right
+事件
+事件名    事件参数    描述
+onSelect    item    在选择菜单时触发。
+方法
+方法名    方法参数    描述
+options    none    返回属性值对象。
+resize    {width,height}    重置组件宽高。
+collapse    none    折叠组件。
+expand    none    展开组件。
+destroy    none    销毁组件。

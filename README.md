@@ -55,6 +55,7 @@
         有依赖关系的：
             3.Menubutton 菜单按钮，依赖 Menu 菜单 和 Linkbutton 链接按钮
             4.Splitbutton 分割菜单按钮，依赖 Menubutton 菜单按钮
+            5.Sidemenu 侧栏菜单 依赖 accordion 和 tree 和 tooltip
     3.Layout（布局）组件：
         无依赖关系的：
             1.Panel 面板
