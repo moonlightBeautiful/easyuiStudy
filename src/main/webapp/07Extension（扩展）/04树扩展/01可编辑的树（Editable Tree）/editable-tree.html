@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>jQuery EasyUI</title>
+    <link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+    <script type="text/javascript" src="../../jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="Editable%20Tree/jquery.etree.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#tt').etree({
+                url: 'tree_data.json'
+            });
+        });
+    </script>
+</head>
+<body>
+<h1>Editable Tree</h1>
+<div style="margin-bottom:10px">
+    <a href="#" onclick="javascript:$('#tt').etree('create')">Create</a>
+    <a href="#" onclick="javascript:$('#tt').etree('edit')">Edit</a>
+    <a href="#" onclick="javascript:$('#tt').etree('destroy')">Destroy</a>
+</div>
+<ul id="tt"></ul>
+</body>
+</html>
+
+url：返回树的数据。
+createUrl：当创建一个新节点时，树将向服务器传递一个名为 'parentId' 的参数，该参数指示父节点的 id。服务器应返回添加的节点数据。
+updateUrl：当更新一个节点时，树将向服务器传递 'id' 和 'text' 参数。服务器执行更新操作，并返回更新的节点数据。
+destroyUrl：当销毁一个节点时，树将向服务器传递 'id' 参数。服务器返回 {"success":true} 数据。
+dndUrl：当拖放一个节点时，树将向服务器传递下列参数：服务器执行一些动作，并返回 {"success":true} 数据。
+    id - 被拖拽的节点 id。
+    targetId - 被放置的节点。
+    point - 指示放置操作，可能的值：'append'、'top' 或 'bottom'。
+
+方法
+
+该方法扩展自树（tree），下面是为可编辑的树（etree）添加的方法。
+名称 	参数 	描述
+options 	none 	返回选项（options）对象。
+create 	none 	创建一个新的节点。
+edit 	none 	编辑当前选中的节点。
+destroy 	none 	销毁当前选中的节点。

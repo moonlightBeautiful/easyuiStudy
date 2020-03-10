@@ -1,0 +1,18 @@
+步骤 1：包含 'datagrid-scrollview.js' 文件
+<head>
+	<script type="text/javascript" src="datagrid-scrollview.js"></script>
+</head>
+步骤 2：通过虚拟滚动视图创建数据网格（DataGrid）
+<table id="tt" class="easyui-datagrid" style="width:700px;height:250px" title="DataGrid - VirtualScrollView" data-options="url:'get_data.php',view:scrollview,rownumbers:true,singleSelect:true,autoRowHeight:false,pageSize:50">
+	<thead>
+		<tr>
+			<th field="inv" width="80">Inv No</th>
+			<th field="date" width="100">Date</th>
+			<th field="name" width="80">Name</th>
+			<th field="amount" width="80" align="right">Amount</th>
+			<th field="price" width="80" align="right">Price</th>
+			<th field="cost" width="100" align="right">Cost</th>
+			<th field="note" width="110">Note</th>
+		</tr>
+	</thead>
+</table>

@@ -1,0 +1,59 @@
+包括“datagrid-cellediting.js文件
+<script type="text/javascript" src="datagrid-cellediting.js"></script>
+启用单元格编辑
+	$('#dg').datagrid({
+		data: data
+	}).datagrid('enableCellEditing').datagrid('gotoCell', {
+		index: 0,
+		field: 'productid'
+	});
+属性
+属性从datagrid继承，下面是datagrid的属性。
+
+名称	类型	描述	默认
+clickToEdit	boolean	当单击此单元格时，要编辑该单元格。	true
+dblclickToEdit	boolean	当双击该单元格时，要编辑该单元格。	false
+事件
+这些事件是从datagrid继承而来的，下面是datagrid的事件。
+
+名称	参数	描述
+onBeforeCellEdit	index,field	在编辑单元格之前触发，返回false以拒绝编辑操作。
+onCellEdit	index,field,value	在单元格编辑时触发。参数包含:index:编辑行索引。field:列字段名。value:键盘上按下的char代码的初始值。当按DEL或BACKSPACE键时，该值为空字符串。
+onSelectCell	index,field	选择单元格时触发。
+onUnselectCell	index,field	取消选择单元格触发。
+方法
+下面的方法自datagrid继承.
+
+名称	参数	描述
+editCell	param	编辑一个单元格。参数'param'包含以下属性:index:行索引。field:字段名。
+代码实例:
+
+$('#dg').datagrid('editCell', {
+	index: 0,
+	field: 'productid'
+});
+isEditing	index	如果选定行正在编辑，则返回true。
+gotoCell	param	导航突出显示的单元格。可选参数值是: 'up','down','left','right',或者是一个 object 和 'index' and 'field' 属性.
+代码实例:
+
+$('#dg').datagrid('gotoCell', 'down');
+$('#dg').datagrid('gotoCell', {
+	index: 0,
+	field: 'productid'
+});
+enableCellSelecting	none	在datagrid中启用单元格选择。
+disableCellSelecting	none	禁用在datagrid中选择单元格。
+enableCellEditing	none	在datagrid中启用单元格编辑。
+disableCellEditing	none	禁用datagrid中的单元格编辑。
+input	param	返回当前编辑框对象。
+代码实例:
+
+var input = $('#dg').datagrid('input', {
+	index: 0,
+	field: 'productid'
+});
+if (input){
+	//...
+}
+cell	none	返回包含‘index’和'field'属性的当前单元格信息。
+getSelectedCells	none	返回所有选中的单元格。

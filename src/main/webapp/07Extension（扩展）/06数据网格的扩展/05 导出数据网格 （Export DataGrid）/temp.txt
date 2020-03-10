@@ -1,0 +1,48 @@
+包括 'datagrid-export.js' 文件
+<script type="text/javascript" src="datagrid-export.js"></script>
+导出数据表格
+	$('#dg').datagrid('toExcel','dg.xls');	// export to excel
+	$('#dg').datagrid('print','DataGrid');	// print the datagrid
+导出 PDF
+创建PDF文档，可以使用pdfmake 库。
+
+var body = $('#dg').datagrid('toArray');
+var docDefinition = {
+    content: [{
+        table: {
+            headerRows: 1,
+            widths: ['*','*','*','*','auto','*'],
+            body: body
+        }
+    }]
+};
+pdfMake.createPdf(docDefinition).open();
+方法
+下面的方法继承datagrid:
+
+名称	参数	描述
+toHtml	rows	导出html表。
+toArray	rows	导出数组数据。
+toExcel	param	导出excel文件
+代码实例:
+
+$('#dg').datagrid('toExcel', 'datagrid.xls');
+$('#dg').datagrid('toExcel', {
+    filename: 'datagrid.xls',
+    worksheet: 'Worksheet'
+});
+// export with customized rows
+$('#dg').datagrid('toExcel', {
+    filename: 'datagrid.xls',
+    rows: rows,
+    worksheet: 'Worksheet'
+});
+print	title	打印datagrid。
+代码实例:
+
+$('#dg').datagrid('print', 'DataGrid');
+// print with customized rows
+$('#dg').datagrid('print', {
+    title: 'DataGrid',
+    rows: rows
+});

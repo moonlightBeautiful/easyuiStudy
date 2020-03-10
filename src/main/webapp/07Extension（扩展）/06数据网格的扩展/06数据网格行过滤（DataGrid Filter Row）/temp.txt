@@ -1,0 +1,54 @@
+用法
+包含 'datagrid-filter.js' 文件
+<script type="text/javascript" src="datagrid-filter.js"></script>
+启用过滤（Filter）
+var dg = $('#dg');
+dg.datagrid();	// create datagrid
+dg.datagrid('enableFilter');	// enable filter
+属性
+该属性扩展自数据网格（datagrid），下面是为数据网格（datagrid）添加的属性。
+
+名称	类型	描述	默认值
+filterMenuIconCls	string	过滤菜单项（指示要使用的项目）的图标 class。	icon-ok
+filterBtnIconCls	string	过滤按钮的图标 class。	icon-filter
+filterBtnPosition	string	过滤按钮的位置。可能的值是 'left' 和 'right'。	right
+filterPosition	string	过滤栏相对于列的位置。可能的值是 'top' 和 'bottom'。	bottom
+remoteFilter	boolean	设置为 true 则执行远程过滤。
+当启用时，'filterRules' 参数将发送到远程服务器。
+'filterRules' 参数的值由 'filterStringify' 函数获得。	false
+filterDelay	number	从 'text' 过滤组件中最后一个键输入事件起，延迟执行过滤的时间。	400
+filterRules	array	过滤规则的定义。每个规则包含 'field'、'op' 和 'value' 属性。	[]
+filterStringify	function	把过滤规则字符串化的函数。	
+function(data){
+	return JSON.stringify(data);
+}
+方法
+下面的方法扩展自数据网格（datagrid）。
+
+名称	参数	描述
+enableFilter	filters	创建并启用过滤功能。
+'filters' 参数是一个过滤配置的数组。
+每一项包含下列属性：
+1) field：需要定义规则的域。
+2) type：过滤类型，可能的值：label、text、textarea、checkbox、numberbox、validatebox、datebox、combobox、combotree。
+3) options：过滤类型的选项。
+4) op：过滤操作，可能的值：contains、equal、notequal、beginwith、endwith、less、lessorequal、greater、greaterorequal。
+代码实例：
+
+$('#dg').datagrid('enableFilter');
+$('#dg').datagrid('enableFilter', [{
+	field:'listprice',
+	type:'numberbox',
+	options:{precision:1},
+	op:['equal','notequal','less','greater']
+}]);
+addFilterRule	param	添加一个过滤规则。
+$('#dg').datagrid('addFilterRule', {
+	field: 'desp',
+	op: 'contains',
+	value: 'easyui'
+});
+removeFilterRule	field	移除过滤规则。
+如果 'field' 参数未指定，移除所有的过滤规则。
+doFilter	none	基于过滤规则执行过滤。
+getFilterComponent	field	在指定的域上获取过滤组件。

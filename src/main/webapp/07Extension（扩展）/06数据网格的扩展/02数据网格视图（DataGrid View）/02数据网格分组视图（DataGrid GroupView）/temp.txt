@@ -1,0 +1,41 @@
+用法
+步骤 1：创建一个 HTML 页面
+<head>
+	<script type="text/javascript" src="datagrid-groupview.js"></script>
+</head>
+<body>
+	<table id="tt"></table>
+</body>
+步骤 2：创建数据网格（DataGrid）
+$('#tt').datagrid({
+	title:'DataGrid - GroupView',
+	width:500,
+	height:250,
+	rownumbers:true,
+	remoteSort:false,
+	nowrap:false,
+	fitColumns:true,
+	url:'datagrid_data.json',
+	columns:[[
+		{field:'productid',title:'Product ID',width:100,sortable:true},
+		{field:'listprice',title:'List Price',width:80,align:'right',sortable:true},
+		{field:'unitcost',title:'Unit Cost',width:80,align:'right',sortable:true},
+		{field:'attr1',title:'Attribute',width:150,sortable:true},
+		{field:'status',title:'Status',width:60,align:'center'}
+	]],
+	groupField:'productid',
+	view: groupview,
+	groupFormatter:function(value, rows){
+		return value + ' - ' + rows.length + ' Item(s)';
+        }
+});
+属性
+名称	类型	描述	默认
+groupField	string	指示要被分组的字段。
+groupFormatter	function(value,rows)	返回分组内容的格式化函数。
+value 参数指示由 'groupField' 属性定义的分组值。
+rows 参数根据指定分组值指示数据行。
+方法
+名称	参数	描述
+expandGroup	groupIndex	展开一个分组。
+collapseGroup	groupIndex	折叠一个分组。

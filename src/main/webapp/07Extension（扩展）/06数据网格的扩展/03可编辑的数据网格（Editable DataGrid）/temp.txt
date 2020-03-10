@@ -1,0 +1,103 @@
+$('#tt').edatagrid({
+	url: 'datagrid_data.json',
+	saveUrl: ...,
+	updateUrl: ...,
+	destroyUrl: ...
+});
+
+属性
+该属性扩展自数据网格（datagrid），下面是为可编辑的数据网格（edatagrid）添加的属性。
+
+名称	类型	描述	默认值
+destroyMsg	object	当销毁一行时要显示的确认对话框消息。
+destroyMsg:{
+	norecord:{	// when no record is selected
+		title:'Warning',
+		msg:'No record is selected.'
+	},
+	confirm:{	// when select a row
+		title:'Confirm',
+		msg:'Are you sure you want to delete?'
+	}
+}
+autoSave	boolean	设置为 true，则当点击数据网格外部时自动保存编辑行。	false
+url	string	一个 URL，从服务器检索数据。	null
+saveUrl	string	一个 URL，向服务器保存数据，并返回添加的行。	null
+updateUrl	string	一个 URL，向服务器更新数据，并返回更新的行。	null
+destroyUrl	string	一个 URL，向服务器传送 'id' 参数来销毁该行。	null
+tree	selector	显示对应的树组件的树选择器。	null
+treeUrl	string	一个 URL，检索树的数据。	null
+treeDndUrl	string	一个 URL，处理拖放操作。	null
+treeTextField	string	定义树的文本字段名称。	name
+treeParentField	string	定义树的父节点字段名称。	parentId
+
+
+
+
+
+事件
+该事件扩展自数据网格（datagrid），下面是为可编辑的数据网格（edatagrid）添加的事件。
+
+名称	参数	描述
+onAdd	index,row	当添加一个新行时触发。
+onEdit	index,row	当编辑一行时触发。
+onBeforeSave	index	一行被保存之前触发，返回 false 则取消保存动作。
+onSave	index,row	当保存一行时触发。
+onDestroy	index,row	当销毁一行时触发。
+onError	index,row	当发生服务器错误时触发。
+服务器应返回一个 'isError' 属性设置为 true 的行，表示发生错误。
+代码实例：
+
+//server side code
+echo json_encode(array(
+	'isError' => true,
+	'msg' => 'error message.'
+));
+//client side code
+$('#dg').edatagrid({
+	onError: function(index,row){
+		alert(row.msg);
+	}
+});
+
+
+方法
+该方法扩展自数据网格（datagrid），下面是为可编辑的数据网格（edatagrid）添加或重写的方法。
+
+名称	参数	描述
+options	none	返回选项（options）对象。
+enableEditing	none	启用数据网格（datagrid）编辑。
+disableEditing	none	禁用数据网格（datagrid）编辑。
+editRow	index	编辑指定的行。
+addRow	index	向指定的行索引添加一个新行。
+如果 index 参数未指定，则向最后的位置追加一个新行。
+代码实例：
+
+// append an empty row
+$('#dg').edatagrid('addRow');
+
+// append an empty row as first row
+$('#dg').edatagrid('addRow',0);
+
+// insert a row with default values
+$('#dg').edatagrid('addRow',{
+	index: 2,
+	row:{
+		name:'name1',
+		addr:'addr1'
+	}
+});
+saveRow	none	保存编辑行，发布到服务器。
+cancelRow	none	取消编辑行。
+destroyRow	index	销毁当前选中的行。
+如果 index 参数未指定，则销毁所有选中的行。
+代码实例：
+
+// destroy all the selected rows
+$('#dg').edatagrid('destroyRow');
+
+// destroy the first row
+$('#dg').edatagrid('destroyRow', 0);
+
+// destroy the specified rows
+$('#dg').edatagrid('destroyRow', [3,4,5]);

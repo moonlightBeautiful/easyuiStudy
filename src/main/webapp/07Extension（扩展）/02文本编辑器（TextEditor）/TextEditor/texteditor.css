@@ -39,50 +39,50 @@
 	border: 1px solid #000;
 }
 .icon-bold{
-	background: url('images/bold.png') center center;
+	background: url('../images/bold.png') center center;
 }
 .icon-italic{
-	background: url('images/italic.png') center center;
+	background: url('../images/italic.png') center center;
 }
 .icon-strikethrough{
-	background: url('images/strikethrough.png') center center;
+	background: url('../images/strikethrough.png') center center;
 }
 .icon-underline{
-	background: url('images/underline.png') center center;
+	background: url('../images/underline.png') center center;
 }
 .icon-justifyleft{
-	background: url('images/justifyleft.png') center center;
+	background: url('../images/justifyleft.png') center center;
 }
 .icon-justifycenter{
-	background: url('images/justifycenter.png') center center;
+	background: url('../images/justifycenter.png') center center;
 }
 .icon-justifyright{
-	background: url('images/justifyright.png') center center;
+	background: url('../images/justifyright.png') center center;
 }
 .icon-justifyfull{
-	background: url('images/justifyfull.png') center center;
+	background: url('../images/justifyfull.png') center center;
 }
 .icon-insertorderedlist{
-	background: url('images/insertorderedlist.png') center center;
+	background: url('../images/insertorderedlist.png') center center;
 }
 .icon-insertunorderedlist{
-	background: url('images/insertunorderedlist.png') center center;
+	background: url('../images/insertunorderedlist.png') center center;
 }
 .icon-outdent{
-	background: url('images/outdent.png') center center;
+	background: url('../images/outdent.png') center center;
 }
 .icon-indent{
-	background: url('images/indent.png') center center;
+	background: url('../images/indent.png') center center;
 }
 .icon-forecolor{
-	background: url('images/forecolor.png') center center;
+	background: url('../images/forecolor.png') center center;
 }
 .icon-backcolor{
-	background: url('images/backcolor.png') center center;
+	background: url('../images/backcolor.png') center center;
 }
 .icon-image{
-	background: url('images/image.png') center center;
+	background: url('../images/image.png') center center;
 }
 .icon-link{
-	background: url('images/link.png') center center;
+	background: url('../images/link.png') center center;
 }

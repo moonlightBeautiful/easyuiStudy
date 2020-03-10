@@ -1,0 +1,51 @@
+用法
+包含 'datagrid-dnd.js' 文件
+<script type="text/javascript" src="datagrid-dnd.js"></script>
+启用拖拽与放置
+<table class="easyui-datagrid" title="DataGrid" style="width:700px;height:250px" data-options="
+			singleSelect:true,
+			data:data,
+			onLoadSuccess:function(){
+				$(this).datagrid('enableDnd');
+			}
+		">
+	<thead>
+		<tr>
+			<th data-options="field:'itemid',width:80">Item ID</th>
+			<th data-options="field:'productid',width:100">Product</th>
+			<th data-options="field:'listprice',width:80,align:'right'">List Price</th>
+			<th data-options="field:'unitcost',width:80,align:'right'">Unit Cost</th>
+			<th data-options="field:'attr1',width:250">Attribute</th>
+			<th data-options="field:'status',width:60,align:'center'">Status</th>
+		</tr>
+	</thead>
+</table>
+事件
+该事件扩展自数据网格（datagrid），下面是为数据网格（datagrid）添加的事件。
+
+名称	参数	描述
+onBeforeDrag	row	当一行的拖拽开始前触发，返回 false 则取消拖拽。
+onStartDrag	row	当开始拖拽一行时触发。
+onStopDrag	row	当停止拖拽一行后触发。
+onDragEnter	targetRow, sourceRow	当拖拽一行进入某允许放置的目标行时触发，返回 false 则取消放置。
+onDragOver	targetRow, sourceRow	当拖拽一行在某允许放置的目标行上时触发，返回 false 则取消放置。
+onDragLeave	targetRow, sourceRow	当拖拽一行离开某允许放置的目标行时触发。
+onBeforeDrop	targetRow,sourceRow,point	当一行被放置前触发，返回 false 则取消放置。
+targetRow：放置的目标行。
+sourceRow：拖拽的源行。
+point：指示放置的位置，可能的值：'top' 或 'bottom'。
+onDrop	targetRow,sourceRow,point	当一行被放置时触发。
+targetRow：放置的目标行。
+sourceRow：拖拽的源行。
+point：指示放置的位置，可能的值：'top' 或 'bottom'。
+方法
+该方法扩展自数据网格（datagrid）。
+
+名称	参数	描述
+enableDnd	index	启用行的拖拽与放置。
+'index' 参数指示要被拖拽与放置的行。
+如果该参数未指定，则拖拽与放置所有行。
+代码实例：
+
+$('#dg').datagrid('enableDnd', 1);	// enable dragging on second row
+$('#dg').datagrid('enableDnd');	// enable dragging all rows
