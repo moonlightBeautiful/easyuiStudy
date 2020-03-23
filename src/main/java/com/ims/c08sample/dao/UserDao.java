@@ -1,11 +1,11 @@
-package com.ims.dao;
+package com.ims.c08sample.dao;
+
+import com.ims.c08sample.model.PageBean;
+import com.ims.c08sample.model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
-import com.ims.model.PageBean;
-import com.ims.model.User;
 
 public class UserDao {
 
@@ -13,7 +13,7 @@ public class UserDao {
         String sql = "select * from t_user limit ?,?";
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setInt(1, pageBean.getStart());
-        pstmt.setInt(2, pageBean.getPageSize());
+        pstmt.setInt(2, pageBean.getRows());
         return pstmt.executeQuery();
     }
 
@@ -28,15 +28,15 @@ public class UserDao {
         }
     }
 
-    public int userDelete(Connection con, String id) throws Exception {
+    public int userDelete(Connection con, String delId) throws Exception {
         String sql = "delete from t_user where id=?";
         PreparedStatement pstmt = con.prepareStatement(sql);
-        pstmt.setString(1, id);
+        pstmt.setString(1, delId);
         return pstmt.executeUpdate();
     }
 
     public int userAdd(Connection con, User user) throws Exception {
-        String sql = "insert into t_user(name,phone,email,qq) values(null,?,?,?,?)";
+        String sql = "insert into t_user values(null,?,?,?,?)";
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setString(1, user.getName());
         pstmt.setString(2, user.getPhone());

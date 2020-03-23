@@ -28,7 +28,8 @@
                     <li>text：要显示的节点文本。</li>
                     <li>iconCls：节点图标。</li>
                     <li>state：节点状态，'open' 或 'closed'，默认是 'open'。<br>
-                        当设置为 'closed' 时，并未加载子节点。打开该节点若有子节点，从远程站点加载它们。
+                        节点有子节点，当设置为 'closed' 时，为关闭状态。设置为'open'时，为展开状态。<br>
+                        叶子节点必须设值为 'open'。
                     </li>
                     <li>checked：指示节点是否被选中。</li>
                     <li>attributes：给一个节点添加的自定义属性。</li>

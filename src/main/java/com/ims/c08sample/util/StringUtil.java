@@ -1,4 +1,4 @@
-package com.ims.util;
+package com.ims.c08sample.util;
 
 public class StringUtil {
 

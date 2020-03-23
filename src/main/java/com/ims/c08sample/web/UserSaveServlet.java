@@ -1,5 +1,4 @@
-/*
-package com.ims.web;
+package com.ims.c08sample.web;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -9,17 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSONArray;
+import com.ims.c08sample.dao.UserDao;
+import com.ims.c08sample.model.User;
+import com.ims.c08sample.util.DbUtil;
+import com.ims.c08sample.util.ResponseUtil;
+import com.ims.c08sample.util.StringUtil;
 import net.sf.json.JSONObject;
 
-import com.ims.dao.UserDao;
-import com.ims.model.PageBean;
-import com.ims.util.DbUtil;
-import com.ims.util.JsonUtil;
-import com.ims.util.ResponseUtil;
 
-public class UserDeleteServlet extends HttpServlet {
+public class UserSaveServlet extends HttpServlet {
 
+    /**
+     *
+     */
     private static final long serialVersionUID = 1L;
     DbUtil dbUtil = new DbUtil();
     UserDao userDao = new UserDao();
@@ -33,17 +34,33 @@ public class UserDeleteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String delId = request.getParameter("delId");
+        request.setCharacterEncoding("utf-8");
+        String name = request.getParameter("name");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
+        String qq = request.getParameter("qq");
+        String id = request.getParameter("id");
+
+        User user = new User(name, phone, email, qq);
+        if (StringUtil.isNotEmpty(id)) {
+            user.setId(Integer.parseInt(id));
+        }
 
         Connection con = null;
         try {
-            con = dbUtil.getCon();
+            int saveNums = 0;
+            con = dbUtil.getConn();
             JSONObject result = new JSONObject();
-            int delNums = userDao.userDelete(con, delId);
-            if (delNums == 1) {
+            if (StringUtil.isNotEmpty(id)) {
+                saveNums = userDao.userModify(con, user);
+            } else {
+                saveNums = userDao.userAdd(con, user);
+            }
+            if (saveNums == 1) {
                 result.put("success", "true");
             } else {
-                result.put("errorMsg", "ɾ��ʧ��");
+                result.put("success", "true");
+                result.put("errorMsg", "保存失败~");
             }
             ResponseUtil.write(response, result);
         } catch (Exception e) {
@@ -51,7 +68,7 @@ public class UserDeleteServlet extends HttpServlet {
             e.printStackTrace();
         } finally {
             try {
-                dbUtil.closeCon(con);
+                dbUtil.closeConn(con);
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -62,4 +79,3 @@ public class UserDeleteServlet extends HttpServlet {
 
 
 }
-*/
