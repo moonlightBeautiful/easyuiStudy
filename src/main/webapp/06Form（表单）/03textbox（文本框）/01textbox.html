@@ -13,10 +13,11 @@
 
 <!--例子 -->
 <div style="border:3px blue solid;padding: 10px;width: 800px;height: 400px" id="a">
-    <input class="easyui-textbox" style="width:300px" data-options="iconCls:'icon-search',
-                                                                prompt:'prompt',
-                                                                value:2,
-                                                                label:'我是标签',onClickIcon:onClickIcon"><br>
+    <input class="easyui-textbox" style="width:300px"
+           data-options="iconCls:'icon-search',
+                            prompt:'prompt',
+                            value:2,
+                            label:'我是标签',onClickIcon:onClickIcon"><br>
     <input id="tb" style="width:300px">
 </div>
 <script>
@@ -50,6 +51,12 @@
 <hr>
 <div style="font-size:20px">
     <div>
+        <ol><b style="font-size: 30px">依赖关系：</b>
+            <li>validatebox。</li>
+            <li>linkbutton。</li>
+        </ol>
+    </div>
+    <div>
         <ol><b style="font-size: 30px">选项：</b>
             <li>width/height：number，默认值false。组件的宽度|高度。</li>
             <li>prompt：string，默认值""。在输入框显示提示消息。</li>
@@ -63,7 +70,6 @@
             <li>iconAlign：string，默认值right。背景图标的位置。可用值有："left", "right"。</li>
             <li>iconWidth：number，默认值18。背景图标宽度。</li>
             <li>icons：array，默认值[]。文本框中点击图标，{iconCls:string,handler：function}。</li>
-
             <li>buttonText：string。文本框附加按钮显示的文本内容。</li>
             <li>buttonIcon：string。文本框旁边附加按钮显示的图标。</li>
             <li>buttonAlign：string，附加按钮的位置。</li>

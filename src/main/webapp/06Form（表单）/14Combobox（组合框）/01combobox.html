@@ -13,13 +13,17 @@
 
 <!--基础日期时间框示例-->
 <div style="border:3px blue solid;padding: 10px;width: 600px;height: 300px">
-    <select class="easyui-combobox" name="sheng" style="width:200px;">
+    <select id="s" class="easyui-combobox" name="sheng" style="width:200px;">
         <option value="hebei">河北省</option>
         <option value="shandong">山东省</option>
         <option value="liaoning">辽宁省</option>
     </select>
 </div>
-
+<script>
+    $(function() {
+        alert($('#s').combobox('getValue'));
+    });
+</script>
 
 <!--属性、方法、事件-->
 <br>

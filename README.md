@@ -6,10 +6,12 @@
     简单的web前台框架，封装了js和css等。
 使用：
     1.导入jquery+easyui文件
-        <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.min.js"></script>
-        <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+        2个css（主题和图标）、3个easyui的js（1个jquery、1个中文支持、一个easyui核心包）
         <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/default/easyui.css">
         <link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.4.2/themes/icon.css">
+        <script type="text/javascript" src=" ../../jquery-easyui-1.9.4/jquery.min.js"></script>
+        <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
+        <script type="text/javascript" src="../../jquery-easyui-1.4.2/jquery.easyui.min.js"></script>     
     2.创建easyui组件
         2种方式
             1.html标记方式

@@ -13,18 +13,18 @@
 <body>
 <div style="border:3px blue solid;padding: 30px;width: 600px;height: 200px" id="a">
     <a href="#" class="easyui-linkbutton" onclick="alert1()">提醒消息，带回调函数</a>
-    <a href="#" class="easyui-linkbutton" onclick="alert2()">错误消息</a>
+    <a href="#" class="easyui-linkbutton" onclick="alert2()">错误消息，带回调函数</a>
     <a href="#" class="easyui-linkbutton" onclick="alert3()">信息消息</a>
     <a href="#" class="easyui-linkbutton" onclick="alert4()">问题消息</a>
     <a href="#" class="easyui-linkbutton" onclick="alert5()">警告消息</a>
 </div>
 <script>
     function alert1() {
-        $.messager.alert('我的标题', '这是一个消息!','',close1);
+        $.messager.alert('我的标题', '这是一个消息!</br>可以解析html标签','',close1);
     }
 
     function alert2() {
-        $.messager.alert('我的标题', '这是一个错误消息!带回调函数', 'error');
+        $.messager.alert('我的标题', '这是一个错误消息!带回调函数', 'error',close1);
     }
 
     function alert3() {
@@ -40,7 +40,7 @@
     }
 
     function close1(a,b) {
-        alert("我是回调函数！");
+        alert("我是回调函数！但是我貌似没有入参。");
         alert(a);
         alert(b);
     }
