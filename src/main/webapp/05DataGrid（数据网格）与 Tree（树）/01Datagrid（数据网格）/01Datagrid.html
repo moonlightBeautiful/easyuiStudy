@@ -10,11 +10,12 @@
     <script type="text/javascript" src="../../jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js"></script>
 </head>
 <body>
-<div style="border:3px blue solid;padding: 10px;width: 800px;height: 400px" id="a">
+<div style="border:3px blue solid;padding: 10px;width: 800px;height: 400px" id="a" class="easyui-window">
     <table id="dg" class="easyui-datagrid" title="基本数据表格" style="width: 600px;height: 350px"
-           data-options="url:'./0datagrid_data.json',toolbar:toolbar,pagination:true">
+           data-options="fit:true">
         <thead>
         <tr>
+            <th data-options="field:'ck',checkbox:true">11</th>
             <th data-options="field:'itemId'">编号</th>
             <th data-options="field:'productId'">产品编号</th>
             <th data-options="field:'productName'">产品名称</th>
@@ -125,7 +126,9 @@
             <li>sortable:boolean，默认值false。该列是否可排序。</li>
             <li>order:string，默认值asc。排序顺序。</li>
             <li>resizable:boolean，默认值false。设置为 true，则允许该列可调整尺寸。</li>
-            <li>checkbox：boolean，默认值为false。此列是否为复选框项。</li>
+            <li>checkbox：boolean，默认值为false。此列是否为复选框项。
+                    <th data-options="field:'ck',checkbox:true">11</th>
+            </li>
             <li>hidden：boolean，默认值为false。是否隐藏该列。</li>
             <li>formatter:function(value，rowData，rowIndex)。此列的单元格的格式化函数，返回的数据显示在单元格中，可以解析html标签，但不会渲染easyui组件。一行一行的调用格式化。</li>
             <li>styler:function（value，rowData，rowIndex）。返回String，例如 'background:red' 的样式，用于整列样式。</li>

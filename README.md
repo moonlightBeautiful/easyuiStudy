@@ -1,5 +1,8 @@
 # easyuiStudy
 版本：
+    jquery2.0以上版本不再支持ie8浏览器。
+    easyUI版本选择：1.4.2版本 和 1.7.0 或者 最新版本。
+        1.7.0 支持 jquery最后一个版本
     百度到，目前来看 jquery1.11.11+easyui-1.4.2对扩展插件支持的比较好，easyui自带jquery。
 # 组件学习：大约三十个组件
 简介：
